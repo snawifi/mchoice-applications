@@ -14,7 +14,7 @@ package hms.ctap.simulator.ui;
 
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
-import hms.ctap.simulator.messagetable.SentMessageTable;
+import hms.ctap.simulator.ui.table.SentMessageTable;
 import hms.ctap.simulator.ui.tab.Tab;
 import hms.ctap.simulator.ussd.UssdMessageSender;
 

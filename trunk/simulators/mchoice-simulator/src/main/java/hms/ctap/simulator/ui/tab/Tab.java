@@ -5,8 +5,8 @@
 
 package hms.ctap.simulator.ui.tab;
 
-import hms.ctap.simulator.messagetable.ReceivedMessageTable;
-import hms.ctap.simulator.messagetable.SentMessageTable;
+import hms.ctap.simulator.ui.table.ReceivedMessageTable;
+import hms.ctap.simulator.ui.table.SentMessageTable;
 import hms.ctap.simulator.ui.InputPanel;
 
 /**
