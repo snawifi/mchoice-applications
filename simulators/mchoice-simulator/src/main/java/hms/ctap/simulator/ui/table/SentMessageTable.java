@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package hms.ctap.simulator.messagetable;
+package hms.ctap.simulator.ui.table;
 
 
 import com.vaadin.ui.Table;
