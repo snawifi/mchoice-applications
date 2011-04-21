@@ -11,7 +11,7 @@ import hms.ctap.simulator.ui.services.NcsUIService;
 import hms.ctap.simulator.ui.tab.TabView;
 import hms.ctap.simulator.ussd.UssdMessageReceiver;
 import hms.ctap.simulator.ussd.UssdMessageSender;
-import hms.sdp.ussd.impl.UssdAoRequestMessage;
+//import hms.sdp.ussd.impl.UssdAoRequestMessage;
 
 import java.util.Date;
 import java.util.List;
@@ -41,20 +41,20 @@ public class TabViewImpl extends TabView {
         super.init();
         if (executorService == null) {
             executorService = Executors.newScheduledThreadPool(1);
-            try {
-                executorService.scheduleAtFixedRate(new Runnable() {
-                        public void run() {
-                            List<UssdAoRequestMessage> receivedMessages = UssdMessageReceiver.getReceivedMessages();
-                            for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
-                                UssdAoRequestMessage ussdAoRequestMessage = receivedMessages.get(i);
-                                ncsUIService.addElementToReceiveTable(i, new Date(), ussdAoRequestMessage.getAddress(),
-                                        ussdAoRequestMessage.getMessage(), "Success");
-                            }
-                        }
-                    }, 4, 4, TimeUnit.SECONDS);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                executorService.scheduleAtFixedRate(new Runnable() {
+//                        public void run() {
+//                            List<UssdAoRequestMessage> receivedMessages = UssdMessageReceiver.getReceivedMessages();
+//                            for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
+//                                UssdAoRequestMessage ussdAoRequestMessage = receivedMessages.get(i);
+//                                ncsUIService.addElementToReceiveTable(i, new Date(), ussdAoRequestMessage.getAddress(),
+//                                        ussdAoRequestMessage.getMessage(), "Success");
+//                            }
+//                        }
+//                    }, 4, 4, TimeUnit.SECONDS);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
@@ -88,8 +88,9 @@ public class TabViewImpl extends TabView {
 
         HorizontalLayout tabUpperLayout = new HorizontalLayout();
         tabUpperLayout.setWidth("100%");
+        tabUpperLayout.setMargin(true);
 
-        Component mobilePhoneLayout = createMobilePhoneLayout();
+        Component mobilePhoneLayout = createMobilePhone();
         tabUpperLayout.addComponent(mobilePhoneLayout);
         tabUpperLayout.setComponentAlignment(mobilePhoneLayout, Alignment.TOP_LEFT);
 
@@ -116,16 +117,7 @@ public class TabViewImpl extends TabView {
     }
 
 
-    public Component createMobilePhoneLayout(){
-
-        VerticalLayout mobilePhoneLayout = new VerticalLayout();
-        mobilePhoneLayout.setSpacing(true);
-        TextField lastReceivedMsg = new TextField("Last Received Message");
-        mobilePhoneLayout.addComponent(lastReceivedMsg);
-        Component mobilePhone = createMobilePhone();
-        mobilePhoneLayout.addComponent(mobilePhone);        
-        return mobilePhoneLayout;
-    }
+    
     /**
      *
      * @return a vertical layout containing mobile phone image
@@ -143,6 +135,8 @@ public class TabViewImpl extends TabView {
         backgroundLayout.addComponent(messageTextField);
         return backgroundLayout;
     }
+
+
 
 
 }
