@@ -4480,4 +4480,17 @@ textarea.v-textarea-small {
     height: 18px;
     padding-left:60px;
 }
+.mobile-phone-background{
+    background: transparent url(mobile_phone_with_display.jpg) no-repeat;
+    width: 119px;
+    height: 236px;
+    padding-left: 11px;
+    padding-top: 30px;
+    z-index: -1;
+}
+
+.message-display{    
+    background-color: #ffffff;
+    border: none;   
+}
 
