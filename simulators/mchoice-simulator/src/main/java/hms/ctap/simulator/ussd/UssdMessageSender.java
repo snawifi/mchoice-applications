@@ -38,12 +38,12 @@ public class UssdMessageSender {
         final Gson gson = new Gson();
         final PostMethod postMethod = new PostMethod(url);
         postMethod.addRequestHeader(MchoiceUssdMessage.USSD_MESSAGE_TYPE, MchoiceUssdMessage.USSD_MESSAGE);
+        postMethod.addRequestHeader(MchoiceUssdMessage.CONVERSATION, String.valueOf(Math.random()));
         postMethod.addRequestHeader("X-Requested-Shortcode", "4499");
         postMethod.addRequestHeader(MchoiceUssdMessage.REQUEST_VERSION, "1.0");
         final UssdAtRequestMessage ussdAtRequestMessage = new UssdAtRequestMessage();
         ussdAtRequestMessage.setMessage(message);
         ussdAtRequestMessage.setAddress(address);
-        ussdAtRequestMessage.setConversationId(String.valueOf(Math.random()));
         ussdAtRequestMessage.setCorrelationId(String.valueOf(Math.random()));
 
         final String jsonReq = gson.toJson(ussdAtRequestMessage);

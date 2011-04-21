@@ -26,7 +26,4 @@ public class SimulatorApplication extends Application {
         mainWindow.addComponent(mainUI.getRootLayout());
         setMainWindow(mainWindow);
     }
-
-
-
 }
