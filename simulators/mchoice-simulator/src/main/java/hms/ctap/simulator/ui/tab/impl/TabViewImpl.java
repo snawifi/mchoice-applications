@@ -85,20 +85,62 @@ public class TabViewImpl extends TabView {
     public Component getTabLayout() {
         VerticalLayout tabLayout = new VerticalLayout();
         tabLayout.setMargin(true);
+
+        HorizontalLayout tabUpperLayout = new HorizontalLayout();
+        tabUpperLayout.setWidth("100%");
+
+        Component mobilePhoneLayout = createMobilePhoneLayout();
+        tabUpperLayout.addComponent(mobilePhoneLayout);
+        tabUpperLayout.setComponentAlignment(mobilePhoneLayout, Alignment.TOP_LEFT);
+
         Component inputFieldPanel = createInputPanel();
-        tabLayout.addComponent(inputFieldPanel);
-        tabLayout.setComponentAlignment(inputFieldPanel, Alignment.TOP_RIGHT);
+        tabUpperLayout.addComponent(inputFieldPanel);
+        tabUpperLayout.setComponentAlignment(inputFieldPanel, Alignment.TOP_RIGHT);
+        tabLayout.addComponent(tabUpperLayout);
 
         HorizontalLayout tableLayout = new HorizontalLayout();
         tableLayout.setSpacing(true);
+        tableLayout.setWidth("100%");
 
         tableLayout.addComponent(receivedMessageTable);
+        tableLayout.setComponentAlignment(receivedMessageTable, Alignment.MIDDLE_LEFT);
         tableLayout.addComponent(sentMessageTable);
+        tableLayout.setComponentAlignment(sentMessageTable, Alignment.MIDDLE_RIGHT);
         final Refresher c = new Refresher();
         c.setRefreshInterval(4000);
         tableLayout.addComponent(c);
         tabLayout.addComponent(tableLayout);
         return tabLayout;
     }
+
+
+    public Component createMobilePhoneLayout(){
+
+        VerticalLayout mobilePhoneLayout = new VerticalLayout();
+        mobilePhoneLayout.setSpacing(true);
+        TextField lastReceivedMsg = new TextField("Last Received Message");
+        mobilePhoneLayout.addComponent(lastReceivedMsg);
+        Component mobilePhone = createMobilePhone();
+        mobilePhoneLayout.addComponent(mobilePhone);        
+        return mobilePhoneLayout;
+    }
+    /**
+     *
+     * @return a vertical layout containing mobile phone image
+     */
+    public Component createMobilePhone(){
+
+        VerticalLayout backgroundLayout = new VerticalLayout();
+        backgroundLayout.setWidth("119px");
+        backgroundLayout.setHeight("236px");
+        backgroundLayout.setStyleName("mobile-phone-background");
+        TextArea messageTextField = new TextArea();
+        messageTextField.setWidth("98px");
+        messageTextField.setHeight("128px");
+        messageTextField.setStyleName("message-display");
+        backgroundLayout.addComponent(messageTextField);
+        return backgroundLayout;
+    }
+
 
 }
