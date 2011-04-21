@@ -21,7 +21,7 @@ public class SimulatorApplication extends Application {
     public void init() {
 
         Window mainWindow = new Window("Simulator");             
-        mainWindow.setTheme("runo");
+        mainWindow.setTheme("simulator");
         final MainUI mainUI = new MainUI();
         mainWindow.addComponent(mainUI.getRootLayout());
         setMainWindow(mainWindow);

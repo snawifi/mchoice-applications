@@ -104,8 +104,10 @@ public class TabViewImpl extends TabView {
 
         tableLayout.addComponent(receivedMessageTable);
         tableLayout.setComponentAlignment(receivedMessageTable, Alignment.MIDDLE_LEFT);
+
         tableLayout.addComponent(sentMessageTable);
         tableLayout.setComponentAlignment(sentMessageTable, Alignment.MIDDLE_RIGHT);
+
         final Refresher c = new Refresher();
         c.setRefreshInterval(4000);
         tableLayout.addComponent(c);
