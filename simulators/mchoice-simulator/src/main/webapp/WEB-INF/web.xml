@@ -4,6 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>Vaadin Web Application</display-name>
+
     <context-param>
         <description>Vaadin production mode</description>
         <param-name>productionMode</param-name>
@@ -26,6 +27,10 @@
         <servlet-name>USSD Message Receiver</servlet-name>
         <servlet-class>hms.ctap.simulator.ussd.UssdMessageReceiver</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SMS Message Receiver</servlet-name>
+        <servlet-class>hms.ctap.simulator.ussd.UssdMessageReceiver</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>Vaadin Application Servlet</servlet-name>
@@ -34,5 +39,9 @@
     <servlet-mapping>
         <servlet-name>USSD Message Receiver</servlet-name>
         <url-pattern>/ussd/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SMS Message Receiver</servlet-name>
+        <url-pattern>/sms/</url-pattern>
     </servlet-mapping>
 </web-app>

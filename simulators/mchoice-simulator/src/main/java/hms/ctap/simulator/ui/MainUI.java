@@ -10,25 +10,22 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import hms.ctap.simulator.ui.sms.SmsNcsUIService;
 import hms.ctap.simulator.ui.tab.impl.TabViewImpl;
-import hms.ctap.simulator.ussd.UssdNcsUIService;
+import hms.ctap.simulator.ui.ussd.UssdNcsUIService;
 
 /**
- *
  * @author hms
  */
 public class MainUI {
 
     /**
-     *
      * @return the root layout of the main UI
      */
-    public Component getRootLayout(){
+    public Component getRootLayout() {
 
-        VerticalLayout rootLayout = new VerticalLayout();         
+        VerticalLayout rootLayout = new VerticalLayout();
         rootLayout.addComponent(createHeader());
 
-        final TabSheetPanel tabSheetPanel = createMainUI();
-        Component tabPanel = tabSheetPanel.createTabSheetPanel();
+        Component tabPanel = createMainUI().createTabSheetPanel();
         rootLayout.addComponent(tabPanel);
         return rootLayout;
     }
@@ -49,8 +46,8 @@ public class MainUI {
         return new TabSheetPanel(smsTabView, ussdTabView);
     }
 
-    private Component createHeader() {        
-        
+    private Component createHeader() {
+
         HorizontalLayout header = new HorizontalLayout();
 //        header.setWidth("100%");
 //        Embedded logo = new Embedded("", new ThemeResource("hms_logo.jpg"));

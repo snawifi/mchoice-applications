@@ -10,7 +10,7 @@
  *   property rights in these materials.
  *
  */
-package hms.ctap.simulator.ussd;
+package hms.ctap.simulator.ui.ussd;
 
 import com.vaadin.ui.Table;
 import hms.ctap.simulator.ui.services.NcsService;
@@ -68,8 +68,10 @@ public class UssdNcsUIService implements NcsUIService {
     @Override
     public void addElementToReceiveTable(int objectId, Date date, String phoneNo, String message, String status) {
 
-        receivedMsgTable.addItem(new Object[]{date, phoneNo, message, status}, receivedRowCount);
-        receivedRowCount++;
+        if (receivedMsgTable.getItem(objectId) == null) {
+            receivedMsgTable.addItem(new Object[]{date, phoneNo, message, status}, receivedRowCount);
+            receivedRowCount++;
+        }
     }
 
     /**
