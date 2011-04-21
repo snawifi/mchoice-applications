@@ -6,12 +6,10 @@
 package hms.ctap.simulator.ui;
 
 import com.vaadin.terminal.ThemeResource;
-
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TabSheet;
-import hms.ctap.simulator.ui.tab.SmsTab;
-import hms.ctap.simulator.ui.tab.UssdTab;
+import hms.ctap.simulator.ui.tab.TabView;
 
 /**
  *
@@ -19,46 +17,27 @@ import hms.ctap.simulator.ui.tab.UssdTab;
  */
 public class TabSheetPanel {
 
-    MainUI mainUI;
-    SmsTab smsTab;
-    UssdTab ussdTab;
+    private TabView smsTabView;
+    private TabView ussdTabView;
 
-    public TabSheetPanel(MainUI mainUI) {
-        this.mainUI = mainUI;
-        smsTab = new SmsTab(mainUI);
-        ussdTab = new UssdTab();
+    public TabSheetPanel(TabView smsTabView, TabView ussdTabView) {
+        this.smsTabView = smsTabView;
+        this.ussdTabView = ussdTabView;
     }
-
 
     /**
      * 
-     * @return the tab sheet
+     * @return the tabView sheet
      */
     public Component createTabSheetPanel(){
 
+        TabSheet tabSheet = new TabSheet();
+        tabSheet.addTab(smsTabView.getTabLayout(), "SMS", new ThemeResource("mobile_phone2.ico"));
+        tabSheet.addTab(ussdTabView.getTabLayout(), "USSD", new ThemeResource("mobile_phone2.ico"));
+
         Panel tabSheetPanel = new Panel();
-        TabSheet tabSheet = new TabSheet();        
-        tabSheet.addTab(smsTab.getSMSTabLayout(), "SMS", new ThemeResource("mobile_phone2.ico"));
-        tabSheet.addTab(ussdTab.getUssdTabLayout(), "USSD", new ThemeResource("mobile_phone2.ico"));
         tabSheetPanel.addComponent(tabSheet);
         return tabSheetPanel;
     }
-
-    /**
-     *
-     * @return the SmsTab
-     */
-    public SmsTab getSmsTab() {
-        return smsTab;
-    }
-
-    /**
-     *
-     * @return the UssdTab
-     */
-    public UssdTab getUssdTab(){
-        return ussdTab;
-    }
-    
 
 }

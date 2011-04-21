@@ -8,18 +8,15 @@ package hms.ctap.simulator.ui;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
+import hms.ctap.simulator.ui.sms.SmsNcsUIService;
+import hms.ctap.simulator.ui.tab.impl.TabViewImpl;
+import hms.ctap.simulator.ussd.UssdNcsUIService;
 
 /**
  *
  * @author hms
  */
 public class MainUI {
-
-    TabSheetPanel tabSheetPanel;
-
-    public MainUI() {
-        tabSheetPanel = new TabSheetPanel(this);        
-    }
 
     /**
      *
@@ -29,25 +26,27 @@ public class MainUI {
 
         VerticalLayout rootLayout = new VerticalLayout();         
         rootLayout.addComponent(createHeader());
+
+        final TabSheetPanel tabSheetPanel = createMainUI();
         Component tabPanel = tabSheetPanel.createTabSheetPanel();
         rootLayout.addComponent(tabPanel);
         return rootLayout;
-    }    
-
-    /**
-     *
-     * @return the TabSheetPanel inside main UI
-     */
-    public TabSheetPanel getTabSheetPanel() {
-        return tabSheetPanel;
     }
 
-    /**
-     *
-     * @param tabSheetPanel TabSheetPanel to be set inside the Main UI
-     */
-    public void setTabSheetPanel(TabSheetPanel tabSheetPanel) {
-        this.tabSheetPanel = tabSheetPanel;
+    private TabSheetPanel createMainUI() {
+
+        final SmsNcsUIService smsNcsUIService = new SmsNcsUIService();
+        smsNcsUIService.init();
+        final UssdNcsUIService ussdNcsUIService = new UssdNcsUIService();
+        ussdNcsUIService.init();
+
+        final TabViewImpl smsTabView = new TabViewImpl(smsNcsUIService);
+        final TabViewImpl ussdTabView = new TabViewImpl(ussdNcsUIService);
+        smsTabView.init();
+        ussdTabView.init();
+
+
+        return new TabSheetPanel(smsTabView, ussdTabView);
     }
 
     private Component createHeader() {        
