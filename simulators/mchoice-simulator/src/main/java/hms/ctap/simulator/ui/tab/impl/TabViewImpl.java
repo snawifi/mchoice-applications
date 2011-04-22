@@ -92,7 +92,7 @@ public class TabViewImpl extends TabView {
 
         Component mobilePhoneLayout = createMobilePhone();
         tabUpperLayout.addComponent(mobilePhoneLayout);
-        tabUpperLayout.setComponentAlignment(mobilePhoneLayout, Alignment.TOP_LEFT);
+        tabUpperLayout.setComponentAlignment(mobilePhoneLayout, Alignment.BOTTOM_LEFT);
 
         Component inputFieldPanel = createInputPanel();
         tabUpperLayout.addComponent(inputFieldPanel);
@@ -103,15 +103,25 @@ public class TabViewImpl extends TabView {
         tableLayout.setSpacing(true);
         tableLayout.setWidth("100%");
 
-        tableLayout.addComponent(receivedMessageTable);
-        tableLayout.setComponentAlignment(receivedMessageTable, Alignment.MIDDLE_LEFT);
+        HorizontalLayout leftTableLayout =  new HorizontalLayout();
+        leftTableLayout.setWidth("100%");
+        leftTableLayout.addComponent(receivedMessageTable);
+        leftTableLayout.setComponentAlignment(receivedMessageTable, Alignment.MIDDLE_CENTER);
 
-        tableLayout.addComponent(sentMessageTable);
-        tableLayout.setComponentAlignment(sentMessageTable, Alignment.MIDDLE_RIGHT);
+        tableLayout.addComponent(leftTableLayout);
+        tableLayout.setComponentAlignment(leftTableLayout, Alignment.MIDDLE_LEFT);
 
-        final Refresher c = new Refresher();
-        c.setRefreshInterval(4000);
-        tableLayout.addComponent(c);
+        HorizontalLayout rightTableLayout =  new HorizontalLayout();
+        rightTableLayout.setWidth("100%");
+        rightTableLayout.addComponent(sentMessageTable);
+        rightTableLayout.setComponentAlignment(sentMessageTable, Alignment.MIDDLE_CENTER);
+
+        tableLayout.addComponent(rightTableLayout);
+        tableLayout.setComponentAlignment(rightTableLayout, Alignment.MIDDLE_RIGHT);
+
+//        final Refresher c = new Refresher();
+//        c.setRefreshInterval(4000);
+//        tableLayout.addComponent(c);
         tabLayout.addComponent(tableLayout);
         return tabLayout;
     }
@@ -126,13 +136,20 @@ public class TabViewImpl extends TabView {
 
         VerticalLayout backgroundLayout = new VerticalLayout();
         backgroundLayout.setWidth("119px");
-        backgroundLayout.setHeight("236px");
+        backgroundLayout.setHeight("236px");        
         backgroundLayout.setStyleName("mobile-phone-background");
-        TextArea messageTextField = new TextArea();
+
+        VerticalLayout displayLayout = new VerticalLayout();
+        Label phoneNoLabel = new Label();
+        phoneNoLabel.setWidth("98px");
+        phoneNoLabel.setStyleName("address-display");
+        displayLayout.addComponent(phoneNoLabel);
+        Label messageTextField = new Label();
         messageTextField.setWidth("98px");
-        messageTextField.setHeight("128px");
         messageTextField.setStyleName("message-display");
-        backgroundLayout.addComponent(messageTextField);
+        displayLayout.addComponent(messageTextField);
+
+        backgroundLayout.addComponent(displayLayout);
         return backgroundLayout;
     }
 
