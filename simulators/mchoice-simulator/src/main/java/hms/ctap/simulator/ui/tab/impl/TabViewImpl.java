@@ -11,7 +11,7 @@ import hms.ctap.simulator.ui.services.NcsUIService;
 import hms.ctap.simulator.ui.tab.TabView;
 import hms.ctap.simulator.ussd.UssdMessageReceiver;
 import hms.ctap.simulator.ussd.UssdMessageSender;
-//import hms.sdp.ussd.impl.UssdAoRequestMessage;
+import hms.sdp.ussd.impl.UssdAoRequestMessage;
 
 import java.util.Date;
 import java.util.List;
@@ -41,20 +41,20 @@ public class TabViewImpl extends TabView {
         super.init();
         if (executorService == null) {
             executorService = Executors.newScheduledThreadPool(1);
-//            try {
-//                executorService.scheduleAtFixedRate(new Runnable() {
-//                        public void run() {
-//                            List<UssdAoRequestMessage> receivedMessages = UssdMessageReceiver.getReceivedMessages();
-//                            for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
-//                                UssdAoRequestMessage ussdAoRequestMessage = receivedMessages.get(i);
-//                                ncsUIService.addElementToReceiveTable(i, new Date(), ussdAoRequestMessage.getAddress(),
-//                                        ussdAoRequestMessage.getMessage(), "Success");
-//                            }
-//                        }
-//                    }, 4, 4, TimeUnit.SECONDS);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                executorService.scheduleAtFixedRate(new Runnable() {
+                        public void run() {
+                            List<UssdAoRequestMessage> receivedMessages = UssdMessageReceiver.getReceivedMessages();
+                            for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
+                                UssdAoRequestMessage ussdAoRequestMessage = receivedMessages.get(i);
+                                ncsUIService.addElementToReceiveTable(i, new Date(), ussdAoRequestMessage.getAddress(),
+                                        ussdAoRequestMessage.getMessage(), "Success");
+                            }
+                        }
+                    }, 4, 4, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -119,9 +119,9 @@ public class TabViewImpl extends TabView {
         tableLayout.addComponent(rightTableLayout);
         tableLayout.setComponentAlignment(rightTableLayout, Alignment.MIDDLE_RIGHT);
 
-//        final Refresher c = new Refresher();
-//        c.setRefreshInterval(4000);
-//        tableLayout.addComponent(c);
+        final Refresher c = new Refresher();
+        c.setRefreshInterval(4000);
+        tableLayout.addComponent(c);
         tabLayout.addComponent(tableLayout);
         return tabLayout;
     }
