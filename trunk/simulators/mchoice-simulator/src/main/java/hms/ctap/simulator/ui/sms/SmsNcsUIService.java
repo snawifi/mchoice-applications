@@ -39,21 +39,37 @@ public class SmsNcsUIService implements NcsUIService {
 
     @Override
     public Table createSentMessageService() {
-        sentMsgTable.addContainerProperty("Time", String.class, null);
-        sentMsgTable.addContainerProperty("Phone No", String.class, null);
-        sentMsgTable.addContainerProperty("Message", String.class, null);
-        sentMsgTable.addContainerProperty("Status", String.class, null);
-        sentMsgTable.setWidth("450px");
+
+        String[] headings = {"Time", "Phone No", "Message", "Status"};
+        sentMsgTable.addContainerProperty(headings[0], String.class, null);
+        sentMsgTable.addContainerProperty(headings[1], String.class, null);
+        sentMsgTable.addContainerProperty(headings[2], String.class, null);
+        sentMsgTable.addContainerProperty(headings[3], String.class, null);
+
+        sentMsgTable.setStyleName("message-table-caption");
+        sentMsgTable.setSizeFull();
+        sentMsgTable.setColumnExpandRatio(headings[0], 0.15f);
+        sentMsgTable.setColumnExpandRatio(headings[1], 0.2f);
+        sentMsgTable.setColumnExpandRatio(headings[2], 0.55f);
+        sentMsgTable.setColumnExpandRatio(headings[3], 0.1f);
         return sentMsgTable;
     }
 
     @Override
     public Table createReceivedMessageService() {
-        receivedMsgTable.addContainerProperty("Time", String.class, null);
-        receivedMsgTable.addContainerProperty("Phone No", String.class, null);
-        receivedMsgTable.addContainerProperty("Message", String.class, null);
-        receivedMsgTable.addContainerProperty("Status", String.class, null);
-        receivedMsgTable.setWidth("440px");
+
+        String[] headings = {"Time", "Phone No", "Message", "Status"};
+        receivedMsgTable.addContainerProperty(headings[0], String.class, null);
+        receivedMsgTable.addContainerProperty(headings[1], String.class, null);
+        receivedMsgTable.addContainerProperty(headings[2], String.class, null);
+        receivedMsgTable.addContainerProperty(headings[3], String.class, null);
+
+        receivedMsgTable.setStyleName("message-table-caption");
+        receivedMsgTable.setSizeFull();
+        receivedMsgTable.setColumnExpandRatio(headings[0], 0.15f);
+        receivedMsgTable.setColumnExpandRatio(headings[1], 0.2f);
+        receivedMsgTable.setColumnExpandRatio(headings[2], 0.55f);
+        receivedMsgTable.setColumnExpandRatio(headings[3], 0.1f);
         return receivedMsgTable;
     }
 
