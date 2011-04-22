@@ -13,6 +13,7 @@
 package hms.ctap.simulator;
 
 import com.vaadin.Application;
+import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Window;
 import hms.ctap.simulator.ui.MainUI;
 
@@ -20,10 +21,13 @@ public class SimulatorApplication extends Application {
 
     public void init() {
 
-        Window mainWindow = new Window("Simulator");             
-        mainWindow.setTheme("simulator");
+        Window mainWindow = new Window("Simulator");
+        setTheme("simulator");
+//        mainWindow.setSizeFull();
+//        mainWindow.center();
         final MainUI mainUI = new MainUI();
-        mainWindow.addComponent(mainUI.getRootLayout());
+        mainWindow.setContent((ComponentContainer) mainUI.getRootLayout());
         setMainWindow(mainWindow);
+
     }
 }

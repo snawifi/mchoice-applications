@@ -13,6 +13,7 @@
 package hms.ctap.simulator.ussd;
 
 import com.google.gson.Gson;
+import hms.sdp.ussd.MchoiceUssdMessage;
 import hms.sdp.ussd.MchoiceUssdResponse;
 import hms.sdp.ussd.impl.UssdAoRequestMessage;
 
@@ -40,6 +41,8 @@ public class UssdMessageReceiver extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Gson gson = new Gson();
         final UssdAoRequestMessage ussdAoRequestMessage = gson.fromJson(readBody(req.getInputStream()), UssdAoRequestMessage.class);
+        final String conversationId = req.getHeader(MchoiceUssdMessage.CONVERSATION);
+        ussdAoRequestMessage.setConversationId(conversationId);
         System.out.println("New USSD Message Received [" + ussdAoRequestMessage + "]");
         receivedMessages.add(ussdAoRequestMessage);
         final MchoiceUssdResponse mchoiceUssdResponse = new MchoiceUssdResponse();

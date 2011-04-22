@@ -15,6 +15,7 @@ package hms.ctap.simulator.ui.sms;
 import com.vaadin.ui.Table;
 import hms.ctap.simulator.ui.services.NcsService;
 import hms.ctap.simulator.ui.services.NcsUIService;
+import hms.sdp.ussd.impl.UssdAoRequestMessage;
 
 import java.util.Date;
 
@@ -41,17 +42,10 @@ public class SmsNcsUIService implements NcsUIService {
     public Table createSentMessageService() {
 
         String[] headings = {"Time", "Phone No", "Message", "Status"};
-        sentMsgTable.addContainerProperty(headings[0], String.class, null);
-        sentMsgTable.addContainerProperty(headings[1], String.class, null);
-        sentMsgTable.addContainerProperty(headings[2], String.class, null);
-        sentMsgTable.addContainerProperty(headings[3], String.class, null);
+        for (String heading : headings) {
+            sentMsgTable.addContainerProperty(heading, String.class, null);
+        }
 
-        sentMsgTable.setStyleName("message-table-caption");
-        sentMsgTable.setSizeFull();
-        sentMsgTable.setColumnExpandRatio(headings[0], 0.15f);
-        sentMsgTable.setColumnExpandRatio(headings[1], 0.2f);
-        sentMsgTable.setColumnExpandRatio(headings[2], 0.55f);
-        sentMsgTable.setColumnExpandRatio(headings[3], 0.1f);
         return sentMsgTable;
     }
 
@@ -59,50 +53,33 @@ public class SmsNcsUIService implements NcsUIService {
     public Table createReceivedMessageService() {
 
         String[] headings = {"Time", "Phone No", "Message", "Status"};
-        receivedMsgTable.addContainerProperty(headings[0], String.class, null);
-        receivedMsgTable.addContainerProperty(headings[1], String.class, null);
-        receivedMsgTable.addContainerProperty(headings[2], String.class, null);
-        receivedMsgTable.addContainerProperty(headings[3], String.class, null);
+        for (String heading : headings) {
+            receivedMsgTable.addContainerProperty(heading, String.class, null);
+        }
 
-        receivedMsgTable.setStyleName("message-table-caption");
-        receivedMsgTable.setSizeFull();
-        receivedMsgTable.setColumnExpandRatio(headings[0], 0.15f);
-        receivedMsgTable.setColumnExpandRatio(headings[1], 0.2f);
-        receivedMsgTable.setColumnExpandRatio(headings[2], 0.55f);
-        receivedMsgTable.setColumnExpandRatio(headings[3], 0.1f);
         return receivedMsgTable;
     }
 
-
-    /**
-     * @param objectId
-     * @param date    Date
-     * @param phoneNo Phone Number
-     * @param message Received Message
-     * @param status  status of the sent message
-     */
     @Override
-    public void addElementToReceiveTable(int objectId, Date date, String phoneNo, String message, String status) {
+    public void addElementToReceiveTable(int objectId, Object object, String status) {
 
-        receivedMsgTable.addItem(new Object[]{date, phoneNo, message, status}, receivedRowCount);
-        receivedRowCount++;
+        if (receivedMsgTable.getItem(objectId) == null) {
+            UssdAoRequestMessage ussdAoRequestMessage = (UssdAoRequestMessage) object;
+            receivedMsgTable.addItem(new Object[]{new Date(), ussdAoRequestMessage.getAddress(),
+                    ussdAoRequestMessage.getMessage(), status}, receivedRowCount);
+            receivedRowCount++;
+        }
     }
 
-    /**
-     * @param date    Date
-     * @param phoneNo Phone Number
-     * @param message Received Message
-     * @param status  status of the sent message
-     */
     @Override
-    public void addElementToSentTable(Date date, String phoneNo, String message, String status) {
+    public void addElementToSentTable(String date, String address, String message, String status) {
 
-        sentMsgTable.addItem(new Object[]{date, phoneNo, message, status}, sentRowCount);
+        sentMsgTable.addItem(new Object[]{date, address, message, status}, sentRowCount);
         sentRowCount++;
     }
 
     @Override
     public NcsService getNcsService() {
-        return NcsService.USSD;
+        return NcsService.SMS;
     }
 }

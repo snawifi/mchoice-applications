@@ -2,19 +2,26 @@
 
 /* added css */
 
-.root-layout{
-    width: 720px;
+.root-layout {
+
 }
-.simulator-header{
+
+.hsenid-logo img {
+    margin-top: -20px;
+    height:50px;
+}
+
+.simulator-header {
     font-size: 24px;
     line-height: normal;
     font-weight: bolder;
     letter-spacing: -0.03em;
     color: #f14c1a;
     height: 18px;
-    padding-left:60px;
+    padding-left: 60px;
 }
-.mobile-phone-background{
+
+.mobile-phone-background {
     background: transparent url(images/mobile_phone_with_display.jpg) no-repeat;
     width: 119px;
     height: 236px;
@@ -23,15 +30,15 @@
     z-index: -1;
 }
 
-.message-display{
+.message-display {
     background-color: #ffffff;
     border: none;
     width: 98px;
     height: 112px;
 }
 
-.address-display{
-    background-color: #ffffff;    
+.address-display {
+    background-color: #ffffff;
     width: 98px;
     height: 15px;
     border-bottom: 1px solid #7d7d7d;
@@ -39,11 +46,10 @@
 
 /*----------------------Edited Vaadin Styles--------------------*/
 
-
 /*vaadin table column header alignment*/
 .v-table-caption-container {
-    text-align:center;
-    
+    text-align: center;
+
 }
 
 /*vaadin panel content bottom horizontal line removal*/
@@ -59,13 +65,17 @@
     border-top: none;
 }
 
-
 /*vaadin table caption */
-/*to apply this style table.setStyleName("message-table-caption");*/
-.v-caption-message-table-caption .v-captiontext{
+.sent-message-table {
+    width: 390px !important;
+}
+.received-message-table {
+    width: 390px !important;
+}
+
+.v-caption-sent-message-table .v-captiontext {
     color: #f14c1a;
     padding-bottom: 7px;
-    font-weight: 575;
     font-size: 16px;
 }
 
