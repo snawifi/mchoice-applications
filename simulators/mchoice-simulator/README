@@ -1,0 +1,59 @@
+#################   mChoice Simulator    #################
+
+
+1. Required
+
+	JDK 1.6
+	Maven 2.2.1
+	
+
+2. To run the simulator
+
+	Run the maven project “mchoice-simulator”
+	
+		go inside folder mchoice-simulator 
+		$ mvn clean jetty:run
+			  
+3. Test an application using the simulator
+
+	To test sms applications use the url
+		http://localhost:8000/mchoice-simulator/sms/
+
+	To test ussd applications use the url
+		http://localhost:8000/mchoice-simulator/ussd/
+	
+4. Monitor an application using simulator's interactive UI
+		
+	Simulator is running on
+		http://localhost:8000/mchoice-simulator/
+
+This is the interactive UI where you can monitor the message sending/receiving to/from he application.
+
+5. Using the interactive UI
+
+	To test a sms application use the input fields inside the SMS Tab
+	To test a ussd application use input fields the inside the USSD Tab
+
+	Inside Send Message panel, 
+
+	Enter your application url into the App URL field
+	Enter the phone number into the Phone # field
+	Type the message inside the message field
+	Click on the send button to send the message to the application
+
+You can monitor the message sending and receiving. Sent messages and Received messages are displayed inside the tables, with the information.
+
+	Sent messages will be displayed inside the Sent Messages table with,
+	The time it is sent
+	The phone number of the phone (the number you entered inside Phone # field)
+	The content of the message
+	Message status: 
+		SENT - if the message is sent to the the application successfully
+		FAILED – if message sending failed.
+	
+	
+	Received messages will be displayed inside the Received Messages table with,
+	The time it is received
+	The phone number of the phone (the phone number of the phone to which the message should )
+	The content of the received message
+	Message status
