@@ -1,6 +1,10 @@
 @import "../runo/styles.css";
 
 /* added css */
+
+.root-layout{
+    width: 720px;
+}
 .simulator-header{
     font-size: 24px;
     line-height: normal;
@@ -22,5 +26,46 @@
 .message-display{
     background-color: #ffffff;
     border: none;
+    width: 98px;
+    height: 112px;
+}
+
+.address-display{
+    background-color: #ffffff;    
+    width: 98px;
+    height: 15px;
+    border-bottom: 1px solid #7d7d7d;
+}
+
+/*----------------------Edited Vaadin Styles--------------------*/
+
+
+/*vaadin table column header alignment*/
+.v-table-caption-container {
+    text-align:center;
+    
+}
+
+/*vaadin panel content bottom horizontal line removal*/
+.v-panel-content {
+    border-bottom: none;
+}
+
+/*vaadin tabsheet bottom horizontal line removal*/
+.v-tabsheet-content {
+    border: 1px solid #babfc0;
+    background-color: #fff;
+    border-bottom: none;
+    border-top: none;
+}
+
+
+/*vaadin table caption */
+/*to apply this style table.setStyleName("message-table-caption");*/
+.v-caption-message-table-caption .v-captiontext{
+    color: #f14c1a;
+    padding-bottom: 7px;
+    font-weight: 575;
+    font-size: 16px;
 }
 
