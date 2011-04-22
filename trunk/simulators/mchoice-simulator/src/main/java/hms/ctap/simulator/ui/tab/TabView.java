@@ -37,20 +37,18 @@ public abstract class TabView {
     public Component createInputPanel() {
 
         Panel inputPanel = new Panel("Send Message");
-        inputPanel.setWidth("275px");
 
-        VerticalLayout vertical = new VerticalLayout();
-        vertical.setSpacing(true);
 
-        vertical.addComponent(createPanelLayout("App URL", urlTextField, "http://127.0.0.1:8080/"));
-        vertical.addComponent(createPanelLayout("Phone #", phoneNoField, "94721345678"));
-        vertical.addComponent(createPanelLayout("Message ", messageField, "Test Message"));
+        inputPanel.addComponent(createPanelLayout("App URL", urlTextField, "http://127.0.0.1:8080/"));
+        inputPanel.addComponent(createPanelLayout("Phone #", phoneNoField, "94721345678"));
+        inputPanel.addComponent(createPanelLayout("Message ", messageField, "Test Message"));
 
         Button sendButton = createSendMsgButton();
-        vertical.addComponent(sendButton);
-        vertical.setComponentAlignment(sendButton, Alignment.BOTTOM_RIGHT);
+        inputPanel.addComponent(sendButton);
+        final AbstractOrderedLayout content = (AbstractOrderedLayout) inputPanel.getContent();
+        content.setSpacing(true);
+        content.setComponentAlignment(sendButton, Alignment.BOTTOM_RIGHT);
 
-        inputPanel.addComponent(vertical);
         return inputPanel;
     }
 

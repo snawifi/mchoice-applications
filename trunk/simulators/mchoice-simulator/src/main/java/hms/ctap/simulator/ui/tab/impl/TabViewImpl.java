@@ -7,12 +7,11 @@ package hms.ctap.simulator.ui.tab.impl;
 
 import com.github.wolfie.refresher.Refresher;
 import com.vaadin.ui.*;
+import hms.ctap.simulator.ui.services.NcsService;
 import hms.ctap.simulator.ui.services.NcsUIService;
 import hms.ctap.simulator.ui.tab.TabView;
-import hms.ctap.simulator.ussd.UssdMessageReceiver;
-import hms.ctap.simulator.ussd.UssdMessageSender;
-import hms.sdp.ussd.impl.UssdAoRequestMessage;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -24,10 +23,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class TabViewImpl extends TabView {
 
-    private Table sentMessageTable;
-    private Table receivedMessageTable;
-    private static ScheduledExecutorService executorService;
-    private NcsUIService ncsUIService;
+    private static final int REFRESH_INTERVAL = 4000;
+
+    private ScheduledExecutorService executorService;
+
+    final private Table sentMessageTable;
+    final private Table receivedMessageTable;
+    final private NcsUIService ncsUIService;
+    final private Label phoneImageNumLabel;
+    final private Label phoneImageMessageLabel;
+    private Refresher refresher;
 
 
     public TabViewImpl(NcsUIService ncsUIService) {
@@ -35,45 +40,54 @@ public class TabViewImpl extends TabView {
         this.ncsUIService = ncsUIService;
         sentMessageTable = ncsUIService.createSentMessageService();
         receivedMessageTable = ncsUIService.createReceivedMessageService();
+
+        phoneImageNumLabel = new Label();
+        phoneImageMessageLabel = new Label();
+        phoneImageNumLabel.setWidth("98px");
+        phoneImageNumLabel.setStyleName("address-display");
+        phoneImageMessageLabel.setWidth("98px");
+        phoneImageMessageLabel.setStyleName("message-display");
+        refresher = new Refresher();
     }
 
     public void init() {
         super.init();
         if (executorService == null) {
             executorService = Executors.newScheduledThreadPool(1);
-            try {
-                executorService.scheduleAtFixedRate(new Runnable() {
-                        public void run() {
-                            List<UssdAoRequestMessage> receivedMessages = UssdMessageReceiver.getReceivedMessages();
-                            for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
-                                UssdAoRequestMessage ussdAoRequestMessage = receivedMessages.get(i);
-                                ncsUIService.addElementToReceiveTable(i, new Date(), ussdAoRequestMessage.getAddress(),
-                                        ussdAoRequestMessage.getMessage(), "Success");
-                            }
+            executorService.scheduleAtFixedRate(new Runnable() {
+                public void run() {
+                    try {
+                        final NcsService ncsService = ncsUIService.getNcsService();
+                        List receivedMessages = ncsService.receivedMessages();
+                        for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
+                            ncsUIService.addElementToReceiveTable(i, receivedMessages.get(i), "Success");
                         }
-                    }, 4, 4, TimeUnit.SECONDS);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                        if (receivedMessages.size() > 0) {
+                            ncsService.updatePhoneView(phoneImageNumLabel, phoneImageMessageLabel, receivedMessages.get(receivedMessages.size() - 1));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, 4, 4, TimeUnit.SECONDS);
         }
     }
 
     @Override
-    public Button createSendMsgButton()  {
+    public Button createSendMsgButton() {
 
         Button sendMsgButton = new Button("Send");
         sendMsgButton.addListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-                final UssdMessageSender instance = UssdMessageSender.getInstance();
                 final String address = getPhoneNoField().getValue().toString();
                 final String message = getMessageField().getValue().toString();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
                 try {
                     final String url = getUrlTextField().getValue().toString();
-                    instance.sendMessage(url, address,
-                            message);
-                    ncsUIService.addElementToSentTable(new Date(), address, message, "SENT");
+                    ncsUIService.getNcsService().sendMessage(url, address, message);
+                    ncsUIService.addElementToSentTable(dateFormat.format(new Date()), address, message, "Success");
                 } catch (Exception e) {
-                    ncsUIService.addElementToSentTable(new Date(), address, message, "FAILED");
+                    ncsUIService.addElementToSentTable(dateFormat.format(new Date()), address, message, "Failed");
                     e.printStackTrace();
                 }
             }
@@ -83,6 +97,7 @@ public class TabViewImpl extends TabView {
 
     @Override
     public Component getTabLayout() {
+
         VerticalLayout tabLayout = new VerticalLayout();
         tabLayout.setMargin(true);
 
@@ -103,57 +118,46 @@ public class TabViewImpl extends TabView {
         tableLayout.setSpacing(true);
         tableLayout.setWidth("100%");
 
-        HorizontalLayout leftTableLayout =  new HorizontalLayout();
-        leftTableLayout.setWidth("100%");
-        leftTableLayout.addComponent(receivedMessageTable);
-        leftTableLayout.setComponentAlignment(receivedMessageTable, Alignment.MIDDLE_CENTER);
+        HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
+        receivedMessageTableLayout.setStyleName("received-message-table");
+        receivedMessageTableLayout.addComponent(receivedMessageTable);
 
-        tableLayout.addComponent(leftTableLayout);
-        tableLayout.setComponentAlignment(leftTableLayout, Alignment.MIDDLE_LEFT);
 
-        HorizontalLayout rightTableLayout =  new HorizontalLayout();
-        rightTableLayout.setWidth("100%");
-        rightTableLayout.addComponent(sentMessageTable);
-        rightTableLayout.setComponentAlignment(sentMessageTable, Alignment.MIDDLE_CENTER);
+        HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
+        sentMessageTableLayout.setStyleName("sent-message-table");
+        sentMessageTableLayout.addComponent(sentMessageTable);
 
-        tableLayout.addComponent(rightTableLayout);
-        tableLayout.setComponentAlignment(rightTableLayout, Alignment.MIDDLE_RIGHT);
+        tableLayout.addComponent(receivedMessageTableLayout);
+        tableLayout.addComponent(sentMessageTableLayout);
+        tableLayout.setComponentAlignment(receivedMessageTableLayout, Alignment.MIDDLE_CENTER);
+        tableLayout.setComponentAlignment(sentMessageTableLayout, Alignment.MIDDLE_CENTER);
 
-        final Refresher c = new Refresher();
-        c.setRefreshInterval(4000);
-        tableLayout.addComponent(c);
+        refresher.setRefreshInterval(REFRESH_INTERVAL);
+        tableLayout.addComponent(refresher);
         tabLayout.addComponent(tableLayout);
         return tabLayout;
     }
 
 
-    
     /**
-     *
      * @return a vertical layout containing mobile phone image
      */
-    public Component createMobilePhone(){
+    public Component createMobilePhone() {
 
         VerticalLayout backgroundLayout = new VerticalLayout();
         backgroundLayout.setWidth("119px");
-        backgroundLayout.setHeight("236px");        
+        backgroundLayout.setHeight("236px");
         backgroundLayout.setStyleName("mobile-phone-background");
 
         VerticalLayout displayLayout = new VerticalLayout();
-        Label phoneNoLabel = new Label();
-        phoneNoLabel.setWidth("98px");
-        phoneNoLabel.setStyleName("address-display");
-        displayLayout.addComponent(phoneNoLabel);
-        Label messageTextField = new Label();
-        messageTextField.setWidth("98px");
-        messageTextField.setStyleName("message-display");
-        displayLayout.addComponent(messageTextField);
+
+        displayLayout.addComponent(phoneImageNumLabel);
+        displayLayout.addComponent(phoneImageMessageLabel);
+        displayLayout.addComponent(refresher);
 
         backgroundLayout.addComponent(displayLayout);
         return backgroundLayout;
     }
-
-
 
 
 }

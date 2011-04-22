@@ -31,7 +31,7 @@ public interface NcsUIService {
 
     void init();
 
-    void addElementToReceiveTable(int objectId, Date date, String phoneNo, String message, String status);
+    void addElementToReceiveTable(int objectId, Object object, String status);
 
-    void addElementToSentTable(Date date, String phoneNo, String message, String status);
+    void addElementToSentTable(String date, String address, String message, String status);
 }

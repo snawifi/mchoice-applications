@@ -17,6 +17,7 @@ import hms.sdp.ussd.MchoiceUssdMessage;
 import hms.sdp.ussd.impl.UssdAtRequestMessage;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
+import org.eclipse.jetty.http.HttpHeaders;
 
 import java.io.IOException;
 
@@ -37,6 +38,7 @@ public class UssdMessageSender {
     public void sendMessage (String url, String address, String message) throws IOException {
         final Gson gson = new Gson();
         final PostMethod postMethod = new PostMethod(url);
+        postMethod.addRequestHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         postMethod.addRequestHeader(MchoiceUssdMessage.USSD_MESSAGE_TYPE, MchoiceUssdMessage.USSD_MESSAGE);
         postMethod.addRequestHeader(MchoiceUssdMessage.CONVERSATION, String.valueOf(Math.random()));
         postMethod.addRequestHeader("X-Requested-Shortcode", "4499");
