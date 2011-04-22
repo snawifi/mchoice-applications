@@ -35,6 +35,7 @@ public class MainUI {
         Component tabSheet = createMainUI().createTabSheetPanel();
         mainPanel.addComponent(tabSheet);
         rootLayout.addComponent(mainPanel);
+        rootLayout.setComponentAlignment(mainPanel, Alignment.TOP_CENTER);
         return rootLayout;
     }
 
