@@ -7,7 +7,6 @@ package hms.ctap.simulator.ui;
 
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.TabSheet;
 import hms.ctap.simulator.ui.tab.TabView;
 
@@ -33,11 +32,8 @@ public class TabSheetPanel {
 
         TabSheet tabSheet = new TabSheet();
         tabSheet.addTab(smsTabView.getTabLayout(), "SMS", new ThemeResource("images/mobile_phone2.ico"));
-        tabSheet.addTab(ussdTabView.getTabLayout(), "USSD", new ThemeResource("images/mobile_phone2.ico"));
-
-        Panel tabSheetPanel = new Panel();
-        tabSheetPanel.addComponent(tabSheet);
-        return tabSheetPanel;
+        tabSheet.addTab(ussdTabView.getTabLayout(), "USSD", new ThemeResource("images/mobile_phone2.ico"));      
+        return tabSheet;
     }
 
 }
