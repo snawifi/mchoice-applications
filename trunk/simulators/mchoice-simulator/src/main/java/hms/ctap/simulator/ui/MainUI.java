@@ -8,6 +8,7 @@ package hms.ctap.simulator.ui;
 
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.*;
+import hms.ctap.simulator.ui.sms.SmsNcsUIService;
 import hms.ctap.simulator.ui.tab.impl.TabViewImpl;
 import hms.ctap.simulator.ui.ussd.UssdNcsUIService;
 
@@ -36,17 +37,17 @@ public class MainUI {
 
     private TabSheetPanel createMainUI() {
 
-//        final SmsNcsUIService smsNcsUIService = new SmsNcsUIService();
-//        smsNcsUIService.init();
+        final SmsNcsUIService smsNcsUIService = new SmsNcsUIService();
+        smsNcsUIService.init();
         final UssdNcsUIService ussdNcsUIService = new UssdNcsUIService();
         ussdNcsUIService.init();
 
-//        final TabViewImpl smsTabView = new TabViewImpl(smsNcsUIService);
+        final TabViewImpl smsTabView = new TabViewImpl(smsNcsUIService);
         final TabViewImpl ussdTabView = new TabViewImpl(ussdNcsUIService);
-//        smsTabView.init();
+        smsTabView.init();
         ussdTabView.init();
 
-        return new TabSheetPanel(null, ussdTabView);
+        return new TabSheetPanel(smsTabView, ussdTabView);
     }
 
     private AbstractLayout createHeader() {
