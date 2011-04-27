@@ -28,7 +28,7 @@ import java.io.IOException;
  */
 public class UssdMessageSender {
 
-    private static UssdMessageSender ussdMessageSender = new UssdMessageSender();
+    private static UssdMessageSender ussdMessageSender;
     private HttpClient httpClient;
 
     private UssdMessageSender () {
