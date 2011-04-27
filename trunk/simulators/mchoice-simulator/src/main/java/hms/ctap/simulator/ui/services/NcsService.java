@@ -13,8 +13,11 @@
 package hms.ctap.simulator.ui.services;
 
 import com.vaadin.ui.Label;
+import hms.ctap.simulator.sms.SmsMessageReceiver;
+import hms.ctap.simulator.sms.SmsMessageSender;
 import hms.ctap.simulator.ussd.UssdMessageSender;
 import hms.sdp.ussd.impl.UssdAoRequestMessage;
+import hms.ctap.simulator.sms.SmsAoRequestMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,17 +34,19 @@ public enum NcsService {
     SMS {
         @Override
         public void sendMessage(final String url, final String address, final String message) throws IOException {
-            throw new UnsupportedOperationException("Method not implemented...");  //todo must implement method
+            SmsMessageSender.getInstance().sendMessage(url, address, message);
         }
 
         @Override
         public List receivedMessages() {
-            throw new UnsupportedOperationException("Method not implemented...");  //todo must implement method
+            return SmsMessageReceiver.getReceivedMessages();
         }
 
         @Override
         public void updatePhoneView(Label phoneNum, Label message, Object val) {
-            throw new UnsupportedOperationException("Method not implemented...");  //todo must implement method
+            SmsAoRequestMessage smsAoRequestMessage = (SmsAoRequestMessage) val;
+            phoneNum.setValue(smsAoRequestMessage.getAddress());
+            message.setValue(smsAoRequestMessage.getMessage());
         }
     },
 
