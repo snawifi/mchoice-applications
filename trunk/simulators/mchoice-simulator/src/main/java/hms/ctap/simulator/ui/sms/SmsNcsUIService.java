@@ -67,7 +67,7 @@ public class SmsNcsUIService implements NcsUIService {
         if (receivedMsgTable.getItem(objectId) == null) {
             SmsAoRequestMessage smsAoRequestMessage = (SmsAoRequestMessage) object;
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
-            receivedMsgTable.addItem(new Object[]{dateFormat.format(new Date()), smsAoRequestMessage.getAddress(),
+            receivedMsgTable.addItem(new Object[]{dateFormat.format(new Date()), smsAoRequestMessage.getAddress().substring(4),
                     smsAoRequestMessage.getMessage(), status}, objectId);
 //            receivedRowCount++;
         }
