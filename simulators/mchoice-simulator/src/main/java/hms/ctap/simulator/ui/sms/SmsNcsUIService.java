@@ -15,8 +15,9 @@ package hms.ctap.simulator.ui.sms;
 import com.vaadin.ui.Table;
 import hms.ctap.simulator.ui.services.NcsService;
 import hms.ctap.simulator.ui.services.NcsUIService;
-import hms.sdp.ussd.impl.UssdAoRequestMessage;
+import hms.ctap.simulator.sms.SmsAoRequestMessage;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -64,11 +65,13 @@ public class SmsNcsUIService implements NcsUIService {
     public void addElementToReceiveTable(int objectId, Object object, String status) {
 
         if (receivedMsgTable.getItem(objectId) == null) {
-            UssdAoRequestMessage ussdAoRequestMessage = (UssdAoRequestMessage) object;
-            receivedMsgTable.addItem(new Object[]{new Date(), ussdAoRequestMessage.getAddress(),
-                    ussdAoRequestMessage.getMessage(), status}, receivedRowCount);
-            receivedRowCount++;
+            SmsAoRequestMessage smsAoRequestMessage = (SmsAoRequestMessage) object;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+            receivedMsgTable.addItem(new Object[]{dateFormat.format(new Date()), smsAoRequestMessage.getAddress(),
+                    smsAoRequestMessage.getMessage(), status}, objectId);
+//            receivedRowCount++;
         }
+
     }
 
     @Override
