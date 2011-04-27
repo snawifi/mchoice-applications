@@ -31,7 +31,7 @@ public class TabSheetPanel {
     public Component createTabSheetPanel(){
 
         TabSheet tabSheet = new TabSheet();
-//        tabSheet.addTab(smsTabView.getTabLayout(), "SMS", new ThemeResource("images/mobile_phone2.ico"));
+        tabSheet.addTab(smsTabView.getTabLayout(), "SMS", new ThemeResource("images/mobile_phone2.ico"));
         tabSheet.addTab(ussdTabView.getTabLayout(), "USSD", new ThemeResource("images/mobile_phone2.ico"));      
         return tabSheet;
     }
