@@ -69,7 +69,7 @@ public class UssdNcsUIService implements NcsUIService {
      * @param object
      */
     @Override
-    public void addElementToReceiveTable(int objectId, Object object, String status) {
+    public void addElementToReceiveTable(int objectId, Object object) {
 
         if (receivedMsgTable.getItem(objectId) == null) {
             UssdAoRequestMessage ussdAoRequestMessage = (UssdAoRequestMessage) object;
