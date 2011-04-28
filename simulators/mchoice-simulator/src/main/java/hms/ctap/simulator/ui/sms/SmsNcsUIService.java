@@ -65,13 +65,13 @@ public class SmsNcsUIService implements NcsUIService {
     }
 
     @Override
-    public void addElementToReceiveTable(int objectId, Object object, String status) {
+    public void addElementToReceiveTable(int objectId, Object object) {
 
         if (receivedMsgTable.getItem(objectId) == null) {
             SmsAoRequestMessage smsAoRequestMessage = (SmsAoRequestMessage) object;
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
             receivedMsgTable.addItem(new Object[]{dateFormat.format(new Date()), smsAoRequestMessage.getAddress(),
-                    smsAoRequestMessage.getMessage(), status}, objectId);
+                    smsAoRequestMessage.getMessage()}, objectId);
         }
 
     }
