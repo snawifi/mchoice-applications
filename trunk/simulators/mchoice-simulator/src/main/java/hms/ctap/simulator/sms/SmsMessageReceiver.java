@@ -65,6 +65,7 @@ public class SmsMessageReceiver extends HttpServlet {
         try {
             validateAndSetAuthentication(req, resp, smsAoRequestMessage);
             validateAndSetAddress(resp, address, smsAoRequestMessage);
+            validateAndSetMessage(resp, message, smsAoRequestMessage);
         } catch (Exception e) {
             return;
         }
@@ -72,6 +73,19 @@ public class SmsMessageReceiver extends HttpServlet {
         smsAoRequestMessage.setMessage(message);
         System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
         receivedSms.add(smsAoRequestMessage);
+    }
+
+    private void validateAndSetMessage(HttpServletResponse resp, String message, SmsAoRequestMessage smsAoRequestMessage) throws Exception {
+        try{
+            if ("".equals(message)) {
+                throw new Exception();
+            }
+            smsAoRequestMessage.setMessage(message) ;
+        }  catch (Exception e) {
+            writeResponse(resp, "400", "Bad Request [ Couldn't find request or it is blank ]");
+            throw e;
+        }
+
     }
 
     private void validateAndSetAddress(HttpServletResponse resp, String address, SmsAoRequestMessage smsAoRequestMessage) throws Exception {
