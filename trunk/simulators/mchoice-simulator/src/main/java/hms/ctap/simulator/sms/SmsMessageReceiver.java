@@ -41,7 +41,7 @@ public class SmsMessageReceiver extends HttpServlet {
             String authetication[] = getAppIdPassword(authorization);
 
             SmsAoRequestMessage smsAoRequestMessage = new SmsAoRequestMessage();
-            smsAoRequestMessage.setAddress(address);
+            smsAoRequestMessage.setAddress(address.substring(4));
             smsAoRequestMessage.setMessage(message);
             smsAoRequestMessage.setAppId(authetication[0]);
             smsAoRequestMessage.setPassword(authetication[1]);
