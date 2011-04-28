@@ -42,22 +42,25 @@ public class SmsNcsUIService implements NcsUIService {
     @Override
     public Table createSentMessageService() {
 
-        String[] headings = {"Time", "Phone No", "Message", "Status"};
+        String[] headings = {"Time", "Phone #", "Message", "Status"};
         for (String heading : headings) {
             sentMsgTable.addContainerProperty(heading, String.class, null);
         }
-
+        sentMsgTable.setColumnWidth(headings[2], 110);
+        sentMsgTable.setHeight("230px");
         return sentMsgTable;
     }
+
 
     @Override
     public Table createReceivedMessageService() {
 
-        String[] headings = {"Time", "Phone No", "Message", "Status"};
+        String[] headings = {"Time", "Phone #", "Message"};
         for (String heading : headings) {
             receivedMsgTable.addContainerProperty(heading, String.class, null);
         }
-
+        receivedMsgTable.setColumnWidth(headings[2], 200);
+        receivedMsgTable.setHeight("230px");
         return receivedMsgTable;
     }
 
@@ -69,7 +72,6 @@ public class SmsNcsUIService implements NcsUIService {
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
             receivedMsgTable.addItem(new Object[]{dateFormat.format(new Date()), smsAoRequestMessage.getAddress(),
                     smsAoRequestMessage.getMessage(), status}, objectId);
-//            receivedRowCount++;
         }
 
     }
