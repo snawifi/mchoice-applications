@@ -60,7 +60,7 @@ public class TabViewImpl extends TabView {
                         final NcsService ncsService = ncsUIService.getNcsService();
                         List receivedMessages = ncsService.receivedMessages();
                         for (int i = 0, receivedMessagesSize = receivedMessages.size(); i < receivedMessagesSize; i++) {
-                            ncsUIService.addElementToReceiveTable(i, receivedMessages.get(i), "Success");
+                            ncsUIService.addElementToReceiveTable(i, receivedMessages.get(i));
                         }
                         if (receivedMessages.size() > 0) {
                             ncsService.updatePhoneView(phoneImageNumLabel, phoneImageMessageLabel, receivedMessages.get(receivedMessages.size() - 1));
@@ -121,7 +121,6 @@ public class TabViewImpl extends TabView {
         HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
         receivedMessageTableLayout.setStyleName("received-message-table");
         receivedMessageTableLayout.addComponent(receivedMessageTable);
-
 
         HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
         sentMessageTableLayout.setStyleName("sent-message-table");
