@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,49 +32,96 @@ import java.util.List;
 public class SmsMessageReceiver extends HttpServlet {
 
     private static final List<SmsAoRequestMessage> receivedSms = new ArrayList<SmsAoRequestMessage>();
+    private static final String AUTHORIZATION = "Authorization";
+    private static final String ADDRESS = "address";
+    private static final String MESSAGE = "message";
+    private static final String RESPONSE_MESSAGE = "<mchoice_sdp_sms_response>\n" +
+            "   <version>1.0</version>\n" +
+            "   <correlator>{0}</correlator>\n" +
+            "   <status_code>{1}</status_code>\n" +
+            "   <status_message>{2}</status_message>\n" +
+            "</mchoice_sdp_sms_response>";
 
-        @Override
-        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            String authorization = req.getHeader("Authorization");
-            String address = req.getParameter("address");
-            String message = req.getParameter("message");
-            String authetication[] = getAppIdPassword(authorization);
+        try {
+            handleSmsRequest(req, resp);
+            writeResponse(resp, "SBL-SMS-MT-2000", "SUCCESS");
+        } catch (Exception e) {
+            writeResponse(resp, "UNKNOWN", "UNKNOWN");
+            e.printStackTrace();
+        }
+        resp.getWriter().flush();
+    }
 
-            SmsAoRequestMessage smsAoRequestMessage = new SmsAoRequestMessage();
-            smsAoRequestMessage.setAddress(address.substring(4));
-            smsAoRequestMessage.setMessage(message);
-            smsAoRequestMessage.setAppId(authetication[0]);
-            smsAoRequestMessage.setPassword(authetication[1]);
-            System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
-            receivedSms.add(smsAoRequestMessage);
 
-            resp.getWriter().write("<mchoice_sdp_sms_response>\n" +
-                    "   <version>1.0</version>\n" +
-                    "   <correlator>10051016580002</correlator>\n" +
-                    "   <status_code>SBL-SMS-MT-2000</status_code>\n" +
-                    "   <status_message>SUCCESS</status_message>\n" +
-                    "</mchoice_sdp_sms_response>");
-            resp.getWriter().flush();
+    private void handleSmsRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String address = req.getParameter(ADDRESS);
+        String message = req.getParameter(MESSAGE);
+        SmsAoRequestMessage smsAoRequestMessage = new SmsAoRequestMessage();
+
+
+        try {
+            validateAndSetAuthentication(req, resp, smsAoRequestMessage);
+            validateAndSetAddress(resp, address, smsAoRequestMessage);
+        } catch (Exception e) {
+            return;
         }
 
-        /**
-         *
-         * @param basicAuthHeader authorization parameter value of the request
-         * @return a string array containing
-         *              array[0] = appId
-         *              array[1] = password
-         */
-        public String[] getAppIdPassword(String basicAuthHeader) {
+        smsAoRequestMessage.setMessage(message);
+        System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
+        receivedSms.add(smsAoRequestMessage);
+    }
 
-            basicAuthHeader = basicAuthHeader.substring(6); // remove "BASIC "
-            String decoded = new String(Base64.decodeBase64(basicAuthHeader.getBytes()));
-            return decoded.split(":");
-
+    private void validateAndSetAddress(HttpServletResponse resp, String address, SmsAoRequestMessage smsAoRequestMessage) throws Exception {
+        try {
+            smsAoRequestMessage.setAddress(address.split(":")[1]);
+        } catch (Exception e) {
+            writeResponse(resp, "ADDRESS-NOT-SPECIFIED",
+                    "Check if the address has been correctly set");
+            throw e;
         }
+    }
 
-        public static List<SmsAoRequestMessage> getReceivedMessages() {
-            return receivedSms;
+    private void validateAndSetAuthentication(HttpServletRequest req, HttpServletResponse resp, SmsAoRequestMessage smsAoRequestMessage) throws Exception {
+        try {
+            String[] authentication = getAppIdPassword(req.getHeader(AUTHORIZATION));
+            for (String s : authentication) {
+                if ("".equals(s)) {
+                    throw new Exception();
+                }
+            }
+            smsAoRequestMessage.setAppId(authentication[0]);
+            smsAoRequestMessage.setPassword(authentication[1]);
+        } catch (Exception e) {
+            writeResponse(resp, "UNAUTHORIZED-REQUEST",
+                    "Request could not be authenticated, make sure proper authentication parameters are sent");
+            throw e;
         }
+    }
+
+    private void writeResponse(HttpServletResponse resp, String statusCode, String statusMessage) throws IOException {
+        final long correlationId = (long) Math.random() * 1000000000l;
+        resp.getWriter().write(MessageFormat.format(RESPONSE_MESSAGE, correlationId, statusCode, statusMessage));
+    }
+
+    /**
+     * @param basicAuthHeader authorization parameter value of the request
+     * @return a string array containing
+     *         array[0] = appId
+     *         array[1] = password
+     */
+    public String[] getAppIdPassword(String basicAuthHeader) {
+
+        basicAuthHeader = basicAuthHeader.substring(6); // remove "BASIC "
+        String decoded = new String(Base64.decodeBase64(basicAuthHeader.getBytes()));
+        return decoded.split(":");
+
+    }
+
+    public static List<SmsAoRequestMessage> getReceivedMessages() {
+        return receivedSms;
+    }
 
 }
