@@ -9,8 +9,7 @@ define("NORMAL_MESSAGE", "X-USSD-Message");
 define("TERMINATE_MESSAGE", "X-USSD-Terminate-Message");
 define("ALIVE_MESSAGE", "X-USSD-Alive-Message");
 
-class UssdMessageReceiver
-{
+class UssdMessageReceiver {
 
 
     private $address;
@@ -19,14 +18,18 @@ class UssdMessageReceiver
     private $correlationId;
     private $conversationId;
 
-    public function __construct()
-    {
-        $this->messageType = (isset($_SERVER['X-Message-type'])) ? $_SERVER['X-Message-type'] : null;
-        $this->conversationId = (isset($_SERVER['X-Requested-Conversation-ID'])) ? $_SERVER['X-Requested-Conversation-ID'] : null;
+    public function __construct() {
+        $arrHeaders = $this->getHeaders();
 
-        $body = http_get_request_body();
+        $this->messageType = $arrHeaders['X-Message-Type'];
+        $this->conversationId = $arrHeaders['X-Requested-Conversation-Id'];
+
+        ///read the request body
+        $body = @file_get_contents('php://input');
+
         $json = json_decode($body);
 
+        //If the message type is ALIVE sends the Alive message
         if ($this->messageType == ALIVE_MESSAGE) {
             header("HTTP/1.1 202 Accepted");
             return;
@@ -41,28 +44,38 @@ class UssdMessageReceiver
         }
     }
 
-    public function getAddress()
-    {
+    /*
+     * Read the request Header
+     */
+    function getHeaders() {
+        $headers = array();
+        foreach ($_SERVER as $k => $v) {
+            if (substr($k, 0, 5) == "HTTP_") {
+                $k = str_replace('_', ' ', substr($k, 5));
+                $k = str_replace(' ', '-', ucwords(strtolower($k)));
+                $headers[$k] = $v;
+            }
+        }
+        return $headers;
+    }
+
+    public function getAddress() {
         return $this->address;
     }
 
-    public function getMessage()
-    {
+    public function getMessage() {
         return $this->message;
     }
 
-    public function getMessageType()
-    {
+    public function getMessageType() {
         return $this->messageType;
     }
 
-    public function getCorrelationId()
-    {
+    public function getCorrelationId() {
         return $this->correlationId;
     }
 
-    public function getConversationId()
-    {
+    public function getConversationId() {
         return $this->conversationId;
     }
 
