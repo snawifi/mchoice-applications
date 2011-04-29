@@ -5,71 +5,49 @@
 * $LastChangedRevision$
 */
 
-class UssdMessageSender {
+class UssdMessageSender
+{
     var $url;
     var $username;
-	var $password;
+    var $password;
 
-    public function __construct($url, $username, $password) {
+    public function __construct($url, $username, $password)
+    {
         $this->url = $url;
-        $this->username=$username;
-		$this->password=$password;
+        $this->username = $username;
+        $this->password = $password;
     }
 
-    public function sendussd($address, $message, $conversationId,  $sessioTermination=false) {
-        $headers =array('Content-type: application/json',
-                'X-Message-type: X-USSD-Message', 'X-Requested-Shortcode: 4499',
-                'X-Requested-Conversation-ID:'.$conversationId, 'X-Requested-Version: 1.0', $this->getAuthHeader());
+    public function sendUssd($address, $message, $conversationId, $sessionTermination = false)
+    {
+        $headers = array(
+            'Content-type: application/json',
+            'X-Requested-Encoding: UTF-8',
+            'X-Requested-Conversation-ID:' . $conversationId,
+            'X-Requested-Version: 1.0',
+            $this->getAuthHeader());
 
-        $postfields = "address=" . urlencode($address) . "&message=" . urlencode($message) . "&sessionTermination". $sessioTermination;
+        $postData = array('address' => $address, '$message' => $message, 'sessionTermination' => $sessionTermination);
 
-        return $this->sendRequest($postfields, $headers);
+        return $this->sendRequest($postData, $headers);
     }
 
-    //sending normal ussd messages
-    public function normalUssd($address, $message, $correlationId, $conversationId) {
-        $headers = array('Content-type: application/json',
-                'X-Message-type: X-USSD-Message', 'X-Requested-Shortcode: 4499',
-                'X-Requested-Conversation-ID:'.$conversationId, 'X-Requested-Version: 1.0');
-
-        $postfields = "correlationId=" .$correlationId. "&address=" . urlencode($address) . "&message=" . urlencode($message);
-
-        $this->sendRequest($postfields, $headers);
+    private function getAuthHeader()
+    {
+        $auth = $this->username . ':' . $this->password;
+        $auth = base64_encode($auth);
+        return 'Authorization: Basic ' . $auth;
     }
 
-    //sending terminate ussd messages
-    public function TerminateUssd($address, $message, $correlationId, $conversationId) {
-        $headers = array('X-Message-type: X-USSD-Terminate-Message',
-                'X-Requested-Conversation-ID:'.$conversationId, 'X-Requested-Version: 1.0');
-
-        $postfields = "correlationId=" .$correlationId. "&address=" . urlencode($address) . "&message=" . urlencode($message);
-
-        $this->sendRequest($postfields, $headers);
-    }
-
-    //sending alive ussd messages
-    public function AliveUssd() {
-        $headers = array('X-Message-type: X-USSD-Alive-Message', 'X-Requested-Version: 1.0');
-
-        $postfields = '';
-
-        $this->sendRequest($postfields, $headers);
-    }
-
-    private function getAuthHeader(){
-		$auth=$this->username . ':' . $this->password;
-		$auth=base64_encode($auth);
-		return 'Authorization: Basic ' . $auth;
-	}
-
-    private function sendRequest($postfields, $header) {
+    private function sendRequest($postData, $header)
+    {
         $ch = curl_init($this->url);
 
         // Configuring curl options
         $options = array(
             CURLOPT_HTTPHEADER => $header,
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => array('json' => json_encode($postfields)),
+            CURLOPT_POST => 1,
+            CURLOPT_POSTFIELDS => json_encode($postData),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true
         );
@@ -80,40 +58,47 @@ class UssdMessageSender {
         $this->handleResponse($result);
     }
 
-    private function handleResponse($result){
-		if ($result == "") {
+    private function handleResponse($result)
+    {
+        $resp = json_decode($result);
+
+        if ($result == "") {
             throw new AppZoneException
             ("Server URL is invalid", '500');
-        } else if ($result->status_code == 'SBL-USSD-2000') {
-            return true;
+        } else if ($resp->{'statusCode'} == 'SBL-USSD-2000') {
+            return $resp;
         } else {
-            throw new AppZoneException
-            ($result->status_message, $result->status_code, $result);
+            throw new AppZoneException($result->status_message, $result->status_code, $result);
         }
-	}
+    }
 }
 
-class AppZoneException extends Exception {
+class AppZoneException extends Exception
+{
     var $code;
     var $response;
     var $statusMessage;
 
-    public function __construct($message, $code, $response = null) {
+    public function __construct($message, $code, $response = null)
+    {
         parent::__construct($message);
         $this->statusMessage = $message;
         $this->code = $code;
         $this->response = $response;
     }
 
-    public function getStatusCode() {
+    public function getStatusCode()
+    {
         return $this->code;
     }
 
-    public function getStatusMessage() {
+    public function getStatusMessage()
+    {
         return $this->statusMessage;
     }
 
-    public function getRawResponse() {
+    public function getRawResponse()
+    {
         return $this->response;
     }
 }
