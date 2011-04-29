@@ -60,18 +60,17 @@ public class SmsMessageReceiver extends HttpServlet {
         String address = req.getParameter(ADDRESS);
         String message = req.getParameter(MESSAGE);
         SmsAoRequestMessage smsAoRequestMessage = new SmsAoRequestMessage();
-
-
+        smsAoRequestMessage.setMessage(message);
+        System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
         try {
             validateAndSetAuthentication(req, resp, smsAoRequestMessage);
             validateAndSetAddress(resp, address, smsAoRequestMessage);
             validateAndSetMessage(resp, message, smsAoRequestMessage);
         } catch (Exception e) {
+            System.out.println("Received SMS Message Failed : " + smsAoRequestMessage);
             return;
         }
 
-        smsAoRequestMessage.setMessage(message);
-        System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
         receivedSms.add(smsAoRequestMessage);
     }
 
