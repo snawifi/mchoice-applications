@@ -13,9 +13,10 @@
 package hms.ctap.simulator.sms;
 
 
-import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
+
+import java.io.IOException;
 
 /**
  * $LastChangedDate$
@@ -40,7 +41,10 @@ public class SmsMessageSender {
         postMethod.addParameter("message", message);
         String correlator = String.valueOf(Math.random());
         postMethod.addParameter("correlator", correlator);
-        System.out.println("Sending SMS to application [ address: "+ address + " ,message: "+message + " ,correlator: "+ correlator + " ]");
+        System.out.println(new StringBuilder()
+                .append("Sending SMS to application [ address: ").append(address)
+                .append(" ,message: ").append(message)
+                .append(" ,correlator: ").append(correlator).append(" ]").toString());
         httpClient.executeMethod(postMethod);
         System.out.println(postMethod.getResponseBodyAsString());
 
