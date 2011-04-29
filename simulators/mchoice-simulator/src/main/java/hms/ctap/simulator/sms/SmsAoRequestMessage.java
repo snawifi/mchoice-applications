@@ -60,7 +60,14 @@ public class SmsAoRequestMessage {
     }
 
     @Override
-    public String toString(){
-         return ("{address: " + address + " ,message: " + message + " ,appId: " + appId + " ,password: " + password + " }");
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("SmsAoRequestMessage");
+        sb.append("{address='").append(address).append('\'');
+        sb.append(", message='").append(message).append('\'');
+        sb.append(", appId='").append(appId).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
