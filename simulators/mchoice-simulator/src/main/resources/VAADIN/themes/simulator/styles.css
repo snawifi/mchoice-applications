@@ -85,3 +85,7 @@
     font-size: 12px;
 }
 
+/*table row height*/
+.v-table-components-inside .v-table-cell-content {
+    height: 36px;
+}
