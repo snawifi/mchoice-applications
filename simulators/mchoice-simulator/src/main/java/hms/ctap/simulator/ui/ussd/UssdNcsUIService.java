@@ -45,7 +45,7 @@ public class UssdNcsUIService implements NcsUIService {
         for (String heading : headings) {
             sentMsgTable.addContainerProperty(heading, String.class, null);
         }
-        sentMsgTable.setColumnWidth(headings[2], 110);
+        sentMsgTable.setColumnWidth(headings[2], 100);
         sentMsgTable.setHeight("230px");
         return sentMsgTable;
 
