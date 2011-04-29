@@ -35,6 +35,7 @@
     border: none;
     width: 98px;
     height: 112px;
+    font-size:12px;
 }
 
 .address-display {
@@ -42,6 +43,8 @@
     width: 98px;
     height: 15px;
     border-bottom: 1px solid #7d7d7d;
+    font-size:12px;
+    text-align:center;
 }
 
 /*----------------------Edited Vaadin Styles--------------------*/
@@ -67,7 +70,7 @@
 
 /*vaadin table caption */
 .sent-message-table {
-    width: 380px !important;
+    width: 390px !important;
 }
 .received-message-table {
     width: 390px !important;
