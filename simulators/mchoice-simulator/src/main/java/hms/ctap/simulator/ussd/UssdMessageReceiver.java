@@ -52,7 +52,6 @@ public class UssdMessageReceiver extends HttpServlet {
         ussdAoRequestMessage.setConversationId(conversationId);
 
         System.out.println("New USSD Message Received [" + ussdAoRequestMessage + "]");
-        receivedMessages.add(ussdAoRequestMessage);
 
         final MchoiceUssdResponse mchoiceUssdResponse = new MchoiceUssdResponse();
         final UssdMessageSender messageSender = UssdMessageSender.getInstance();
@@ -60,11 +59,13 @@ public class UssdMessageReceiver extends HttpServlet {
         if (ussdAoRequestMessage.getSessionTermination()) {
             if (messageSender.clearConversation(ussdAoRequestMessage.getAddress())) {
                 createSuccessResponse(mchoiceUssdResponse);
+                receivedMessages.add(ussdAoRequestMessage);
             } else {
                 System.out.println("Received USSD Message Failed : Address not found " + ussdAoRequestMessage);
                 createFailedResponse(mchoiceUssdResponse, "Address not found");
             }
         } else if (messageSender.isConversationIdValid(ussdAoRequestMessage.getAddress())) {
+            receivedMessages.add(ussdAoRequestMessage);
             createSuccessResponse(mchoiceUssdResponse);
         } else {
             System.out.println("Received USSD Message Failed : Conversation Id not found " + ussdAoRequestMessage);
