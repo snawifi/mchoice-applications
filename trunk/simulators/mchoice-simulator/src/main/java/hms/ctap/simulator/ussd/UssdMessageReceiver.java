@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import hms.sdp.ussd.MchoiceUssdMessage;
 import hms.sdp.ussd.MchoiceUssdResponse;
 import hms.sdp.ussd.impl.UssdAoRequestMessage;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +37,7 @@ import java.util.List;
 public class UssdMessageReceiver extends HttpServlet {
 
     private static final List<UssdAoRequestMessage> receivedMessages = new ArrayList<UssdAoRequestMessage>();
+    private static final String AUTHORIZATION = "Authorization";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,6 +56,45 @@ public class UssdMessageReceiver extends HttpServlet {
         System.out.println("New USSD Message Received [" + ussdAoRequestMessage + "]");
 
         final MchoiceUssdResponse mchoiceUssdResponse = new MchoiceUssdResponse();
+        try {
+            validateAndSetAuthentication(req, mchoiceUssdResponse);
+            validateAndSetAddress(ussdAoRequestMessage, mchoiceUssdResponse);
+            validateAndSetConversationId(ussdAoRequestMessage, mchoiceUssdResponse);
+
+        } catch (Exception e) {
+            System.out.println("Received USSD Message Failed : "+ e );
+            System.out.println(ussdAoRequestMessage);
+        }
+        mchoiceUssdResponse.setCorrelationId(String.valueOf(Math.random()));
+        return gson.toJson(mchoiceUssdResponse);
+    }
+
+    private void validateAndSetAuthentication(HttpServletRequest req, MchoiceUssdResponse mchoiceUssdResponse) throws Exception {
+        try {
+            String decoded = new String(Base64.decodeBase64(req.getHeader(AUTHORIZATION).substring(6).getBytes()));
+            String authentication[] = decoded.split(":");
+            for (String s : authentication) {
+                if ("".equals(s)) {
+                    throw new Exception();
+                }
+            }
+        } catch (Exception e) {
+            createFailedResponse(mchoiceUssdResponse, "Unauthorized Request");
+            throw new Exception("Unautorized Request , Incorrect AppId or Password");
+        }
+
+    }
+
+    private void validateAndSetAddress(UssdAoRequestMessage ussdAoRequestMessage, MchoiceUssdResponse mchoiceUssdResponse) throws Exception {
+        if ("".equals(ussdAoRequestMessage.getAddress())) {
+            createFailedResponse(mchoiceUssdResponse, "Address not specified");
+            throw new Exception("Address not specified");
+        }
+
+    }
+
+
+    private void validateAndSetConversationId(UssdAoRequestMessage ussdAoRequestMessage, MchoiceUssdResponse mchoiceUssdResponse) throws Exception {
         final UssdMessageSender messageSender = UssdMessageSender.getInstance();
 
         if (ussdAoRequestMessage.getSessionTermination()) {
@@ -61,20 +102,16 @@ public class UssdMessageReceiver extends HttpServlet {
                 createSuccessResponse(mchoiceUssdResponse);
                 receivedMessages.add(ussdAoRequestMessage);
             } else {
-                System.out.println("Received USSD Message Failed : Address not found " + ussdAoRequestMessage);
                 createFailedResponse(mchoiceUssdResponse, "Address not found");
+                throw new Exception("Address not found");
             }
         } else if (messageSender.isConversationIdValid(ussdAoRequestMessage.getAddress(), ussdAoRequestMessage.getConversationId())) {
             receivedMessages.add(ussdAoRequestMessage);
             createSuccessResponse(mchoiceUssdResponse);
         } else {
-            System.out.println("Received USSD Message Failed : Conversation Id not found " + ussdAoRequestMessage);
-            createFailedResponse(mchoiceUssdResponse, "Conversation Id not found");
+            createFailedResponse(mchoiceUssdResponse, "Conversation Id incorrect");
+            throw new Exception("Conversation Id incorrect");
         }
-
-
-        mchoiceUssdResponse.setCorrelationId(String.valueOf(Math.random()));
-        return gson.toJson(mchoiceUssdResponse);
     }
 
     private void createFailedResponse(MchoiceUssdResponse mchoiceUssdResponse, String statusDescription) {
