@@ -39,12 +39,12 @@ public class UssdMessageReceiver extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String jsonResponse = hadleRequest(req);
+        final String jsonResponse = handleRequest(req);
         resp.getWriter().write(jsonResponse);
         resp.getWriter().flush();
     }
 
-    private String hadleRequest(HttpServletRequest req) throws IOException {
+    private String handleRequest(HttpServletRequest req) throws IOException {
 
         Gson gson = new Gson();
         final UssdAoRequestMessage ussdAoRequestMessage = gson.fromJson(readBody(req.getInputStream()), UssdAoRequestMessage.class);
@@ -61,14 +61,14 @@ public class UssdMessageReceiver extends HttpServlet {
             if (messageSender.clearConversation(ussdAoRequestMessage.getAddress())) {
                 createSuccessResponse(mchoiceUssdResponse);
             } else {
-                System.out.println("Received USSD Message Failed : " + ussdAoRequestMessage);
-                createFailedResponse(mchoiceUssdResponse);
+                System.out.println("Received USSD Message Failed : Address not found " + ussdAoRequestMessage);
+                createFailedResponse(mchoiceUssdResponse, "Address not found");
             }
         } else if (messageSender.isConversationIdValid(ussdAoRequestMessage.getAddress())) {
             createSuccessResponse(mchoiceUssdResponse);
         } else {
-            System.out.println("Received USSD Message Failed : " + ussdAoRequestMessage);
-            createFailedResponse(mchoiceUssdResponse);
+            System.out.println("Received USSD Message Failed : Conversation Id not found " + ussdAoRequestMessage);
+            createFailedResponse(mchoiceUssdResponse, "Conversation Id not found");
         }
 
 
@@ -76,9 +76,9 @@ public class UssdMessageReceiver extends HttpServlet {
         return gson.toJson(mchoiceUssdResponse);
     }
 
-    private void createFailedResponse(MchoiceUssdResponse mchoiceUssdResponse) {
+    private void createFailedResponse(MchoiceUssdResponse mchoiceUssdResponse, String statusDescription) {
         mchoiceUssdResponse.setStatusCode("ERROR");
-        mchoiceUssdResponse.setStatusDescription("Conversation ID not found");
+        mchoiceUssdResponse.setStatusDescription(statusDescription);
     }
 
     private void createSuccessResponse(MchoiceUssdResponse mchoiceUssdResponse) {
