@@ -5,14 +5,13 @@
 * $LastChangedRevision$
 */
 
-include_once '../api/UssdMessageSender.php';
-include_once '../api/UssdMessageReceiver.php';
+include_once '../api/MchoiceUssdApi.php';
 include_once 'logs.php';
 
 
 try {
+    $receiver=new MchoiceUssdApi();
     //create the receiver
-    $receiver = new UssdMessageReceiver();
     logFile("\nMessage Received...");
     //getting the message content
     $rtn = "{$receiver->getAddress()} :: {$receiver->getMessage()} :: {$receiver->getConversationId()}";
@@ -23,14 +22,14 @@ try {
     $res = '';
     //sending a message
     if ($receiver->getMessageType() == NORMAL_MESSAGE) {
-        $sender = new UssdMessageSender("http://192.168.0.169:8000/ussd/", "appid", "pass");
-        $res = $sender->sendUssd('0771448890', 'Thank You for your message', $receiver->getConversationId(), 'false');
+        $sender = new MchoiceUssdApi("http://127.0.0.1:8000/ussd/", "appid", "pass");
+
+        $res = $sender->sendUssd($receiver->getAddress(), 'Thank You for your message', $receiver->getConversationId(), 'false');
 
     } else if ($receiver->getMessageType() == TERMINATE_MESSAGE) {
         logFile("Terminate message received address : ".$receiver->getAddress()." conversationId : ".$receiver->getConversationId());
     }
 
-//    logFile($res);
     logFile("\nRESPONSE::: correlationId :".$res->{'correlationId'}.", statusCode :".$res->{'statusCode'}.", statusDescription :".$res->{'statusDescription'});
 
 }

@@ -6,23 +6,82 @@
 */
 
 
-class UssdMessageSender
-{
-    var $url;
-    var $username;
-    var $password;
+define("NORMAL_MESSAGE", "X-USSD-Message");
+define("TERMINATE_MESSAGE", "X-USSD-Terminate-Message");
+define("ALIVE_MESSAGE", "X-USSD-Alive-Message");
+ 
+class MchoiceUssdApi {
+
+    private $url;
+    private $username;
+    private $password;
+    private $address;
+    private $message;
+    private $messageType;
+    private $correlationId;
+    private $conversationId;
+
+    public function __construct() {
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        } 
+    }
+
+    public function __construct0() {
+        $arrHeaders = $this->getHeaders();
+        $this->messageType = $arrHeaders['X-Message-Type'];
+        $this->conversationId = $arrHeaders['X-Requested-Conversation-Id'];
+
+        ///read the request body
+        $body = @file_get_contents('php://input');
+
+        $json = json_decode($body);
+
+        //If the message type is ALIVE sends the Alive message
+        if ($this->messageType == ALIVE_MESSAGE) {
+            header("HTTP/1.1 202 Accepted");
+            return;
+        }
+
+        $this->address = $json->{'address'};
+        $this->message = $json->{'message'};
+        $this->correlationId = $json->{'correlationId'};
+
+        if (!((isset($this->address) && isset($this->correlationId)))) {
+            throw new Exception("Some of the required parameters are not provided");
+        }
+    }
 
     /*
-     * Creating the sender object
-     * $url - sender url
-     * $username
-     * $password
+        * Creating the sender object
+        * $url - sender url
+        * $username
+        * $password
+        */
+       public function __construct3($url, $username, $password)
+       {
+           $this->url = $url;
+           $this->username = $username;
+           $this->password = $password;
+       }
+
+
+     /*
+     * Read the request Header
      */
-    public function __construct($url, $username, $password)
-    {
-        $this->url = $url;
-        $this->username = $username;
-        $this->password = $password;
+    function getHeaders() {
+        $headers = array();
+        foreach ($_SERVER as $k => $v) {
+            if (substr($k, 0, 5) == "HTTP_") {
+                $k = str_replace('_', ' ', substr($k, 5));
+                $k = str_replace(' ', '-', ucwords(strtolower($k)));
+                $headers[$k] = $v;
+//                logFile("headers: ". $k . " : ".$v);
+            }
+        }
+        return $headers;
     }
 
     /*
@@ -78,12 +137,11 @@ class UssdMessageSender
     }
 
     /*
-     * Handles the response message 
+     * Handles the response message
      */
     private function handleResponse($result)
     {
         $resp = json_decode($result);
-
         if ($result == "") {
             throw new AppZoneException
             ("Server URL is invalid", '500');
@@ -93,7 +151,29 @@ class UssdMessageSender
             throw new AppZoneException($resp->{'statusDescription'}, $resp->{'statusCode'}, $resp);
         }
     }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function getMessage() {
+        return $this->message;
+    }
+
+    public function getMessageType() {
+        return $this->messageType;
+    }
+
+    public function getCorrelationId() {
+        return $this->correlationId;
+    }
+
+    public function getConversationId() {
+        return $this->conversationId;
+    }
+
 }
+
 
 class AppZoneException extends Exception
 {
@@ -124,3 +204,4 @@ class AppZoneException extends Exception
         return $this->response;
     }
 }
+
