@@ -64,7 +64,7 @@ public class UssdMessageReceiver extends HttpServlet {
                 System.out.println("Received USSD Message Failed : Address not found " + ussdAoRequestMessage);
                 createFailedResponse(mchoiceUssdResponse, "Address not found");
             }
-        } else if (messageSender.isConversationIdValid(ussdAoRequestMessage.getAddress())) {
+        } else if (messageSender.isConversationIdValid(ussdAoRequestMessage.getAddress(), ussdAoRequestMessage.getConversationId())) {
             receivedMessages.add(ussdAoRequestMessage);
             createSuccessResponse(mchoiceUssdResponse);
         } else {
