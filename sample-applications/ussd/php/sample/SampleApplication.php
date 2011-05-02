@@ -10,13 +10,12 @@ include_once 'logs.php';
 
 
 try {
-    $receiver=new MchoiceUssdApi();
+    $receiver = new MchoiceUssdApi();
     //create the receiver
     logFile("\nMessage Received...");
     //getting the message content
     $rtn = "{$receiver->getAddress()} :: {$receiver->getMessage()} :: {$receiver->getConversationId()}";
-    logFile("Message: ". $rtn);
-
+    logFile("Message: " . $rtn);
 
 
     $res = '';
@@ -27,10 +26,10 @@ try {
         $res = $sender->sendUssd($receiver->getAddress(), 'Thank You for your message', $receiver->getConversationId(), 'false');
 
     } else if ($receiver->getMessageType() == TERMINATE_MESSAGE) {
-        logFile("Terminate message received address : ".$receiver->getAddress()." conversationId : ".$receiver->getConversationId());
+        logFile("Terminate message received address : " . $receiver->getAddress() . " conversationId : " . $receiver->getConversationId());
     }
 
-    logFile("\nRESPONSE::: correlationId :".$res->{'correlationId'}.", statusCode :".$res->{'statusCode'}.", statusDescription :".$res->{'statusDescription'});
+    logFile("\nRESPONSE::: correlationId :" . $res->{'correlationId'} . ", statusCode :" . $res->{'statusCode'} . ", statusDescription :" . $res->{'statusDescription'});
 
 }
 catch (AppZoneException $ex) {
