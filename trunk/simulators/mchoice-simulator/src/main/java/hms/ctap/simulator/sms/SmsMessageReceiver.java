@@ -47,7 +47,6 @@ public class SmsMessageReceiver extends HttpServlet {
 
         try {
             handleSmsRequest(req, resp);
-            writeResponse(resp, "SBL-SMS-MT-2000", "SUCCESS");
         } catch (Exception e) {
             writeResponse(resp, "UNKNOWN", "UNKNOWN");
             e.printStackTrace();
@@ -61,16 +60,16 @@ public class SmsMessageReceiver extends HttpServlet {
         String message = req.getParameter(MESSAGE);
         SmsAoRequestMessage smsAoRequestMessage = new SmsAoRequestMessage();
         smsAoRequestMessage.setMessage(message);
-        System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
         try {
             validateAndSetAuthentication(req, resp, smsAoRequestMessage);
             validateAndSetAddress(resp, address, smsAoRequestMessage);
             validateAndSetMessage(resp, message, smsAoRequestMessage);
+            writeResponse(resp, "SBL-SMS-MT-2000", "SUCCESS");
         } catch (Exception e) {
             System.out.println("Received SMS Message Failed : " + smsAoRequestMessage);
             return;
         }
-
+        System.out.println("New SMS Received [" + smsAoRequestMessage + "]");
         receivedSms.add(smsAoRequestMessage);
     }
 
