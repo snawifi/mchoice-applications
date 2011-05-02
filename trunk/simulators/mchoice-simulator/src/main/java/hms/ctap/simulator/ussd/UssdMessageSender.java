@@ -84,8 +84,9 @@ public class UssdMessageSender {
         return conversationMap.remove(address) != null;
     }
 
-    public boolean isConversationIdValid(String address) {
-        return conversationMap.get(address) != null;
+    public boolean isConversationIdValid(String address, String conversationId) {
+        return (conversationMap.get(address) != null &&
+                conversationMap.get(address).getConversationId().contentEquals(conversationId));
     }
 
     public static UssdMessageSender getInstance() {
