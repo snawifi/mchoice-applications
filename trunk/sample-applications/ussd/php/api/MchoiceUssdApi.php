@@ -9,8 +9,9 @@
 define("NORMAL_MESSAGE", "X-USSD-Message");
 define("TERMINATE_MESSAGE", "X-USSD-Terminate-Message");
 define("ALIVE_MESSAGE", "X-USSD-Alive-Message");
- 
-class MchoiceUssdApi {
+
+class MchoiceUssdApi
+{
 
     private $url;
     private $username;
@@ -21,15 +22,17 @@ class MchoiceUssdApi {
     private $correlationId;
     private $conversationId;
 
-    public function __construct() {
+    public function __construct()
+    {
         $a = func_get_args();
         $i = func_num_args();
-        if (method_exists($this,$f='__construct'.$i)) {
-            call_user_func_array(array($this,$f),$a);
-        } 
+        if (method_exists($this, $f = '__construct' . $i)) {
+            call_user_func_array(array($this, $f), $a);
+        }
     }
 
-    public function __construct0() {
+    public function __construct0()
+    {
         $arrHeaders = $this->getHeaders();
         $this->messageType = $arrHeaders['X-Message-Type'];
         $this->conversationId = $arrHeaders['X-Requested-Conversation-Id'];
@@ -60,25 +63,26 @@ class MchoiceUssdApi {
         * $username
         * $password
         */
-       public function __construct3($url, $username, $password)
-       {
-           $this->url = $url;
-           $this->username = $username;
-           $this->password = $password;
-       }
+    public function __construct3($url, $username, $password)
+    {
+        $this->url = $url;
+        $this->username = $username;
+        $this->password = $password;
+    }
 
 
-     /*
-     * Read the request Header
-     */
-    function getHeaders() {
+    /*
+    * Read the request Header
+    */
+    function getHeaders()
+    {
         $headers = array();
         foreach ($_SERVER as $k => $v) {
             if (substr($k, 0, 5) == "HTTP_") {
                 $k = str_replace('_', ' ', substr($k, 5));
                 $k = str_replace(' ', '-', ucwords(strtolower($k)));
                 $headers[$k] = $v;
-//                logFile("headers: ". $k . " : ".$v);
+                //                logFile("headers: ". $k . " : ".$v);
             }
         }
         return $headers;
@@ -152,23 +156,28 @@ class MchoiceUssdApi {
         }
     }
 
-    public function getAddress() {
+    public function getAddress()
+    {
         return $this->address;
     }
 
-    public function getMessage() {
+    public function getMessage()
+    {
         return $this->message;
     }
 
-    public function getMessageType() {
+    public function getMessageType()
+    {
         return $this->messageType;
     }
 
-    public function getCorrelationId() {
+    public function getCorrelationId()
+    {
         return $this->correlationId;
     }
 
-    public function getConversationId() {
+    public function getConversationId()
+    {
         return $this->conversationId;
     }
 
