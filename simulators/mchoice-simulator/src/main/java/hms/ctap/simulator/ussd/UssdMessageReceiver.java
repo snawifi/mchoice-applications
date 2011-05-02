@@ -71,16 +71,20 @@ public class UssdMessageReceiver extends HttpServlet {
 
     private void validateAndSetAuthentication(HttpServletRequest req, MchoiceUssdResponse mchoiceUssdResponse) throws Exception {
         try {
-            String decoded = new String(Base64.decodeBase64(req.getHeader(AUTHORIZATION).substring(6).getBytes()));
-            String authentication[] = decoded.split(":");
+            String authentication[] = new String(Base64.decodeBase64(req.getHeader(AUTHORIZATION).
+                    substring(6).getBytes())).split(":");
+            if (authentication.length < 2) {
+                throw new Exception();
+            }
             for (String s : authentication) {
                 if ("".equals(s)) {
                     throw new Exception();
                 }
             }
+
         } catch (Exception e) {
             createFailedResponse(mchoiceUssdResponse, "Unauthorized Request");
-            throw new Exception("Unautorized Request , Incorrect AppId or Password");
+            throw new Exception("Unautorized Request , AppId or Password Missing");
         }
 
     }
@@ -109,8 +113,8 @@ public class UssdMessageReceiver extends HttpServlet {
             receivedMessages.add(ussdAoRequestMessage);
             createSuccessResponse(mchoiceUssdResponse);
         } else {
-            createFailedResponse(mchoiceUssdResponse, "Conversation Id incorrect");
-            throw new Exception("Conversation Id incorrect");
+            createFailedResponse(mchoiceUssdResponse, "Incorrect Conversation Id");
+            throw new Exception("Incorrect Conversation Id");
         }
     }
 
