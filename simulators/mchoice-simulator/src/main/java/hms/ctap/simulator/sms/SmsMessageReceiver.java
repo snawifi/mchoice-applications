@@ -81,7 +81,7 @@ public class SmsMessageReceiver extends HttpServlet {
             }
             smsAoRequestMessage.setMessage(message) ;
         }  catch (Exception e) {
-            writeResponse(resp, "400", "Bad Request [ Couldn't find request or it is blank ]");
+            writeResponse(resp, "400", "Bad Request [ Couldn't find parameter (message) in the request or it is blank ]");
             throw e;
         }
 
