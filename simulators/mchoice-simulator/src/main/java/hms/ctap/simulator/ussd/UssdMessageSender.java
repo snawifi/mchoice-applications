@@ -23,6 +23,7 @@ import org.eclipse.jetty.http.HttpHeaders;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -90,7 +91,7 @@ public class UssdMessageSender {
     public static UssdMessageSender getInstance() {
         if (ussdMessageSender == null) {
             ussdMessageSender = new UssdMessageSender();
-            final HashMap<String, Conversation> hashMap = new HashMap<String, Conversation>();
+            final Map<String, Conversation> hashMap = new ConcurrentHashMap<String, Conversation>();
             ussdMessageSender.conversationMap = hashMap;
             ussdMessageSender.executorService = Executors.newSingleThreadScheduledExecutor();
             ussdMessageSender.executorService.scheduleAtFixedRate(new Runnable() {
@@ -102,12 +103,12 @@ public class UssdMessageSender {
                         e.printStackTrace();
                     }
                 }
-            }, 60, 60, TimeUnit.SECONDS);
+            }, 180, 60, TimeUnit.SECONDS);
         }
         return ussdMessageSender;
     }
 
-    private static void execute(UssdMessageSender ussdMessageSender, HashMap<String, Conversation> hashMap) throws IOException {
+    private static void execute(UssdMessageSender ussdMessageSender, Map<String, Conversation> hashMap) throws IOException {
         if (!hashMap.isEmpty()) {
             for (Map.Entry<String, Conversation> entry : hashMap.entrySet()) {
                 final PostMethod postMethod =
