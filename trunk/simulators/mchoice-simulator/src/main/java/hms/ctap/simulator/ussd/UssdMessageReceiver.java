@@ -111,6 +111,7 @@ public class UssdMessageReceiver extends HttpServlet {
             }
         } else if (messageSender.isConversationIdValid(ussdAoRequestMessage.getAddress(), ussdAoRequestMessage.getConversationId())) {
             receivedMessages.add(ussdAoRequestMessage);
+            messageSender.updateLastConversationTime(ussdAoRequestMessage.getAddress(), System.currentTimeMillis());
             createSuccessResponse(mchoiceUssdResponse);
         } else {
             createFailedResponse(mchoiceUssdResponse, "Incorrect Conversation Id");

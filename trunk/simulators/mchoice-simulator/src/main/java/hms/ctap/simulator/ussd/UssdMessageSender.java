@@ -74,7 +74,7 @@ public class UssdMessageSender {
     private String checkAddNewConversation(String address, String url) {
         Conversation conversationId = conversationMap.get(address);
         if (conversationId == null) {
-            conversationId = new Conversation(String.valueOf(Math.random() * 10000000000l), url);
+            conversationId = new Conversation(String.valueOf(Math.random() * 10000000000l), url, System.currentTimeMillis());
             conversationMap.put(address, conversationId);
         }
         return conversationId.getConversationId();
@@ -87,6 +87,10 @@ public class UssdMessageSender {
     public boolean isConversationIdValid(String address, String conversationId) {
         return (conversationMap.get(address) != null &&
                 conversationMap.get(address).getConversationId().contentEquals(conversationId));
+    }
+
+    public void updateLastConversationTime(String address, long time) {
+        conversationMap.get(address).setLastConversationTime(time);
     }
 
     public static UssdMessageSender getInstance() {
@@ -112,15 +116,17 @@ public class UssdMessageSender {
     private static void execute(UssdMessageSender ussdMessageSender, Map<String, Conversation> hashMap) throws IOException {
         if (!hashMap.isEmpty()) {
             for (Map.Entry<String, Conversation> entry : hashMap.entrySet()) {
-                final PostMethod postMethod =
+                if(System.currentTimeMillis() - entry.getValue().getLastConversationTime() > 60*1000) {
+                    final PostMethod postMethod =
                         ussdMessageSender.createPostClient(entry.getValue().getUrl(), entry.getKey(),
                         MchoiceUssdMessage.USSD_TERMINATE_MESSAGE);
-                final UssdTerminateMessage ussdMessage = new UssdTerminateMessage();
-                ussdMessage.setCorrelationId("89898989898");
-                ussdMessage.setAddress(entry.getKey());
-                postMethod.setRequestBody(new Gson().toJson(ussdMessage));
-                hashMap.remove(entry.getKey());
-                ussdMessageSender.httpClient.executeMethod(postMethod);
+                    final UssdTerminateMessage ussdMessage = new UssdTerminateMessage();
+                    ussdMessage.setCorrelationId(String.valueOf(Math.random() * 10000000000l));
+                    ussdMessage.setAddress(entry.getKey());
+                    postMethod.setRequestBody(new Gson().toJson(ussdMessage));
+                    hashMap.remove(entry.getKey());
+                    ussdMessageSender.httpClient.executeMethod(postMethod);
+                }
             }
         }
     }
@@ -129,10 +135,12 @@ public class UssdMessageSender {
 
         private String conversationId;
         private String url;
+        private long lastConversationTime;
 
-        private Conversation(String conversationId, String url) {
+        private Conversation(String conversationId, String url, long  lastConversationTime) {
             this.conversationId = conversationId;
             this.url = url;
+            this.lastConversationTime = lastConversationTime;
         }
 
         public String getConversationId() {
@@ -149,6 +157,14 @@ public class UssdMessageSender {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+
+        public long getLastConversationTime() {
+            return lastConversationTime;
+        }
+
+        public void setLastConversationTime(long lastConversationTime) {
+            this.lastConversationTime = lastConversationTime;
         }
     }
 }
