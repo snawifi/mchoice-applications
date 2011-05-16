@@ -45,6 +45,7 @@ public class TabViewImpl extends TabView {
         phoneImageMessageLabel = new Label();
         phoneImageNumLabel.setWidth("98px");
         phoneImageNumLabel.setStyleName("address-display");
+        phoneImageMessageLabel.setContentMode(Label.CONTENT_PREFORMATTED);
         phoneImageMessageLabel.setWidth("98px");
         phoneImageMessageLabel.setStyleName("message-display");
         refresher = new Refresher();
