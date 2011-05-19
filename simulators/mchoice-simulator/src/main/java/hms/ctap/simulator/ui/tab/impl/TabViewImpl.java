@@ -150,12 +150,14 @@ public class TabViewImpl extends TabView {
         backgroundLayout.setStyleName("mobile-phone-background");
 
         VerticalLayout displayLayout = new VerticalLayout();
-
+        displayLayout.setWidth("98px");
         displayLayout.addComponent(phoneImageNumLabel);
         displayLayout.addComponent(phoneImageMessageLabel);
         displayLayout.addComponent(refresher);
+        displayLayout.setExpandRatio(phoneImageMessageLabel, 1.0f);
 
         backgroundLayout.addComponent(displayLayout);
+        backgroundLayout.setExpandRatio(displayLayout, 1.0f);
         return backgroundLayout;
     }
 

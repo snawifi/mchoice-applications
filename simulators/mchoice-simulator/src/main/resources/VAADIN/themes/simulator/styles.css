@@ -35,7 +35,10 @@
     border: none;
     width: 98px;
     height: 112px;
-    font-size:12px;
+    font-size:10px;
+    line-height:11px;
+    white-space:pre-wrap;
+    padding-right:21px;
 }
 
 .address-display {
