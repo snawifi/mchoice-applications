@@ -11,6 +11,8 @@ import hms.ctap.simulator.ui.services.NcsService;
 import hms.ctap.simulator.ui.services.NcsUIService;
 import hms.ctap.simulator.ui.tab.TabView;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -80,7 +82,7 @@ public class TabViewImpl extends TabView {
         Button sendMsgButton = new Button("Send");
         sendMsgButton.addListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-                final String address = getPhoneNoField().getValue().toString();
+                final String address = encryptAddress(getPhoneNoField().getValue().toString());
                 final String message = getMessageField().getValue().toString();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
                 try {
@@ -94,6 +96,25 @@ public class TabViewImpl extends TabView {
             }
         });
         return sendMsgButton;
+    }
+
+    /**
+     *
+     * @param phoneNo
+     * @return  the MD5 checksum of the phoneNo
+     */
+    private String encryptAddress(String phoneNo) {
+        String encryptedAddress = "";
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            byte[] bytes = messageDigest.digest(phoneNo.getBytes());
+            for (int i=0; i < bytes.length; i++) { //converting byte array to hex string
+                encryptedAddress += Integer.toString( ( bytes[i] & 0xff ) + 0x100, 16).substring( 1 );
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return encryptedAddress;
     }
 
     @Override
