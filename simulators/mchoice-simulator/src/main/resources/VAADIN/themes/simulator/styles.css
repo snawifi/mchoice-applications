@@ -33,7 +33,7 @@
 .message-display {
     background-color: #ffffff;
     border: none;
-    width: 98px;
+    /*width: 98px;*/
     height: 112px;
     font-size:10px;
     line-height:11px;
@@ -46,7 +46,7 @@
     width: 98px;
     height: 15px;
     border-bottom: 1px solid #7d7d7d;
-    font-size:12px;
+    font-size:10px;
     text-align:center;
 }
 

@@ -48,7 +48,6 @@ public class TabViewImpl extends TabView {
         phoneImageNumLabel.setWidth("98px");
         phoneImageNumLabel.setStyleName("address-display");
         phoneImageMessageLabel.setContentMode(Label.CONTENT_PREFORMATTED);
-        phoneImageMessageLabel.setWidth("98px");
         phoneImageMessageLabel.setStyleName("message-display");
         refresher = new Refresher();
     }
@@ -137,14 +136,20 @@ public class TabViewImpl extends TabView {
         tabLayout.addComponent(tabUpperLayout);
 
         HorizontalLayout tableLayout = new HorizontalLayout();
-        tableLayout.setSpacing(true);
+        tableLayout.setSpacing(false);
+        tableLayout.setMargin(false);
         tableLayout.setWidth("100%");
+        tableLayout.setHeight("230px");
 
         HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
+        receivedMessageTableLayout.setHeight("100%");
+        receivedMessageTableLayout.setMargin(true);
         receivedMessageTableLayout.setStyleName("received-message-table");
         receivedMessageTableLayout.addComponent(receivedMessageTable);
 
         HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
+        sentMessageTableLayout.setHeight("100%");
+        sentMessageTableLayout.setMargin(true);
         sentMessageTableLayout.setStyleName("sent-message-table");
         sentMessageTableLayout.addComponent(sentMessageTable);
 
@@ -173,12 +178,15 @@ public class TabViewImpl extends TabView {
         VerticalLayout displayLayout = new VerticalLayout();
         displayLayout.setWidth("98px");
         displayLayout.addComponent(phoneImageNumLabel);
-        displayLayout.addComponent(phoneImageMessageLabel);
-        displayLayout.addComponent(refresher);
-        displayLayout.setExpandRatio(phoneImageMessageLabel, 1.0f);
 
+        HorizontalLayout messageLayout = new HorizontalLayout();
+        messageLayout.setWidth("98px");
+        messageLayout.addComponent(phoneImageMessageLabel);
+        messageLayout.setExpandRatio(phoneImageMessageLabel,1);
+
+        displayLayout.addComponent(messageLayout);
+        displayLayout.addComponent(refresher);
         backgroundLayout.addComponent(displayLayout);
-        backgroundLayout.setExpandRatio(displayLayout, 1.0f);
         return backgroundLayout;
     }
 
