@@ -46,9 +46,12 @@ public class SmsNcsUIService implements NcsUIService {
         for (String heading : headings) {
             sentMsgTable.addContainerProperty(heading, String.class, null);
         }
+        sentMsgTable.setColumnWidth(headings[0], 30);
         sentMsgTable.setColumnWidth(headings[1], 100);
         sentMsgTable.setColumnWidth(headings[2], 100);
-        sentMsgTable.setHeight("230px");
+        sentMsgTable.setColumnWidth(headings[3], 35);
+        sentMsgTable.setHeight("100%");
+        sentMsgTable.setWidth("100%");
         return sentMsgTable;
     }
 
@@ -60,9 +63,11 @@ public class SmsNcsUIService implements NcsUIService {
         for (String heading : headings) {
             receivedMsgTable.addContainerProperty(heading, String.class, null);
         }
+        receivedMsgTable.setColumnWidth(headings[0], 30);
         receivedMsgTable.setColumnWidth(headings[1], 100);
-        receivedMsgTable.setColumnWidth(headings[2], 200);
-        receivedMsgTable.setHeight("230px");
+        receivedMsgTable.setColumnWidth(headings[2], 180);
+        receivedMsgTable.setHeight("100%");
+        receivedMsgTable.setWidth("100%");
         return receivedMsgTable;
     }
 
