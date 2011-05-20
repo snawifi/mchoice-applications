@@ -45,6 +45,7 @@ public class UssdNcsUIService implements NcsUIService {
         for (String heading : headings) {
             sentMsgTable.addContainerProperty(heading, String.class, null);
         }
+        sentMsgTable.setColumnWidth(headings[1], 100);
         sentMsgTable.setColumnWidth(headings[2], 100);
         sentMsgTable.setHeight("230px");
         return sentMsgTable;
@@ -58,6 +59,7 @@ public class UssdNcsUIService implements NcsUIService {
         for (String heading : headings) {
             receivedMsgTable.addContainerProperty(heading, String.class, null);
         }
+        receivedMsgTable.setColumnWidth(headings[1], 100);
         receivedMsgTable.setColumnWidth(headings[2], 110);
         receivedMsgTable.setHeight("230px");
         return receivedMsgTable;
