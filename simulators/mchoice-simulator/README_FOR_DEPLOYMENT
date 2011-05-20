@@ -31,3 +31,18 @@
 	Type the message inside the message field
 	Click on the send button to send the message to the application
 
+5. Response messages
+
+    SMS
+        SBL-SMS-MT-2000, SUCCESS                                                              -> success message
+        ADDRESS-NOT-SPECIFIED, Check if the address has been correctly set                    -> if address is missing
+        UNAUTHORIZED-REQUEST, Request could not be authenticated                              -> if appid/password missing
+        400, Bad Request [ Couldn't find parameter (message) in the request or it is blank ]  -> if message field is blank
+
+    USSD
+        SBL-USSD-2000, Sucess                                                                 -> success message
+        ERROR, Unautorized Request , AppId or Password Missing                                -> if appid/password missing
+        ERROR, Address not specified                                                          -> if address is missing
+        ERROR, Address not found                                                              -> if address is incorrect
+        ERROR, Incorrect Conversation Id                                                      -> if conversation id is incorrect
+
