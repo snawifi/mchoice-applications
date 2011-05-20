@@ -64,7 +64,7 @@ public class SmsNcsUIService implements NcsUIService {
             receivedMsgTable.addContainerProperty(heading, String.class, null);
         }
         receivedMsgTable.setColumnWidth(headings[0], 30);
-        receivedMsgTable.setColumnWidth(headings[1], 100);
+        receivedMsgTable.setColumnWidth(headings[1], 110);
         receivedMsgTable.setColumnWidth(headings[2], 180);
         receivedMsgTable.setHeight("100%");
         receivedMsgTable.setWidth("100%");
