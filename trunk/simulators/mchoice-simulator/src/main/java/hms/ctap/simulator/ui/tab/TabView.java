@@ -38,7 +38,6 @@ public abstract class TabView {
 
         Panel inputPanel = new Panel("Send Message");
 
-
         inputPanel.addComponent(createPanelLayout("App URL", urlTextField, "http://127.0.0.1:8080/"));
         inputPanel.addComponent(createPanelLayout("Phone #", phoneNoField, "94721345678"));
         inputPanel.addComponent(createPanelLayout("Message ", messageField, "Test Message"));
@@ -56,7 +55,8 @@ public abstract class TabView {
         HorizontalLayout msgLayout = new HorizontalLayout();
         msgLayout.setSpacing(true);
         Label msgLabel = new Label(msg);
-        msgLabel.setWidth("75px");
+        msgLabel.setWidth("65px");
+        textField.setWidth("150px");
         msgLayout.addComponent(msgLabel);
         msgLayout.addComponent(textField);
         textField.setValue(textValue);
