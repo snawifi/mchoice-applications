@@ -121,6 +121,8 @@ public class TabViewImpl extends TabView {
 
         VerticalLayout tabLayout = new VerticalLayout();
         tabLayout.setMargin(true);
+        tabLayout.setWidth("760px");
+        tabLayout.setHeight("540px");
 
         HorizontalLayout tabUpperLayout = new HorizontalLayout();
         tabUpperLayout.setWidth("100%");
@@ -137,30 +139,31 @@ public class TabViewImpl extends TabView {
 
         HorizontalLayout tableLayout = new HorizontalLayout();
         tableLayout.setSpacing(false);
-        tableLayout.setMargin(false);
+        tableLayout.setMargin(true);
         tableLayout.setWidth("100%");
-        tableLayout.setHeight("230px");
+        tableLayout.setHeight("220px");
 
         HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
         receivedMessageTableLayout.setHeight("100%");
-        receivedMessageTableLayout.setMargin(true);
+        receivedMessageTableLayout.setMargin(false);
         receivedMessageTableLayout.setStyleName("received-message-table");
         receivedMessageTableLayout.addComponent(receivedMessageTable);
 
         HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
         sentMessageTableLayout.setHeight("100%");
-        sentMessageTableLayout.setMargin(true);
+        sentMessageTableLayout.setMargin(false);
         sentMessageTableLayout.setStyleName("sent-message-table");
         sentMessageTableLayout.addComponent(sentMessageTable);
 
         tableLayout.addComponent(receivedMessageTableLayout);
         tableLayout.addComponent(sentMessageTableLayout);
-        tableLayout.setComponentAlignment(receivedMessageTableLayout, Alignment.MIDDLE_CENTER);
-        tableLayout.setComponentAlignment(sentMessageTableLayout, Alignment.MIDDLE_CENTER);
+        tableLayout.setComponentAlignment(receivedMessageTableLayout, Alignment.MIDDLE_LEFT);
+        tableLayout.setComponentAlignment(sentMessageTableLayout, Alignment.MIDDLE_RIGHT);
 
         refresher.setRefreshInterval(REFRESH_INTERVAL);
         tableLayout.addComponent(refresher);
         tabLayout.addComponent(tableLayout);
+        tabLayout.setExpandRatio(tableLayout, 1.0f);
         return tabLayout;
     }
 
