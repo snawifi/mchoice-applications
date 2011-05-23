@@ -139,19 +139,21 @@ public class TabViewImpl extends TabView {
 
         HorizontalLayout tableLayout = new HorizontalLayout();
         tableLayout.setSpacing(false);
-        tableLayout.setMargin(true);
+        tableLayout.setMargin(true,false,true,true);
         tableLayout.setWidth("100%");
         tableLayout.setHeight("220px");
 
         HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
         receivedMessageTableLayout.setHeight("100%");
         receivedMessageTableLayout.setMargin(false);
+        receivedMessageTableLayout.setSpacing(false);
         receivedMessageTableLayout.setStyleName("received-message-table");
         receivedMessageTableLayout.addComponent(receivedMessageTable);
 
         HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
         sentMessageTableLayout.setHeight("100%");
         sentMessageTableLayout.setMargin(false);
+        sentMessageTableLayout.setSpacing(false);
         sentMessageTableLayout.setStyleName("sent-message-table");
         sentMessageTableLayout.addComponent(sentMessageTable);
 
