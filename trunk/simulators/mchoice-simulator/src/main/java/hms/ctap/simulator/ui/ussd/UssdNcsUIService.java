@@ -45,10 +45,11 @@ public class UssdNcsUIService implements NcsUIService {
         for (String heading : headings) {
             sentMsgTable.addContainerProperty(heading, String.class, null);
         }
-        sentMsgTable.setColumnWidth(headings[0], 30);
-        sentMsgTable.setColumnWidth(headings[1], 95);
-        sentMsgTable.setColumnWidth(headings[2], 100);
-        sentMsgTable.setColumnWidth(headings[3], 35);
+        sentMsgTable.setColumnExpandRatio(headings[0], 0.08f);
+        sentMsgTable.setColumnExpandRatio(headings[1], 0.25f);
+        sentMsgTable.setColumnExpandRatio(headings[2], 0.60f);
+        sentMsgTable.setColumnExpandRatio(headings[3], 0.07f);
+
         sentMsgTable.setHeight("100%");
         sentMsgTable.setWidth("100%");
         return sentMsgTable;
@@ -62,10 +63,11 @@ public class UssdNcsUIService implements NcsUIService {
         for (String heading : headings) {
             receivedMsgTable.addContainerProperty(heading, String.class, null);
         }
-        receivedMsgTable.setColumnWidth(headings[0], 30);
-        receivedMsgTable.setColumnWidth(headings[1], 85);
-        receivedMsgTable.setColumnWidth(headings[2], 90);
-        receivedMsgTable.setColumnWidth(headings[3], 95);
+        receivedMsgTable.setColumnExpandRatio(headings[0], 0.08f);
+        receivedMsgTable.setColumnExpandRatio(headings[1], 0.20f);
+        receivedMsgTable.setColumnExpandRatio(headings[2], 0.17f);
+        receivedMsgTable.setColumnExpandRatio(headings[3], 0.50f);
+
         receivedMsgTable.setHeight("100%");
         receivedMsgTable.setWidth("100%");
         return receivedMsgTable;

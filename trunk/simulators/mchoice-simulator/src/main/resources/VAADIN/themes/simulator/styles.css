@@ -33,10 +33,9 @@
 .message-display {
     background-color: #ffffff;
     border: none;
-    /*width: 98px;*/
     height: 112px;
     font-size:10px;
-    line-height:11px;
+    line-height:10px;
     white-space: pre-wrap;
     padding-right:21px;
 }
@@ -72,23 +71,38 @@
 }
 
 /*vaadin table caption */
-.sent-message-table {
-    width: 390px !important;
-}
-.received-message-table {
-    width: 390px !important;
-}
-
 .v-caption-sent-message-table .v-captiontext {
     color: #f14c1a;
     padding-bottom: 7px;
     font-size: 16px;
 }
-.v-table-body{
-    font-size: 12px;
-}
 
 /*table row height*/
 .v-table-components-inside .v-table-cell-content {
     height: 36px;
+}
+
+/*vaadin table borders*/
+.v-table-header-wrap {
+	height: 36px;
+    -moz-border-radius-topleft : 15px;
+    -moz-border-radius-topright : 15px;
+    border-radius: 10px;
+    border: 1px solid #b6bbbc;
+	border-bottom: none;
+}
+.v-table-header {
+	height: 36px;
+}
+
+.v-table-body {
+    font-size: 12px;
+	background: #fff;
+    -moz-border-radius-bottomleft : 15px;
+    -moz-border-radius-bottomright : 15px;
+	border: 1px solid #b6bbbc;
+}
+.v-table-cell-content {
+    padding: 0 6px 0 4px;
+    border-right: 1px solid #b6bbbc;
 }

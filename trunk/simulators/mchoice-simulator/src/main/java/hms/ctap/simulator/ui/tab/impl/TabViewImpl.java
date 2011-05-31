@@ -50,6 +50,7 @@ public class TabViewImpl extends TabView {
         phoneImageMessageLabel.setContentMode(Label.CONTENT_RAW);
         phoneImageMessageLabel.setStyleName("message-display");
         refresher = new Refresher();
+        refresher.setRefreshInterval(REFRESH_INTERVAL);
     }
 
     public void init() {
@@ -121,8 +122,7 @@ public class TabViewImpl extends TabView {
 
         VerticalLayout tabLayout = new VerticalLayout();
         tabLayout.setMargin(true);
-        tabLayout.setWidth("760px");
-        tabLayout.setHeight("540px");
+        tabLayout.setSpacing(true);
 
         HorizontalLayout tabUpperLayout = new HorizontalLayout();
         tabUpperLayout.setWidth("100%");
@@ -137,35 +137,28 @@ public class TabViewImpl extends TabView {
         tabUpperLayout.setComponentAlignment(inputFieldPanel, Alignment.TOP_RIGHT);
         tabLayout.addComponent(tabUpperLayout);
 
-        HorizontalLayout tableLayout = new HorizontalLayout();
-        tableLayout.setSpacing(false);
-        tableLayout.setMargin(true,false,true,true);
+        VerticalLayout tableLayout = new VerticalLayout();
+        tableLayout.setSpacing(true);
+        tableLayout.setMargin(true);
         tableLayout.setWidth("100%");
-        tableLayout.setHeight("220px");
 
         HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
-        receivedMessageTableLayout.setHeight("100%");
+        receivedMessageTableLayout.setHeight("220px");
+        receivedMessageTableLayout.setWidth("100%");
         receivedMessageTableLayout.setMargin(false);
-        receivedMessageTableLayout.setSpacing(false);
-        receivedMessageTableLayout.setStyleName("received-message-table");
         receivedMessageTableLayout.addComponent(receivedMessageTable);
 
         HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
-        sentMessageTableLayout.setHeight("100%");
+        sentMessageTableLayout.setHeight("220px");
+        sentMessageTableLayout.setWidth("100%");
         sentMessageTableLayout.setMargin(false);
-        sentMessageTableLayout.setSpacing(false);
-        sentMessageTableLayout.setStyleName("sent-message-table");
         sentMessageTableLayout.addComponent(sentMessageTable);
 
         tableLayout.addComponent(receivedMessageTableLayout);
         tableLayout.addComponent(sentMessageTableLayout);
-        tableLayout.setComponentAlignment(receivedMessageTableLayout, Alignment.MIDDLE_LEFT);
-        tableLayout.setComponentAlignment(sentMessageTableLayout, Alignment.MIDDLE_RIGHT);
-
-        refresher.setRefreshInterval(REFRESH_INTERVAL);
-        tableLayout.addComponent(refresher);
+//        tableLayout.addComponent(refresher);
         tabLayout.addComponent(tableLayout);
-        tabLayout.setExpandRatio(tableLayout, 1.0f);
+
         return tabLayout;
     }
 
@@ -190,10 +183,9 @@ public class TabViewImpl extends TabView {
         messageLayout.setExpandRatio(phoneImageMessageLabel,1);
 
         displayLayout.addComponent(messageLayout);
-        displayLayout.addComponent(refresher);
+//        displayLayout.addComponent(refresher);
         backgroundLayout.addComponent(displayLayout);
         return backgroundLayout;
     }
-
 
 }
