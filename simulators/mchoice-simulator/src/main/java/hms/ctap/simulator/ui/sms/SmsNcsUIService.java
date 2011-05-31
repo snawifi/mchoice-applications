@@ -29,7 +29,6 @@ public class SmsNcsUIService implements NcsUIService {
 
     private Table sentMsgTable;
     private int sentRowCount = 1;
-    private int receivedRowCount = 1;
     private Table receivedMsgTable;
 
     @Override
@@ -38,7 +37,6 @@ public class SmsNcsUIService implements NcsUIService {
         receivedMsgTable = new Table("Received Messages");
     }
 
-
     @Override
     public Table createSentMessageService() {
 
@@ -46,10 +44,11 @@ public class SmsNcsUIService implements NcsUIService {
         for (String heading : headings) {
             sentMsgTable.addContainerProperty(heading, String.class, null);
         }
-        sentMsgTable.setColumnWidth(headings[0], 30);
-        sentMsgTable.setColumnWidth(headings[1], 95);
-        sentMsgTable.setColumnWidth(headings[2], 100);
-        sentMsgTable.setColumnWidth(headings[3], 35);
+        sentMsgTable.setColumnExpandRatio(headings[0], 0.08f);
+        sentMsgTable.setColumnExpandRatio(headings[1], 0.25f);
+        sentMsgTable.setColumnExpandRatio(headings[2], 0.60f);
+        sentMsgTable.setColumnExpandRatio(headings[3], 0.07f);
+
         sentMsgTable.setHeight("100%");
         sentMsgTable.setWidth("100%");
         return sentMsgTable;
@@ -63,9 +62,10 @@ public class SmsNcsUIService implements NcsUIService {
         for (String heading : headings) {
             receivedMsgTable.addContainerProperty(heading, String.class, null);
         }
-        receivedMsgTable.setColumnWidth(headings[0], 30);
-        receivedMsgTable.setColumnWidth(headings[1], 110);
-        receivedMsgTable.setColumnWidth(headings[2], 170);
+        receivedMsgTable.setColumnExpandRatio(headings[0], 0.08f);
+        receivedMsgTable.setColumnExpandRatio(headings[1], 0.30f);
+        receivedMsgTable.setColumnExpandRatio(headings[2], 0.62f);
+
         receivedMsgTable.setHeight("100%");
         receivedMsgTable.setWidth("100%");
         return receivedMsgTable;
