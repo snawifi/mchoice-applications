@@ -142,20 +142,46 @@ public class TabViewImpl extends TabView {
         tableLayout.setMargin(true);
         tableLayout.setWidth("100%");
 
+        VerticalLayout receivedOuterLayout = new VerticalLayout();
+        receivedOuterLayout.setWidth("100%");
+        receivedOuterLayout.setMargin(false);
+        receivedOuterLayout.setSpacing(false);
+        receivedOuterLayout.setStyleName("table-outer-layout");
+
         HorizontalLayout receivedMessageTableLayout = new HorizontalLayout();
         receivedMessageTableLayout.setHeight("220px");
         receivedMessageTableLayout.setWidth("100%");
         receivedMessageTableLayout.setMargin(false);
         receivedMessageTableLayout.addComponent(receivedMessageTable);
+        receivedOuterLayout.addComponent(receivedMessageTableLayout);
+
+        HorizontalLayout receivedBottomLayout = new HorizontalLayout();
+        receivedBottomLayout.setHeight("8px");
+        receivedBottomLayout.setWidth("100%");
+        receivedBottomLayout.setStyleName("bottom-layout");
+        receivedOuterLayout.addComponent(receivedBottomLayout);
+
+        VerticalLayout sentOuterLayout = new VerticalLayout();
+        sentOuterLayout.setWidth("100%");
+        sentOuterLayout.setMargin(false);
+        sentOuterLayout.setSpacing(false);
+        sentOuterLayout.setStyleName("table-outer-layout");
 
         HorizontalLayout sentMessageTableLayout = new HorizontalLayout();
         sentMessageTableLayout.setHeight("220px");
         sentMessageTableLayout.setWidth("100%");
         sentMessageTableLayout.setMargin(false);
         sentMessageTableLayout.addComponent(sentMessageTable);
+        sentOuterLayout.addComponent(sentMessageTableLayout);
 
-        tableLayout.addComponent(receivedMessageTableLayout);
-        tableLayout.addComponent(sentMessageTableLayout);
+        HorizontalLayout sentBottomLayout = new HorizontalLayout();
+        sentBottomLayout.setHeight("8px");
+        sentBottomLayout.setWidth("100%");
+        sentBottomLayout.setStyleName("bottom-layout");
+        sentOuterLayout.addComponent(sentBottomLayout);
+
+        tableLayout.addComponent(receivedOuterLayout);
+        tableLayout.addComponent(sentOuterLayout);
 //        tableLayout.addComponent(refresher);
         tabLayout.addComponent(tableLayout);
 
