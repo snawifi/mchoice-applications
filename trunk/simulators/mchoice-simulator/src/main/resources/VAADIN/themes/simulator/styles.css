@@ -49,6 +49,22 @@
     text-align:center;
 }
 
+/*for layout containing table and bottom layout*/
+.table-outer-layout {
+    border:none;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+/*for layout below tables*/
+.bottom-layout {
+    padding-top: 0px;
+    -moz-border-radius-bottomleft : 10px;
+    -moz-border-radius-bottomright : 10px;
+    border: 1px solid #b6bbbc;
+    border-top: 0px #ffffff;
+}
+
 /*----------------------Edited Vaadin Styles--------------------*/
 
 /*vaadin table column header alignment*/
@@ -85,8 +101,8 @@
 /*vaadin table borders*/
 .v-table-header-wrap {
 	height: 36px;
-    -moz-border-radius-topleft : 15px;
-    -moz-border-radius-topright : 15px;
+    -moz-border-radius-topleft : 10px;
+    -moz-border-radius-topright : 10px;
     border-radius: 10px;
     border: 1px solid #b6bbbc;
 	border-bottom: none;
@@ -98,11 +114,11 @@
 .v-table-body {
     font-size: 12px;
 	background: #fff;
-    -moz-border-radius-bottomleft : 15px;
-    -moz-border-radius-bottomright : 15px;
-	border: 1px solid #b6bbbc;
+	border-left: 1px solid #b6bbbc;
+    border-right: 1px solid #b6bbbc;
+    border-top: 1px solid #b6bbbc;
+    border-bottom: none;
 }
 .v-table-cell-content {
     padding: 0 6px 0 4px;
-    border-right: 1px solid #b6bbbc;
 }
