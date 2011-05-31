@@ -182,7 +182,7 @@ public class TabViewImpl extends TabView {
 
         tableLayout.addComponent(receivedOuterLayout);
         tableLayout.addComponent(sentOuterLayout);
-//        tableLayout.addComponent(refresher);
+        tableLayout.addComponent(refresher);
         tabLayout.addComponent(tableLayout);
 
         return tabLayout;
@@ -209,7 +209,7 @@ public class TabViewImpl extends TabView {
         messageLayout.setExpandRatio(phoneImageMessageLabel,1);
 
         displayLayout.addComponent(messageLayout);
-//        displayLayout.addComponent(refresher);
+        displayLayout.addComponent(refresher);
         backgroundLayout.addComponent(displayLayout);
         return backgroundLayout;
     }
