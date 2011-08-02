@@ -1,5 +1,6 @@
 #summary One-sentence summary of this page.
-#sidebar Test1
+#sidebar Introduction
+
 = Introduction =
 
 Add your content here.
