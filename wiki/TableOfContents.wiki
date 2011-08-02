@@ -26,5 +26,5 @@
    * [SingleClick .NET Guide]
    * [SingleClick PHP Guide]
    * [SingleClick Ruby Guide]
- * [RegistrationGuide APP Registration Guide]
+ * [RegistrationGuide Application Registration Guide]
  * [faq FAQ]
