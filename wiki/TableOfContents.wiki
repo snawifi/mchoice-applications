@@ -3,13 +3,13 @@
 
  * [GettingStart Getting Started]
     * SMS
-       * [JavaGuide Java Guide]
+       * [JavaGuide#SMS_Guide Java Guide]
        * [DotNETGuide .NET Guide]
        * [PHPGuide PHP Guide]
        * [RubyGuide Ruby Guide]
        * [VideoDemos Video Guides]
     * USSD
-       * [JavaGuide Java Guide]
+       * [JavaGuide#USSD_Guide Java Guide]
        * [DotNETGuide .NET Guide]
        * [PHPGuide PHP Guide]
        * [RubyGuide Ruby Guide]
