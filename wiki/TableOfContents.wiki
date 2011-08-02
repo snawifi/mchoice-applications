@@ -19,12 +19,12 @@
     * USSD
        * [JavaSamples Java Samples]
        * [DotNETSamples .NET Samples]
-       * [PHPSamplesPHP Samples]
+       * [PHPSamples PHP Samples]
        * [RubySamples Ruby Samples]
  * Single Click Downloads
    * [singleClick Java Guide]
-   * [singleClick.NET Guide]
-   * [singleClickPHP Guide]
-   * [singleClickRuby Guide]
+   * [singleClick .NET Guide]
+   * [singleClick PHP Guide]
+   * [singleClick Ruby Guide]
  * [RegistrationGuide APP Registration Guide]
  * [faq FAQ]
