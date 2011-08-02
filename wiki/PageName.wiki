@@ -13,6 +13,15 @@ Add your content here.  Format your content with:
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
 
+
+  {{{ 
+   public static void main(String[] args) {
+    int i = 0;
+    double sum = i + 2.5;
+    System.out.println("Total :" + sum);
+  }
+  }}}
+
  <g:plusone></g:plusone>
 
  * [Introduction HOWTO articles]
