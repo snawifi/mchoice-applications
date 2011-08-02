@@ -7,7 +7,11 @@ Play video clips done by our experts and learn everything from getting started a
 == How to develop an application ==
 
 <wiki:video url="http://www.youtube.com/watch?v=JBmOkNQz_Qk"/>
+<g:plusone size="medium"></g:plusone>
+-----
+
 
 == How to work with simulator  ==
 
 <wiki:video url="http://www.youtube.com/watch?v=zgnFuJux62w"/>
+<g:plusone size="medium"></g:plusone>
