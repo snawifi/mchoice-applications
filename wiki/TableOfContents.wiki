@@ -22,9 +22,9 @@
        * [PHPSamples PHP Samples]
        * [RubySamples Ruby Samples]
  * Single Click Downloads
-   * [singleClick Java Guide]
-   * [singleClick .NET Guide]
-   * [singleClick PHP Guide]
-   * [singleClick Ruby Guide]
+   * [SingleClick Java Guide]
+   * [SingleClick .NET Guide]
+   * [SingleClick PHP Guide]
+   * [SingleClick Ruby Guide]
  * [RegistrationGuide APP Registration Guide]
  * [faq FAQ]
