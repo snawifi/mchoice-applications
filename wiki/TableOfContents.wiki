@@ -27,4 +27,4 @@
    * [SingleClick PHP Guide]
    * [SingleClick Ruby Guide]
  * [RegistrationGuide Application Registration Guide]
- * [faq FAQ]
+ * [FAQ FAQ]
