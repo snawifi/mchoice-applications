@@ -12,12 +12,12 @@ Add your content here.
 
 == .NET Development Package ==
 [http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip .NET Package Download]
-<g:plusone size="medium"></g:plusone>
+<g:plusone size="small"></g:plusone>
 
 == PHP Development Package ==
 [http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip PHP Package Download]
-<g:plusone size="medium"></g:plusone>
+<g:plusone size="small"></g:plusone>
 
 == Ruby Development Package ==
 [http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip Ruby Package Download]
-<g:plusone size="medium"></g:plusone>
+<g:plusone size="small"></g:plusone>
