@@ -1,7 +1,7 @@
 #summary Table of Contents of the mChoice-Application
 <wiki:toc max_depth="1">
 
- * [GettingStart Getting Started]
+ * [GettingStart Getting Start]
     * SMS
        * [JavaGuide#SMS_Guide Java Guide]
        * [DotNETGuide#SMS_Guide  .NET Guide]
