@@ -1,0 +1,10 @@
+#summary Video Guides for mChoice Application development
+#labels Phase-Implementation
+
+= Video Guides = 
+Play video clips done by our experts and learn everything from getting started and to the tools and technologies used to create applications.
+
+== How to develop an application ==
+
+<wiki:video url="http://www.youtube.com/watch?v=JBmOkNQz_Qk"/>
+
