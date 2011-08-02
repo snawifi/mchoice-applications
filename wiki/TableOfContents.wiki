@@ -27,11 +27,11 @@
        * [DotNETSamples .NET Samples]
        * [PHPSamples PHP Samples]
        * [RubySamples Ruby Samples]
- * Single Click Downloads
-   * [SingleClick Java Guide]
-   * [SingleClick .NET Guide]
-   * [SingleClick PHP Guide]
-   * [SingleClick Ruby Guide]
+ * [SingleClick Single Click Downloads]
+   * [SingleClick#JAVA Java Guide]
+   * [SingleClick#.NET .NET Guide]
+   * [SingleClick#PHP PHP Guide]
+   * [SingleClick#Ruby Ruby Guide]
  * [http://developer.hsenidmobile.com/registration.php Register With us]
  * [FAQ FAQ]
 
