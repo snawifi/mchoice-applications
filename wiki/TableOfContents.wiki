@@ -26,7 +26,7 @@
    * [SingleClick .NET Guide]
    * [SingleClick PHP Guide]
    * [SingleClick Ruby Guide]
- * [RegistrationGuide Application Registration Guide]
+ * [http://developer.hsenidmobile.com/registration.php Register With us]
  * [FAQ FAQ]
 
 </wiki:toc>
