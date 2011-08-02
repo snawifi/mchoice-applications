@@ -4,8 +4,17 @@
 
 Add your content here.
 
+== Java Development Package ==
 [http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip mChoice Simulator]
-= Details =
+
+
+== .NET Development Package ==
+
+== PHP Development Package ==
+
+== Ruby Development Package ==
+
+
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
