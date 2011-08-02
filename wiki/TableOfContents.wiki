@@ -14,7 +14,7 @@
     * SMS
        * [JavaSamples Java Samples]
        * [DotNETSamples .NET Samples]
-       * [PHPSamplesPHP Samples]
+       * [PHPSamples PHP Samples]
        * [RubySamples Ruby Samples]
     * USSD
        * [JavaSamples Java Samples]
