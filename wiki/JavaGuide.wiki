@@ -5,6 +5,11 @@
 
 Add your content here.
 
+== SMS Guide ==
+
+
+== USSD Guide ==
+
 
 = Details =
 
