@@ -7,7 +7,7 @@ Add your content here.
 
 == Java Development Package ==
 [http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip Java Package Download]
-<g:plusone size="medium"></g:plusone>
+<g:plusone size="small"></g:plusone>
 
 
 == .NET Development Package ==
