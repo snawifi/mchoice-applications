@@ -1,15 +1,15 @@
 #summary Table of Contents of the mChoice-Application
 #labels Featured
 
- * [Articles HOWTO articles]
-    * [ArticlesXSS Web security]
-    * [ArticlesDom DOM manipulation]
-    * [ArticlesStyle CSS and style]
-    * [ArticlesTips Tips and tricks]
- * [DOMReference DOM reference]
- * [HTMLElements HTML reference]
- * [CSSReference CSS reference]
-
-
+ * Getting Started
+    * [ArticlesXSS Java Guide]
+    * [ArticlesDom .NET Guide]
+    * [ArticlesStyle PHP Guide]
+    * [ArticlesTips Ruby Guide]
+ * [TableOfContents Simulator Guide]
+    * [ArticlesXSS mChoice Simulator]
+    * [ArticlesDom Community Simulator]
+ * [TableOfContentss APP Registration Guide]
+ * [TableOfContents FAQ]
 
 
