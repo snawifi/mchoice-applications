@@ -6,12 +6,18 @@
 Add your content here.
 
 == Java Development Package ==
-[http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip mChoice Simulator]
+[http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip Java Package Download]
+<g:plusone size="medium"></g:plusone>
 
 
 == .NET Development Package ==
+[http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip .NET Package Download]
+<g:plusone size="medium"></g:plusone>
 
 == PHP Development Package ==
+[http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip PHP Package Download]
+<g:plusone size="medium"></g:plusone>
 
 == Ruby Development Package ==
-
+[http://mchoice-applications.googlecode.com/files/mchoice-simulator-0.0.1.zip Ruby Package Download]
+<g:plusone size="medium"></g:plusone>
