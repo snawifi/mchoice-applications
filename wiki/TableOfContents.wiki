@@ -1,5 +1,5 @@
 #summary Table of Contents of the mChoice-Application
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="1">
 
  * [GettingStart Getting Started]
     * [JavaGuide Java Guide]
@@ -28,3 +28,5 @@
    * [SingleClick Ruby Guide]
  * [RegistrationGuide Application Registration Guide]
  * [FAQ FAQ]
+
+</wiki:toc>
