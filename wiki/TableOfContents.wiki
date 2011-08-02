@@ -8,8 +8,8 @@
     * [RubyGuide Ruby Guide]
     * [VideoDemos Video Guides]
  * [SimulatorGuide Simulator Guide]
-    * [ArticlesXSS mChoice Simulator]
-    * [ArticlesDom Community Simulator]
+    * [SimulatorGuide mChoice Simulator]
+    * [SimulatorGuide Community Simulator]
  * Sample Applications
     * SMS
        * [JavaSamples Java Samples]
