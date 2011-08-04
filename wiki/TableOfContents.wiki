@@ -14,6 +14,7 @@
  * [SimulatorGuide Simulator Guide]
     * [SimulatorGuide mChoice Simulator]
     * [SimulatorGuide Community Simulator]
+    * [SimulatorGuide Online Simulator]
  * Sample Applications
     * SMS
        * [JavaSamples Java Samples]
@@ -22,9 +23,6 @@
        * [RubySamples Ruby Samples]
     * USSD
        * [JavaSamples Java Samples]
-       * [DotNETSamples .NET Samples]
-       * [PHPSamples PHP Samples]
-       * [RubySamples Ruby Samples]
  * [SingleClick Single Click Downloads]
    * [SingleClick#Java_Development_Package Java Guide]
    * [SingleClick#.NET_Development_Package .NET Guide]
