@@ -11,8 +11,6 @@
     * USSD
        * [JavaGuide#USSD_Guide Java Guide]
        * [DotNETGuide#USSD_Guide .NET Guide]
-       * [PHPGuide#USSD_Guide PHP Guide]
-       * [RubyGuide#USSD_Guide Ruby Guide]
  * [SimulatorGuide Simulator Guide]
     * [SimulatorGuide mChoice Simulator]
     * [SimulatorGuide Community Simulator]
