@@ -12,7 +12,6 @@
  */
 package hms.ctap.simulator.ui.ussd;
 
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Table;
 import hms.ctap.simulator.ui.services.NcsService;
 import hms.ctap.simulator.ui.services.NcsUIService;
@@ -32,14 +31,14 @@ public class UssdNcsUIService implements NcsUIService {
     private int sentRowCount = 1;
     private Table receivedMsgTable;
 
-    //@Override
+    @Override
     public void init() {
         sentMsgTable = new Table("Sent Messages");
         receivedMsgTable = new Table("Received Messages");
     }
 
 
-    //@Override
+    @Override
     public Table createSentMessageService() {
 
         String[] headings = {"Time", "Phone #", "Message", "Status"};
@@ -57,7 +56,7 @@ public class UssdNcsUIService implements NcsUIService {
 
     }
 
-    //@Override
+    @Override
     public Table createReceivedMessageService() {
 
         String[] headings = {"Time", "Phone #", "Conversation ID", "Message"};
@@ -79,7 +78,7 @@ public class UssdNcsUIService implements NcsUIService {
      * @param objectId
      * @param object
      */
-    //@Override
+    @Override
     public void addElementToReceiveTable(int objectId, Object object) {
 
         if (receivedMsgTable.getItem(objectId) == null) {
@@ -96,46 +95,14 @@ public class UssdNcsUIService implements NcsUIService {
      * @param message
      * @param status
      */
-    //@Override
+    @Override
     public void addElementToSentTable(String date, String address, String message, String status) {
 
         sentMsgTable.addItem(new Object[]{date, address, message, status}, sentRowCount);
         sentRowCount++;
     }
 
-    /**
-     * this method creates a button to clear the recieved messsages table
-     * @return
-     */
-    public Button createClearReceivedMessagesButton() {
-
-        Button clearButton = new Button("Clear Received Messages", new Button.ClickListener(){
-
-            public void buttonClick(com.vaadin.ui.Button.ClickEvent clickEvent) {
-                receivedMsgTable.removeAllItems();
-            }
-        });
-        return clearButton;
-    }
-
-    /**
-     * this method creates a button to clear the sent messages table
-     * meanwhile it sets the row number variable to 1
-     * @return
-     */
-    public Button createClearSentMessagesButton() {
-
-        Button clearButton = new Button("Clear Sent Messages", new Button.ClickListener(){
-
-            public void buttonClick(Button.ClickEvent clickEvent) {
-                sentMsgTable.removeAllItems();
-                sentRowCount = 1;
-            }
-        });
-        return clearButton;
-    }
-
-    //@Override
+    @Override
     public NcsService getNcsService() {
         return NcsService.USSD;
     }
