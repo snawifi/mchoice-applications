@@ -89,7 +89,7 @@ public class TabViewImpl extends TabView {
 	}
 
 	@Override
-	public Button createSendMsgClearButton() {
+	public Button createSendMsgButton() {
 
 		Button sendMsgButton = new Button("Send");
 		sendMsgButton.addListener(new Button.ClickListener() {
