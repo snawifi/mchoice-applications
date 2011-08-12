@@ -1,5 +1,4 @@
 #summary Table of Contents of the mChoice-Application
-<wiki:toc max_depth="1">
 
  * [GettingStart Getting Start]
     * SMS
@@ -31,5 +30,3 @@
  * [http://developer.hsenidmobile.com/registration.php Register With us]
  * [http://developer.hsenidmobile.com/publish_step1.php Publish App ]
  * [FAQ FAQ]
-
-</wiki:toc>
