@@ -42,7 +42,7 @@ public abstract class TabView {
         inputPanel.addComponent(createPanelLayout("Phone #", phoneNoField, "94721345678"));
         inputPanel.addComponent(createPanelLayout("Message ", messageField, "Message Content"));
 
-        Button sendButton = createSendMsgClearButton();
+        Button sendButton = createSendMsgButton();
         inputPanel.addComponent(sendButton);
         final AbstractOrderedLayout content = (AbstractOrderedLayout) inputPanel.getContent();
         content.setSpacing(true);
@@ -66,7 +66,7 @@ public abstract class TabView {
     /**
      * @return the Send Message Button
      */
-    public abstract Button createSendMsgClearButton();
+    public abstract Button createSendMsgButton();
 
 
     public TextField getUrlTextField() {
