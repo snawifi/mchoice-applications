@@ -33,8 +33,8 @@ public enum NcsService {
 
     SMS {
         @Override
-        public void sendMessage(final String myNumber, final String address, final String message) throws IOException {
-            SmsMessageSender.getInstance().sendMessage(myNumber, address, message);
+        public void sendMessage(final String url, final String address, final String message) throws IOException {
+            SmsMessageSender.getInstance().sendMessage(url, address, message);
         }
 
         @Override

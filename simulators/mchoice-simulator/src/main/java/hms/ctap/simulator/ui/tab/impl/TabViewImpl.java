@@ -31,8 +31,6 @@ public class TabViewImpl extends TabView {
 
     final private Table sentMessageTable;
     final private Table receivedMessageTable;
-    final private Button sentMsgClearButton;
-    final private Button receiveMsgClearButton;
     final private NcsUIService ncsUIService;
     final private Label phoneImageNumLabel;
     final private Label phoneImageMessageLabel;
@@ -44,9 +42,6 @@ public class TabViewImpl extends TabView {
         this.ncsUIService = ncsUIService;
         sentMessageTable = ncsUIService.createSentMessageService();
         receivedMessageTable = ncsUIService.createReceivedMessageService();
-
-        sentMsgClearButton = ncsUIService.createClearSentMessagesButton();
-        receiveMsgClearButton = ncsUIService.createClearReceivedMessagesButton();
 
         phoneImageNumLabel = new Label();
         phoneImageMessageLabel = new Label();
@@ -91,8 +86,8 @@ public class TabViewImpl extends TabView {
                 final String message = getMessageField().getValue().toString();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
                 try {
-                    final String myNumber = getUserNumberTextField().getValue().toString();
-                    ncsUIService.getNcsService().sendMessage(myNumber, address, message);
+                    final String url = getUrlTextField().getValue().toString();
+                    ncsUIService.getNcsService().sendMessage(url, address, message);
                     ncsUIService.addElementToSentTable(dateFormat.format(new Date()), address, message, "Success");
                 } catch (Exception e) {
                     ncsUIService.addElementToSentTable(dateFormat.format(new Date()), address, message, "Failed");
@@ -166,8 +161,6 @@ public class TabViewImpl extends TabView {
         receivedBottomLayout.setStyleName("bottom-layout");
         receivedOuterLayout.addComponent(receivedBottomLayout);
 
-        receivedOuterLayout.addComponent(receiveMsgClearButton);
-
         VerticalLayout sentOuterLayout = new VerticalLayout();
         sentOuterLayout.setWidth("100%");
         sentOuterLayout.setMargin(false);
@@ -186,8 +179,6 @@ public class TabViewImpl extends TabView {
         sentBottomLayout.setWidth("100%");
         sentBottomLayout.setStyleName("bottom-layout");
         sentOuterLayout.addComponent(sentBottomLayout);
-
-        sentOuterLayout.addComponent(sentMsgClearButton);
 
         tableLayout.addComponent(receivedOuterLayout);
         tableLayout.addComponent(sentOuterLayout);

@@ -34,17 +34,4 @@ public interface NcsUIService {
     void addElementToReceiveTable(int objectId, Object object);
 
     void addElementToSentTable(String date, String address, String message, String status);
-
-    /**
-     * creates a clear button to received messages list
-     * @return
-     */
-    com.vaadin.ui.Button createClearReceivedMessagesButton();
-
-    /**
-     * creates a clear button to sent messages list
-     * @return
-     */
-    com.vaadin.ui.Button createClearSentMessagesButton();
-
 }

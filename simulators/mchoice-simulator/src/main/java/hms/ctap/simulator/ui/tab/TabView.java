@@ -13,7 +13,7 @@ import com.vaadin.ui.*;
  */
 public abstract class TabView {
 
-    private TextField userNumberTextField;
+    private TextField urlTextField;
     private TextField phoneNoField;
     private TextArea messageField;
 
@@ -22,8 +22,8 @@ public abstract class TabView {
     }
 
     public void init() {
-        userNumberTextField = new TextField();
-        userNumberTextField.setWidth("150px");
+        urlTextField = new TextField();
+        urlTextField.setWidth("150px");
         phoneNoField = new TextField();
         phoneNoField.setWidth("150px");
         messageField = new TextArea();
@@ -38,8 +38,8 @@ public abstract class TabView {
 
         Panel inputPanel = new Panel("Send Message");
 
-        inputPanel.addComponent(createPanelLayout("My #:", userNumberTextField, "94729876543"));
-        inputPanel.addComponent(createPanelLayout("To #:", phoneNoField, "94721345678"));
+        inputPanel.addComponent(createPanelLayout("App URL", urlTextField, "http://127.0.0.1:8080/"));
+        inputPanel.addComponent(createPanelLayout("Phone #", phoneNoField, "94721345678"));
         inputPanel.addComponent(createPanelLayout("Message ", messageField, "Test Message"));
 
         Button sendButton = createSendMsgButton();
@@ -69,8 +69,8 @@ public abstract class TabView {
     public abstract Button createSendMsgButton();
 
 
-    public TextField getUserNumberTextField() {
-        return userNumberTextField;
+    public TextField getUrlTextField() {
+        return urlTextField;
     }
 
     public TextField getPhoneNoField() {
