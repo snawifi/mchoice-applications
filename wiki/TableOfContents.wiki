@@ -11,9 +11,9 @@
        * [JavaGuide#USSD_Guide Java Guide]
        * [DotNETGuide#USSD_Guide .NET Guide]
  * [SimulatorGuide Simulator Guide]
-    * [SimulatorGuide mChoice Simulator]
-    * [SimulatorGuide Community Simulator]
-    * [SimulatorGuide Online Simulator]
+    * [SimulatorGuide#mChoice-Simulator_Guide mChoice Simulator]
+    * [SimulatorGuide#Community_Simulator Community Simulator]
+    * [SimulatorGuide#Online_Simulator Online Simulator]
  * Sample Applications
     * SMS
        * [JavaSamples Java Samples]
