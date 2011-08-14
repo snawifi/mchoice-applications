@@ -9,9 +9,9 @@
 
   **Software Requirements :* JDK 1.6+
   
-  **Step 1: Download the mChoide Simulator
+  **Step 1: Download the mChoide Simulator. [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST]
   
-  **Step 2: Unzip the downloaded [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST]
+  **Step 2: Unzip the downloaded mChoice-Simulator-LATEST.zip.
   
   **Step 3: Run the start-simulator file, in windows double click on start-simulator.bat or in linux run start-simulator.sh file to start the simulator.
   
