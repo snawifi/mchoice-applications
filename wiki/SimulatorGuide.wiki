@@ -1,4 +1,4 @@
-#summary Quick Steps To Start Testing With mChoice Simulator.
+#summary Quick Steps To Start Testing With Simulators.
 #labels Phase-Implementation,Featured,Simulators
 
 = mChoice-Simulator Guide =
@@ -25,3 +25,15 @@
 	   * Click on the send button to send the message to the application
 		  
   **Step 6: Responce message from Application will display in your inbox table of the mChoice-Simulator ui.
+
+
+
+----
+==Community Simulator==
+
+  ** Download the Simulator from [https://github.com/arunoda/AppZone-Community-Simulator/wiki/Download here]
+
+----
+
+==Online Simulator==
+ ** Click [http://sdp-simulator.appspot.com/ui here] to open the online simulator
