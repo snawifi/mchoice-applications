@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Quick Steps To Start Testing With mChoice Simulator.
 #labels Phase-Implementation,Featured,Simulators
 
 = mChoice-Simulator Guide =
