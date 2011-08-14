@@ -16,7 +16,7 @@
     * [SimulatorGuide#Online_Simulator Online Simulator]
  * Sample Applications
     * SMS
-       * [JavaSamples Java Samples]
+       * [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-sms-sample-app.zip Java Samples]
        * [DotNETSamples .NET Samples]
        * [PHPSamples PHP Samples]
        * [RubySamples Ruby Samples]
