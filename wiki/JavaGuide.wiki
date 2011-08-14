@@ -60,4 +60,6 @@
 
   * Step 12: Refer [http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide#mChoice-Simulator_Guide mChoice-Simulator guide] to test the application.
 
+----
+
   ** Hint – When developing complex USSD application with many levels of submenus, have a java.util.Map with the Conversation ID as the key. When a user request for service, check whether this conversation exist on the map. If not, send the user the main menu and add the conversation into the Map. In _onSessionTerminate_ method, remove the Conversation ID from this map. 
