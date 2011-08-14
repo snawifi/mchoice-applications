@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary USSD Java guide for a quicker start.
 #labels Phase-Implementation,Featured,USSD,Java
 
 = Developing USSD Applications using Java USSD API =
