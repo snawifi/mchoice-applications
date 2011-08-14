@@ -4,6 +4,7 @@
 = Developing USSD Applications using Java USSD API =
 ----
 
+
   **Software Requirements:* JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice
 
 
