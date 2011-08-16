@@ -113,7 +113,7 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 <servlet>
 
    <servlet-name>receiver</servlet-name>
-   <servlet-class>MessageReceiver</servlet-class>
+   <servlet-class>demo.MessageReceiver</servlet-class>
 
 </servlet>
     
