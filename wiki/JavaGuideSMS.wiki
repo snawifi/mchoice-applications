@@ -1,0 +1,11 @@
+#Java Guide to Build an SMS Application
+
+= Getting Started: SMS Application > Java =
+
+This tutorial describes how to develop and deploy a simple SMS Application on the Aventura System using Java as the environment. The example application, will demonstrate how to receive users SMS and to respond them back with a message of your own.
+
+= Creating a Project from Scratch =
+
+If you’re using NetBeans as your IDE, go to File -> New Project and under ‘Categories’ choose ‘Java Web’ and under ‘Projects’ choose ‘Web Application’. This is important, as you will be sending and receiving messages through HTTP.
+
+Other Steps..
