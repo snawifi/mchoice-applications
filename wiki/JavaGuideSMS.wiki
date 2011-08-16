@@ -1,14 +1,67 @@
 #summary Java Guide to Build an SMS Application
+#labels Phase-Implementation,Featured,SMS,Java
 
 = Getting Started: SMS Application > Java =
 ----
 
-**Software Requirements:* JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice (For this Tutorial we will be using NetBeans)
+  Software Requirements: JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice (For this guide we will be using NetBeans)
 
-This tutorial describes how to develop and deploy a simple SMS Application on the Aventura System using Java as the environment. The example application, will demonstrate how to receive users SMS and to respond them back with a message of your own.
+  This tutorial describes how to develop and deploy a simple SMS Application on the Aventura System using Java as the environment. The example application, will demonstrate how to receive users SMS and to respond them back with a message of your own.
 
-= Creating a Project from Scratch =
+== Creating a Project from Scratch ==
 
-If you’re using NetBeans as your IDE, go to File -> New Project and under ‘Categories’ choose ‘Java Web’ and under ‘Projects’ choose ‘Web Application’. This is important, as you will be sending and receiving messages through HTTP.
+  If you’re using NetBeans as your IDE, go to *File -> New Project* and under *_‘Categories’_* choose *‘Java Web’* and under *_‘Projects’_* choose *‘Web Application’*. This is important, as you will be sending and receiving messages through HTTP.
 
-Other Steps..
+  Under *_‘Name and Locations’_* you can name your project to your liking, as well as the *_‘Project Location and Folder’_*. For this tutorial we will be naming the project as ‘demo_app’. 
+
+  Next step is choosing the *_‘Server and Settings’_* where you can choose an application server (Tomcat, Glassfish, etc.) of your choice. Afterwards, you can select the frameworks(Spring Web MVC, Struts, Hibernate, etc.)  you want to use on your application, if none, you can proceed by pressing *‘Finish’*.
+
+== Importing API’s ==
+
+  The next step, is to attach the necessary API’s needed to create this java application. These can be downloaded by following this link.
+  [http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-java-api-client-util-LATEST.zip&can=2&q=  sms-java-api-client-util-LATEST]
+  
+  After downloading, you can right-click on *‘Libraries’* and select *_‘Add JAR/Folder’_* and select all the .jar files inside the downloaded folder. 
+
+  Now that all the necessary API’s are imported you can start implementing your idea.
+
+== Implementing Your Idea ==
+
+  For this tutorial, we will first create a java class named *_MessageReceiver_*. Then you will need to extend this class with *_MchoiceAventuraSmsMoServlet_*. (You will need to import the following line in order to do this.)
+{{{
+  import hsenidmobile.sdp.rest.servletbase.MchoiceAventuraSmsMoServlet;
+}}}
+
+  Afterwards you will have to implement an abstract method called *onMessage* . Since all the messages that your application is going to receive will be passed onto this method, it is important to note that your logic should also come inside this method.
+  
+  This *_onMessage_* method takes an instance of *_MchoiceAventuraSmsMessage_* as the paramater. *_MchoiceAventuraSmsMessage_* has methods such as;
+  *_getMessage_* – returns the user's message
+  *_getAddress_* – returns the encrypted address of the user's mobile number
+  *_getCorrelator_* – returns a unique id that uniquely identifies every message
+  *_getVersion_* – returns mChoice aventura http rest API version that is currently used
+
+  Once you get the users message using the above mentioned methods, you can proceed with your logic. For this tutorial, we will simply send a response message “Message Received. Thank You.” back to the user.
+
+  To send a response back to the user, the API has provided another class named *_MchoiceAventuraSmsSender_*, which can send a SMS’s to a mobile phone. While instantiating this class would take the following 3 arguments.
+    *1. URL* (for the application server)
+    *2. Application ID*
+    *3. Application Password*
+
+  For testing purposes, for this tutorial, we will use the following values for these arguments.
+     1. URL  :  *http://127.0.0.1:8000/sms/* 
+     2. Application ID :  *“appid”* 
+     3. Application Password  :  *“password”*
+
+  You will need to wrap this *_MchoiceAventuraSmsSender_* instance with a *try-catch* block, since an exception will be thrown if there is any error on the given URL.
+
+The try-catch block would be as following.
+{{{
+  try {
+            MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:8000/sms/"), "appid", "password");
+      
+  } catch (MalformedURLException ex) {
+        	ex.printStackTrace();
+  }
+}}}
+
+  Other Steps..
