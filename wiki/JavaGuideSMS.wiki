@@ -107,7 +107,7 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 
   For this you will need to go inside the *_WEB-INF -> web.xml_* and make some modifications.
 
-  You will need to add the following inside the *'<'web-app'>'* tag of the web.xml file.
+  You will need to add the following inside the *`<`web-app`>`* tag of the web.xml file.
 
 {{{
 <servlet>
@@ -150,4 +150,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
   _Right-Click_ the project and select Clean and Build to create the _WAR_ file.
 
    Now you can deploy this on an application server of your choice. Refer [http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide#mChoice-Simulator_Guide mChoice-Simulator guide] to test the application.
-  Other Steps..
+
+----
+  
