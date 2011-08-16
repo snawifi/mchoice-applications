@@ -32,29 +32,30 @@
   import hsenidmobile.sdp.rest.servletbase.MchoiceAventuraSmsMoServlet;
 }}}
 
-  Afterwards you will have to implement an abstract method called *onMessage* . Since all the messages that your application is going to receive will be passed onto this method, it is important to note that your logic should also come inside this method.
+  Afterwards you will have to implement an abstract method called *_onMessage_* . Since all the messages that your application is going to receive will be passed onto this method, it is important to note that your logic should also come inside this method.
   
   This *_onMessage_* method takes an instance of *_MchoiceAventuraSmsMessage_* as the paramater. *_MchoiceAventuraSmsMessage_* has methods such as;
-  *_getMessage_* – returns the user's message
-  *_getAddress_* – returns the encrypted address of the user's mobile number
-  *_getCorrelator_* – returns a unique id that uniquely identifies every message
-  *_getVersion_* – returns mChoice aventura http rest API version that is currently used
+
+  * *getMessage* – returns the user's message
+  * *getAddress* – returns the encrypted address of the user's mobile number
+  * *getCorrelator* – returns a unique id that uniquely identifies every message
+  * *getVersion* – returns mChoice aventura http rest API version that is currently used
 
   Once you get the users message using the above mentioned methods, you can proceed with your logic. For this tutorial, we will simply send a response message “Message Received. Thank You.” back to the user.
 
   To send a response back to the user, the API has provided another class named *_MchoiceAventuraSmsSender_*, which can send a SMS’s to a mobile phone. While instantiating this class would take the following 3 arguments.
-    *1. URL* (for the application server)
-    *2. Application ID*
-    *3. Application Password*
+    # *URL* (for the application server)
+    # *Application ID*
+    # *Application Password*
 
   For testing purposes, for this tutorial, we will use the following values for these arguments.
-     1. URL  :  *http://127.0.0.1:8000/sms/* 
-     2. Application ID :  *“appid”* 
-     3. Application Password  :  *“password”*
+    #  URL  :  *[http://127.0.0.1:8000/sms/]* 
+    #  Application ID :  *“appid”* 
+    #  Application Password  :  *“password”*
 
   You will need to wrap this *_MchoiceAventuraSmsSender_* instance with a *try-catch* block, since an exception will be thrown if there is any error on the given URL.
 
-The try-catch block would be as following.
+  The try-catch block would be as following.
 {{{
   try {
             MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:8000/sms/"), "appid", "password");
@@ -64,4 +65,89 @@ The try-catch block would be as following.
   }
 }}}
 
+  Using the newly instantiated *_MchoiceAventuraSmsSender_* instance’s sendMessage method, you can send the message that you desire, back to the user. This method will take 2 parameters.
+    # String *_message_* (the response you want to send back)
+    # String *_userAddress_* (the user’s mobile phone number)
+
+  Now you have completed the *_MessageReceiver_* Class.
+
+  The following is how the *_MessageReceiver_* class would look like after completion.
+
+{{{
+package demo;
+
+import hsenidmobile.sdp.rest.servletbase.MchoiceAventuraMessagingException;
+import hsenidmobile.sdp.rest.servletbase.MchoiceAventuraSmsMessage;
+import hsenidmobile.sdp.rest.servletbase.MchoiceAventuraSmsMoServlet;
+import hsenidmobile.sdp.rest.servletbase.MchoiceAventuraSmsSender;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
+
+    @Override
+    protected void onMessage(MchoiceAventuraSmsMessage masm) {
+        System.out.println("Message Recieved: "+ masm.getMessage());
+        System.out.println("Mobile Number: "+ masm.getAddress());
+        
+        try {
+            MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:800/sms/"), "appid", "password");
+            smsSender.sendMessage("Message Recieved. Thank You", masm.getAddress());
+        } catch (MchoiceAventuraMessagingException ex) {
+                ex.printStackTrace();
+        } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+        }
+    }
+}}}
+
+== Defining and Mapping the Servlet Class ==
+
+  In order to direct all the messages that comes to your application,into the *_MessageReceiver_* class’s implemented *_onMessage_* method, you will need to define it as a Servlet Class and map it with a URL pattern.
+
+  For this you will need to go inside the *_WEB-INF -> web.xml_* and make some modifications.
+
+  You will need to add the following inside the *'<'web-app'>'* tag of the web.xml file.
+
+{{{
+<servlet>
+
+   <servlet-name>receiver</servlet-name>
+   <servlet-class>MessageReceiver</servlet-class>
+
+</servlet>
+    
+<servlet-mapping>
+
+   <servlet-name>receiver</servlet-name>
+   <url-pattern>/*</url-pattern>
+
+</servlet-mapping>
+}}}
+
+  The final output of the *web.xml* file would be as following.
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    
+    <servlet>
+        <servlet-name>receiver</servlet-name>
+        <servlet-class>demo.MessageReceiver</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>receiver</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    
+</web-app>
+}}}
+
+== Building the Application ==
+
+  _Right-Click_ the project and select Clean and Build to create the _WAR_ file.
+
+   Now you can deploy this on an application server of your choice. Refer [http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide#mChoice-Simulator_Guide mChoice-Simulator guide] to test the application.
   Other Steps..
