@@ -1,6 +1,9 @@
-#Java Guide to Build an SMS Application
+#summary Java Guide to Build an SMS Application
 
 = Getting Started: SMS Application > Java =
+----
+
+**Software Requirements:* JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice (For this Tutorial we will be using NetBeans)
 
 This tutorial describes how to develop and deploy a simple SMS Application on the Aventura System using Java as the environment. The example application, will demonstrate how to receive users SMS and to respond them back with a message of your own.
 
