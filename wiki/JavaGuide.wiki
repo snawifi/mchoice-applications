@@ -26,7 +26,7 @@
 
   * Step 7: Once you receiver user message, write a logic class to process it. 
 
-  *Step 8: To reply back to the user, instantiate *MchoiceUssdSender* class. The constructor takes 3 string arguments; those are Server URI, Application ID, and Password. When testing with the simulator, this Server URI must be [http://127.0.0.1:8000/ussd/].
+  * Step 8: To reply back to the user, instantiate *MchoiceUssdSender* class. The constructor takes 3 string arguments; those are Server URI, Application ID, and Password. When testing with the simulator, this Server URI must be [http://127.0.0.1:8000/ussd/].
 
   * Step 9: Call _sendMessage_ to reply back to the user. See the following code extract. The lass parameter is a Boolean. True means that from this message, the session will be terminated. 
 
@@ -41,6 +41,7 @@
         }
     }
 }}}
+
 
   * Step 10: Define this servlet in web.xml file. Add the following to xml elements. 
 
@@ -59,6 +60,7 @@
   * Step 11: Build the application and create the WAR file and deploy it on the server of your choice.
 
   * Step 12: Refer [http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide#mChoice-Simulator_Guide mChoice-Simulator guide] to test the application.
+
 
 ----
 
