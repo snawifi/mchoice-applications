@@ -2,7 +2,7 @@
 
  * [GettingStart Getting Start]
     * SMS
-       * [JavaGuide#SMS_Guide Java Guide]
+       * [JavaGuideSMS#SMS_Guide Java Guide]
        * [DotNETGuide#SMS_Guide  .NET Guide]
        * [PHPGuide#SMS_Guide  PHP Guide]
        * [RubyGuide#SMS_Guide  Ruby Guide]
