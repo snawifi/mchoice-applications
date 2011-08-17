@@ -4,7 +4,10 @@
 = Getting Started: SMS Application > Java =
 ----
 
-  Software Requirements: JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice (For this guide we will be using NetBeans)
+  * Software Requirements: * JDK 1.6+
+                           * [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST]
+                           * Tomcat (or any server of your choice)
+                           * IDE of your choice (For this guide we will be using NetBeans)
 
   This tutorial describes how to develop and deploy a simple SMS Application on the Aventura System using Java as the environment. The example application, will demonstrate how to receive users SMS and to respond them back with a message of your own.
 
@@ -86,9 +89,9 @@ import java.net.URL;
 public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 
     @Override
-    protected void onMessage(MchoiceAventuraSmsMessage masm) {
-        System.out.println("Message Recieved: "+ masm.getMessage());
-        System.out.println("Mobile Number: "+ masm.getAddress());
+    protected void onMessage(MchoiceAventuraSmsMessage msg) {
+        System.out.println("Message Recieved: "+ msg.getMessage());
+        System.out.println("Mobile Number: "+ msg.getAddress());
         
         try {
             MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:800/sms/"), "appid", "password");
