@@ -1,5 +1,5 @@
 #summary Java Guide to Build an SMS Application
-#labels Phase-Implementation,Featured,SMS,Java
+#labels Phase-Implementation,SMS,Java
 
 = Getting Started: SMS Application > Java =
 ----
