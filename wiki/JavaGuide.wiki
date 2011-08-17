@@ -1,5 +1,5 @@
 #summary USSD Java guide for a quicker start.
-#labels Phase-Implementation,Featured,USSD,Java
+#labels Phase-Implementation,USSD,Java
 
 = Developing USSD Applications using Java USSD API =
 ----
