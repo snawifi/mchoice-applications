@@ -1,12 +1,11 @@
-#summary One-sentence summary of this page.
+#summary Developer Guides.
 #labels Featured,Phase-Implementation,Phase-Design
 
 = mChoice Applications Getting Started =
 
 == Developer's Guide ==
-
  Welcome to mChoice Applications! This developer's guide contains everything you need to know to build applications using  mChoice Cloud TAP  technology.
-You can develop your application for one of available application environments:
+ You can develop your application for one of available application environments:
   
 
    * *SMS*
