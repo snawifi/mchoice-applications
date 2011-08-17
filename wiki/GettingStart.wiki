@@ -1,14 +1,23 @@
 #summary One-sentence summary of this page.
 #labels Featured,Phase-Implementation,Phase-Design
 
-= Introduction =
+= mChoice Applications Getting Started =
 
-Add your content here.
+== Developer's Guide ==
 
+ Welcome to mChoice Applications! This developer's guide contains everything you need to know to build applications using  mChoice Cloud TAP  technology.
+You can develop your application for one of available application environments:
+  
 
-= Details =
+   * *SMS*
+       * [JavaGuideSMS#SMS_Guide Java Guide]
+       * [DotNETGuide#SMS_Guide  .NET Guide]
+       * [PHPGuide#SMS_Guide  PHP Guide]
+       * [RubyGuide#SMS_Guide  Ruby Guide]
+       
+   * *USSD*
+       * [JavaGuide#USSD_Guide Java Guide]
+       * [DotNETGuide#USSD_Guide .NET Guide]
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+   * *Video*
+       *  [VideoDemos Video Guides] 
