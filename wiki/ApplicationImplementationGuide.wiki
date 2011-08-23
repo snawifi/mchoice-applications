@@ -18,7 +18,7 @@ Once you are done with your application and tested it successfully with the simu
 [http://compudoc.princeton.edu/compudocwiki/index.php/HowTos:Connect to login servers via ssh]
   
   **Step 6: Once you are connected you will be in the home directory.
-	Ex: - cd /home/your username/
+	{{{Ex: - cd /home/your username/}}}
 
   **Step 7: The first thing you have to do is copy the Apache tomcat from the /opt/shared location.
 	Ex: - cp /opt/shared/ apache-tomcat-6.0.29 /home/your username
