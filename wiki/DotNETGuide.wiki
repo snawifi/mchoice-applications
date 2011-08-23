@@ -1,14 +1,11 @@
-#summary One-sentence summary of this page.
+#summary .NET Guide to Build an SMS Application
 #labels Phase-Implementation
 
-= Introduction =
+= Getting Started: SMS Application > .NET =
+----
 
-Add your content here.
+  * Software Requirements:  
+                           * [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST]
+                           * Microsoft Visual Studio
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+This tutorial describes how to develop and deploy a simple SMS Application on the Aventura System using .Net as the environment. The example application, will demonstrate how to receive users SMS and to respond them back with a message of your own.
