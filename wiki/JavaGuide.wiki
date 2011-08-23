@@ -5,7 +5,7 @@
 ----
 
 
-  **Software Requirements:* JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice
+  * *Software Requirements:* JDK 1.6+, [http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip&can=2&q=  mChoice-Simulator-LATEST], Tomcat (or any server of your choice), IDE of your choice
 
 
   * Step 1: Download the Java USSD API
