@@ -5,7 +5,10 @@ Once you are done with your application and tested it successfully with the simu
   # Fill up the following form with the correct details.
 [https://spreadsheets.google.com/a/9696.lk/viewform?hl=en&pli=1&formkey=dExQeWhiQlluQnIta0xVUlBCelpTTmc6MQ#gid=0]   
 Drop an email to support@appzone.lk if you didn’t get application details within 2 working days.
+
   # You will receive an email, it will contain your SSH user details and MySQL details (if you requested). And also with an application name, application ID, reserved keyword, your application password and 4 ports which are assigned to your application.
+  # after that, set the MT URL, Application ID, and Password when instantiating the sender class (MchoiceAventuraSmsMoSender or MchoiceUssdSender)
+
 = Details =
 
 Add your content here.  Format your content with:
