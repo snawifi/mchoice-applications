@@ -43,6 +43,7 @@ Here you need to configure with the given ports to you.
   
   **Step 13: Go to the bin folder in tomcat directory. 
 	{{{Ex: - cd /home/username/apache-tomcat-6.0.29/bin}}} 
+
  Now give the following command 
    {{{./startup.sh}}} or {{{sh startup.sh}}}
 Now your application is UP and running. You can test it live. 
