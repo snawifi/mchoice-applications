@@ -13,7 +13,7 @@ This tutorial describes how to develop and deploy a simple SMS Application on th
 == Creating a Project from Scratch ==
 
 Go to *‘File’* -> *‘New Web Site’* and under *_‘Visual Studio installed templates’_* choose *‘ASP.NET Web Site’* , select Location as *‘File System’*,  language as *‘Visual C#’*  and select project path. Then click OK. This is important, as you will be sending and receiving messages through HTTP.
-Project Name will be taken as selected folder name for the project. For this tutorial we will be naming the project as *‘demo_app’*.
+Project Name will be taken as selected folder name for the project. For this tutorial we will be naming the project as *‘MchoiceSMSSampleApp’*.
 
 == Sample Code for Receive, Process and Send Messages ==
 
