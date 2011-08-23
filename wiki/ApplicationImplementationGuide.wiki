@@ -19,14 +19,15 @@ Once you are done with your application and tested it successfully with the simu
   
   **Step 6: Once you are connected you will be in the home directory.
 	Ex: - cd /home/your username/
-    # The first thing you have to do is copy the Apache tomcat from the      /opt/shared location.
+
+  **Step 7: The first thing you have to do is copy the Apache tomcat from the      /opt/shared location.
 	Ex: - cp /opt/shared/ apache-tomcat-6.0.29 /home/your username
-    # Go in to this folder and you will find a sub folder called *webapps*.
+  **Step 8: Go in to this folder and you will find a sub folder called *webapps*.
 	Ex: - cd /home/username/apache-tomcat-6.0.29/webapps
-  # Upload your WAR file to this folder. (Refer to the above tutorial)
-  # Go to the conf folder in tomcat directory. 
+  **Step 9: Upload your WAR file to this folder. (Refer to the above tutorial)
+  **Step 10: Go to the conf folder in tomcat directory. 
 	Ex: - cd /home/username/apache-tomcat-6.0.29/conf
-  # Edit the server.xml file 
+  **Step 11: Edit the server.xml file 
  	Ex: - vi server.xml 
 Here you need to configure with the given ports to you. 
  Ex:- you have assigned 8080, 8081, 8082, and 8084 ports in server.xml change the ports for following elements. 
@@ -35,9 +36,9 @@ Here you need to configure with the given ports to you.
                            redirectPort="8082" /> 
     <ConnectHere there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*or port="8084" protocol="*AJP*/1.3" redirectPort="8082” /> 
   # Here there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*
-  # Email your application URL to support@appzone.lk (This is referred as MO url)
-  # Go to the bin folder in tomcat directory. 
+  **Step 12: Email your application URL to support@appzone.lk (This is referred as MO url)
+  **Step 13: Go to the bin folder in tomcat directory. 
 	Ex: - cd /home/username/apache-tomcat-6.0.29/bin 
  Now give the following command 
    ./startup.sh or sh startup.sh
-  # Now your application is UP and running. You can test it live. 
+Now your application is UP and running. You can test it live. 
