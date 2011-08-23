@@ -28,5 +28,5 @@
    * [SingleClick#PHP_Development_Package PHP Guide]
    * [SingleClick#Ruby_Development_Package Ruby Guide]
  * [http://developer.hsenidmobile.com/registration.php Register With us]
- * [http://developer.hsenidmobile.com/publish_step1.php Publish App ]
+ * [ApplicationImplementationGuide Publish App ]
  * [FAQ FAQ]
