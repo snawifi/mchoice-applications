@@ -1,6 +1,6 @@
 #summary Implementation guide
 
-= Getting Started: SMS Application > Quick Steps To Implement your applications. =
+= Quick Steps To Implement your applications. =
 ----
 Once you are done with your application and tested it successfully with the simulator, then you are ready to deploy your application.
 
