@@ -30,7 +30,7 @@ Once you are done with your application and tested it successfully with the simu
   **Step 11: Edit the server.xml file 
  	Ex: - vi server.xml 
 Here you need to configure with the given ports to you. 
- Ex:- you have assigned 8080, 8081, 8082, and 8084 ports in server.xml change the ports for following elements. 
+ Ex:- you have assigned *8080*, *8081*, *8082*, and *8084* ports in server.xml change the ports for following elements. 
         <Server port=“8081” shutdown="SHUTDOWN"> 
       <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8082" /> 
    Here there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*
