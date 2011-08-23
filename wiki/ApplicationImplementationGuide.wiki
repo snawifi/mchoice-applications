@@ -22,11 +22,15 @@ Once you are done with your application and tested it successfully with the simu
 
   **Step 7: The first thing you have to do is copy the Apache tomcat from the /opt/shared location.
 	{{{Ex: - cp /opt/shared/ apache-tomcat-6.0.29 /home/your username}}}
+
   **Step 8: Go in to this folder and you will find a sub folder called *webapps*.
 	{{{Ex: - cd /home/username/apache-tomcat-6.0.29/webapps}}}
+  
   **Step 9: Upload your WAR file to this folder. (Refer to the above tutorial)
+  
   **Step 10: Go to the *conf* folder in tomcat directory. 
 	{{{Ex: - cd /home/username/apache-tomcat-6.0.29/conf}}}
+  
   **Step 11: Edit the *server.xml* file 
  	{{{Ex: - vi server.xml}}} 
 Here you need to configure with the given ports to you. 
@@ -34,7 +38,9 @@ Here you need to configure with the given ports to you.
         <Server port=“8081” shutdown="SHUTDOWN"> 
       <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8082" />
    Here there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*
+  
   **Step 12: Email your application URL to support@appzone.lk (This is referred as MO url)
+  
   **Step 13: Go to the bin folder in tomcat directory. 
 	{{{Ex: - cd /home/username/apache-tomcat-6.0.29/bin}}} 
  Now give the following command 
