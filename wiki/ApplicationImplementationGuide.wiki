@@ -32,9 +32,8 @@ Once you are done with your application and tested it successfully with the simu
 Here you need to configure with the given ports to you. 
  Ex:- you have assigned 8080, 8081, 8082, and 8084 ports in server.xml change the ports for following elements. 
         <Server port=“8081” shutdown="SHUTDOWN"> 
-      <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" 
-                           redirectPort="8082" /> 
-    <ConnectHere there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*or port="8084" protocol="*AJP*/1.3" redirectPort="8082” /> 
+      <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8082" /> 
+    ConnectHere there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*or port="8084" protocol="*AJP*/1.3" redirectPort="8082” /> 
   # Here there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*
   **Step 12: Email your application URL to support@appzone.lk (This is referred as MO url)
   **Step 13: Go to the bin folder in tomcat directory. 
