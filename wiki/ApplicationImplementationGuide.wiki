@@ -15,9 +15,9 @@ Once you are done with your application and tested it successfully with the simu
 
   **Step 4: Once it is done, change the name of your build to the given application name. Now build your project. You will get a *application name.WAR*
 
-  **Step 5: Now connect to your reserved space using SSH. For this you can use ssh command (in linux) or SSH Secure Client (in Windows).
-    Check this link and it will help you.
-[http://compudoc.princeton.edu/compudocwiki/index.php/HowTos:Connect to login servers via ssh]
+  **Step 5: Now connect to your reserved space using SSH.
+For this you can use ssh command (in linux) or SSH Secure Client (in Windows).
+    Check this link and it will help you.                [http://compudoc.princeton.edu/compudocwiki/index.php/HowTos:Connect to login servers via ssh]
   
   **Step 6: Once you are connected you will be in the home directory.
 	{{{Ex: - cd /home/your username/}}}
