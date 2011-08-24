@@ -18,10 +18,10 @@ which are assigned to your application.
   
   **Step 3: after that, set the *App URL*, *Application ID*, and *Password* when instantiating the sender class (MchoiceAventuraSmsMoSender or MchoiceUssdSender)
 
-  **Step 4: Once it is done, change the name of your build to the given application name. Now build your project. You will get a *application name.WAR*
+  **Step 4: Once it is done, change the name of your build to the given application name. Now build your project.You will get a *application name.WAR*
 
-  **Step 5: Now connect to your reserved space using SSH.
-For this you can use ssh command (in linux) or SSH Secure Client (in Windows).
+  **Step 5: Now connect to your reserved space.
+For this you can use ssh command (in linux) or SSH Secure Client (in Windows you can [http://ce.uml.edu/SSH3.2.9.exe download] from this link).
     Check this [http://compudoc.princeton.edu/compudocwiki/index.php/HowTos:Connect_to_login_servers_via_ssh link] and it will help you.
   
   **Step 6: Once you are connected you will be in the home directory.
