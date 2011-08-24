@@ -5,7 +5,7 @@
 Once you are done with your application and tested it successfully with the simulator, then you are ready to deploy your application.
 
   **Step 1: Fill up the following form with the correct details.
-    [form or https://spreadsheets.google.com/a/9696.lk/viewform?hl=en&pli=1&formkey=dExQeWhiQlluQnIta0xVUlBCelpTTmc6MQ#gid=0]
+    [#form or https://spreadsheets.google.com/a/9696.lk/viewform?hl=en&pli=1&formkey=dExQeWhiQlluQnIta0xVUlBCelpTTmc6MQ#gid=0]
 
     Drop an email to [support@appzone.lk] if you didn’t get application details within 2 working days.
   
