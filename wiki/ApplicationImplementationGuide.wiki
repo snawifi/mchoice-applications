@@ -26,17 +26,17 @@ For this you can use ssh command (in linux) or SSH Secure Client (in Windows you
   
   **Step 6: Once you are connected you will be in the home directory.
 	{{{
-            Ex: - cd /home/yourusername/
+            Ex: - cd /home/<username>/
            }}}
 
   **Step 7: The first thing you have to do is copy the Apache tomcat from the /opt/shared location.
 	{{{
-            Ex: - cp /opt/shared/apache-tomcat-6.0.29 /home/yourusername
+            Ex: - cp /opt/shared/apache-tomcat-6.0.29 /home/<username>
            }}}
 
   **Step 8: Go in to this folder and you will find a sub folder called *webapps*.
 	{{{
-            Ex: - cd /home/username/apache-tomcat-6.0.29/webapps
+            Ex: - cd /home/<username>/apache-tomcat-6.0.29/webapps
            }}}
   
   **Step 9: Upload your WAR file to this folder. (Refer to the above tutorial)
@@ -51,7 +51,7 @@ For this you can use ssh command (in linux) or SSH Secure Client (in Windows you
             Ex: - vi server.xml
            }}} 
 Here you need to configure with the given ports to you. 
- Ex:- you have assigned *8080*, *8081*, *8082*, and *8084* ports in *server.xml* change the ports for following elements. 
+ Ex:- If you have assigned *8080*, *8081*, *8082*, and *8084* ports in *server.xml* change the ports for following elements. 
         {{{
             <Server port=“8081” shutdown="SHUTDOWN"> 
       <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8082" />
@@ -62,7 +62,7 @@ Here you need to configure with the given ports to you.
   
   **Step 13: Go to the bin folder in tomcat directory. 
 	{{{
-            Ex: - cd /home/username/apache-tomcat-6.0.29/bin
+            Ex: - cd /home/<username>/apache-tomcat-6.0.29/bin
            }}} 
 
  Now give the following command 
