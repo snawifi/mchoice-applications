@@ -8,7 +8,7 @@ Once you are done with your application and tested it successfully with the simu
 
     Drop an email to [support@appzone.lk] if you didn’t get application details within 2 working days.
   
-  **Step 2: You will receive an email, it will contain your user log in  details and database details (if you requested). And also with an 
+  * *Step 2*: You will receive an email, it will contain your user log in  details and database details (if you requested). And also with an 
   # *application name* 
   # *application ID*
   # *reserved keyword*
@@ -16,37 +16,37 @@ Once you are done with your application and tested it successfully with the simu
   # *4 ports*(To establish communication with your application) 
 which are assigned to your application.
   
-  **Step 3: after that, set the *App URL*, *Application ID*, and *Password* when instantiating the sender class (MchoiceAventuraSmsMoSender or MchoiceUssdSender)
+  * *Step 3*: after that, set the *App URL*, *Application ID*, and *Password* when instantiating the sender class (MchoiceAventuraSmsMoSender or MchoiceUssdSender)
 
-  **Step 4: Once it is done, change the name of your build to the given application name. Now build your project.You will get a *application name.WAR*
+  * *Step 4*: Once it is done, change the name of your build to the given application name. Now build your project.You will get a *application name.WAR*
 
-  **Step 5: Now connect to your reserved space.
+  * *Step 5*: Now connect to your reserved space.
 For this you can use ssh command (in linux) or SSH Secure Client (in Windows you can [http://ce.uml.edu/SSH3.2.9.exe download] from this link).
     Check this [http://compudoc.princeton.edu/compudocwiki/index.php/HowTos:Connect_to_login_servers_via_ssh link] and it will help you.
   
-  **Step 6: Once you are connected you will be in the home directory.
+  * *Step 6*: Once you are connected you will be in the home directory.
 	{{{
             Ex: - cd /home/<username>/
            }}}
 
-  **Step 7: The first thing you have to do is copy the Apache tomcat from the /opt/shared location.
+  * *Step 7*: The first thing you have to do is copy the Apache tomcat from the /opt/shared location.
 	{{{
             Ex: - cp /opt/shared/apache-tomcat-6.0.29 /home/<username>
            }}}
 
-  **Step 8: Go in to this folder and you will find a sub folder called *webapps*.
+  * *Step 8*: Go in to this folder and you will find a sub folder called *webapps*.
 	{{{
             Ex: - cd /home/<username>/apache-tomcat-6.0.29/webapps
            }}}
   
-  **Step 9: Upload your WAR file to this folder. (Refer to the above tutorial)
+  * *Step 9*: Upload your WAR file to this folder. (Refer to the above tutorial)
   
-  **Step 10: Go to the *conf* folder in tomcat directory. 
+  * *Step 10*: Go to the *conf* folder in tomcat directory. 
 	{{{
             Ex: - cd /home/<username>/apache-tomcat-6.0.29/conf
            }}}
   
-  **Step 11: Edit the *server.xml* file 
+  * *Step 11*: Edit the *server.xml* file 
  	{{{
             Ex: - vi server.xml
            }}} 
@@ -58,9 +58,9 @@ Here you need to configure with the given ports to you.
            }}}
    Here there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*
   
-  **Step 12: Email your application URL to support@appzone.lk (This is referred as MO url)
+  * *Step 12*: Email your application URL to support@appzone.lk (This is referred as MO url)
   
-  **Step 13: Go to the bin folder in tomcat directory. 
+  * *Step 13*: Go to the bin folder in tomcat directory. 
 	{{{
             Ex: - cd /home/<username>/apache-tomcat-6.0.29/bin
            }}} 
