@@ -15,6 +15,7 @@
 == Creating a Project from Scratch ==
 
   If you’re using NetBeans as your IDE, go to *File -> New Project* and under *_‘Categories’_* choose *‘Java Web’* and under *_‘Projects’_* choose *‘Web Application’*. This is important, as you will be sending and receiving messages through HTTP.
+[http://img231.imageshack.us/img231/7900/javasms1.png]
 
   Under *_‘Name and Locations’_* you can name your project to your liking, as well as the *_‘Project Location and Folder’_*. For this tutorial we will be naming the project as ‘demo_app’. 
 
@@ -25,7 +26,10 @@
   The next step, is to attach the necessary API’s needed to create this java application. These can be downloaded by following this link.
   [http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-java-api-client-util-LATEST.zip&can=2&q=  sms-java-api-client-util-LATEST]
   
-  After downloading, you can right-click on *‘Libraries’* and select *_‘Add JAR/Folder’_* and select all the .jar files inside the downloaded folder. 
+  After downloading, you can right-click on *‘Libraries’* and select *_‘Add JAR/Folder’_* and select all the .jar files inside the downloaded folder.
+[http://img194.imageshack.us/img194/524/javasms2.png]
+
+[http://img402.imageshack.us/img402/992/javasms3.png] 
 
   Now that all the necessary API’s are imported you can start implementing your idea.
 
@@ -110,6 +114,7 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
   In order to direct all the messages that comes to your application,into the *_MessageReceiver_* class’s implemented *_onMessage_* method, you will need to define it as a Servlet Class and map it with a URL pattern.
 
   For this you will need to go inside the *_WEB-INF -> web.xml_* and make some modifications.
+[http://img835.imageshack.us/img835/2308/javasms4.png]
 
   You will need to add the following inside the *`<`web-app`>`* tag of the web.xml file.
 
@@ -152,6 +157,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 == Building the Application ==
 
   _Right-Click_ the project and select Clean and Build to create the _WAR_ file.
+[http://img842.imageshack.us/img842/2593/javasms5.png]
 
    Now you can deploy this on an application server of your choice. Refer [http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide#mChoice-Simulator_Guide mChoice-Simulator guide] to test the application.
 
