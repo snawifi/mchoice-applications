@@ -27,6 +27,7 @@
   [http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-java-api-client-util-LATEST.zip&can=2&q=  sms-java-api-client-util-LATEST]
   
   After downloading, you can right-click on *‘Libraries’* and select *_‘Add JAR/Folder’_* and select all the .jar files inside the downloaded folder.
+
 [http://img194.imageshack.us/img194/524/javasms2.png]
 
 [http://img402.imageshack.us/img402/992/javasms3.png] 
