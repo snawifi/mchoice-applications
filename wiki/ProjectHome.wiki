@@ -10,7 +10,7 @@ Cloud TAP. The importance of these applications is the open source feature,
 where the developers will be able to download the code of the application,
 customize and make their own applications.</p>
 </td>
-<td width="120"> <img src="http://img5.imageshack.us/img5/7207/homesms.png"/> </td> </tr> </table>
+<td width="120" align=right> <img src="http://img5.imageshack.us/img5/7207/homesms.png"/> </td> </tr> </table>
 
 <table border="0" width ="800">
 <tr>
