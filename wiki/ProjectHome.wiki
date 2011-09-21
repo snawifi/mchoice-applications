@@ -56,7 +56,7 @@ and much more...</p><ul>
 <p align=justify>Watch demonstrations on how to develop mChoice Applications, done by
 our community experts...
 <ul><li><a href="http://www.youtube.com/watch?v=JBmOkNQz_Qk">How to develop a mobile Application Using Mchoice Aventura APIs</a></li>
-<li><a href="http://www.youtube.com/watch?v=zgnFuJux62w&feature=related">How to work with simulator</a></li></ul></p>
+<li><a href="http://www.youtube.com/watch?v=zgnFuJux62w&feature=related">How to work with mChoice Aventura simulator</a></li></ul></p>
 </td>
 </tr>
 </table>
