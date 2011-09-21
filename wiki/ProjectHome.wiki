@@ -1,0 +1,62 @@
+= mChoice Applications =
+
+<table border="0" width ="800">
+<tr>
+<td align=justify>
+<p>mChoice Applications are open source applications that are developed by hSenid
+Mobile and the community using mChoice Cloud TAP. These applications will be
+freely available for downloads on the Telco App Store which is a part of mChoice
+Cloud TAP. The importance of these applications is the open source feature,
+where the developers will be able to download the code of the application,
+customize and make their own applications.</p>
+</td>
+<td width="120"> <img src="http://img5.imageshack.us/img5/7207/homesms.png"/> </td> </tr> </table>
+
+<table border="0" width ="800">
+<tr>
+<td width ="130"><img src="http://img833.imageshack.us/img833/8544/homeussd.png"/>
+</td>
+<td align=justify>
+<p>Also the developers will be able to get innovative ideas while referring these
+application codes and introduce different applications to the market. These
+opensource applications will be SMS, MMS or USSD based which will facilitate the
+developers to reach into a wider market of subscribers.</p></td>
+</tr>
+</table>
+
+<table border="0" width="800">
+<tr>
+<td><img src="http://img685.imageshack.us/img685/9913/homeguides.png"/></td>
+<td> <p align=center> <font size="4"> <b> Guides </b></font></p>
+<p align=justify>Go through the guides written
+by our experienced community
+members...</p><ul>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/GettingStart">Getting Started</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/JavaGuideSMS">Java Guide: SMS</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/JavaGuide#USSD_Guide">Java Guide: USSD</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/DotNETGuide#SMS_Guide">.NET Guide: SMS</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide">Simulator Guide</a></li></ul>
+</td>
+<td><img src="http://img708.imageshack.us/img708/5931/homedownload.png"/></td>
+<td> <p align=center> <font size="4"> <b> Downloads </b> </font></p>
+<p align=justify>Download the latest versions
+of our APIs, and Simulators
+and much more...</p><ul>
+<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip">mchoice-simulator-LATEST.zip</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-api-client-util-1.0.zip">sms-api-client-util-1.0.zip</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-java-api-client-util-LATEST.zip">sms-java-api-client-util-LATEST.zip</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=ussd-java-api-LATEST.zip">ussd-java-api-LATEST.zip</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=ussd-php-api-LATEST.zip">ussd-php-api-LATEST.zip</a></li></ul></td></tr></table>
+
+<table border="0" width="800">
+<tr>
+<td width="120"><img src="http://img706.imageshack.us/img706/6789/homevidz.png"/></td>
+<td>
+<p><font size="4"> <b> Video Demos </b> </font> </p>
+<p align=justify>Watch demonstrations on how to develop mChoice Applications, done by
+our community experts...
+<ul><li><a href="http://www.youtube.com/watch?v=JBmOkNQz_Qk">How to develop a mobile Application Using Mchoice Aventura APIs</a></li>
+<li><a href="http://www.youtube.com/watch?v=zgnFuJux62w&feature=related">How to work with simulator</a></li></ul></p>
+</td>
+</tr>
+</table>
