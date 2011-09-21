@@ -14,7 +14,7 @@ customize and make their own applications.</p>
 
 <table border="0" width ="800">
 <tr>
-<td width ="130"><img src="http://img833.imageshack.us/img833/8544/homeussd.png"/>
+<td width ="130"><img src="http://img560.imageshack.us/img560/8544/homeussd.png"/>
 </td>
 <td align=justify>
 <p>Also the developers will be able to get innovative ideas while referring these
