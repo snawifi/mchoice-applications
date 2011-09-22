@@ -68,4 +68,4 @@
 
 ----
 
-  ** Hint – When developing complex USSD application with many levels of submenus, have a java.util.Map with the Conversation ID as the key. When a user request for service, check whether this conversation exist on the map. If not, send the user the main menu and add the conversation into the Map. In _onSessionTerminate_ method, remove the Conversation ID from this map. 
+  ** Hint – When developing complex USSD application with many levels of submenus, have a java.util.Map with the "Address" as the key. When a user request for service, check whether this "Address" exist on the map. If not, send the user the main menu and add the "Address" into the Map. In _onSessionTerminate_ method, remove the "Address" from this map. 
