@@ -67,7 +67,7 @@ Here you need to configure with the given ports to you.
  	    User: *my_username* 
  	    password: *my_password* 
            }}}
-        Let's assume your DDL and DML file names are respectively * createtable.sql* and *insertdata.sql*. 
+        Let's assume your DDL and DML file names are respectively * create.sql* and *insert.sql*. 
 
         Note that you don't have to create the database; it will be already created for you. Give the following 2 commands on the shell 
 
