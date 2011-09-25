@@ -1,3 +1,4 @@
+#labels Featured
 = mChoice Applications =
 
 <table border="0" width ="800">
@@ -35,7 +36,8 @@ members...</p><ul>
 <li><a href="http://code.google.com/p/mchoice-applications/wiki/JavaGuideSMS">Java Guide: SMS</a></li>
 <li><a href="http://code.google.com/p/mchoice-applications/wiki/JavaGuide#USSD_Guide">Java Guide: USSD</a></li>
 <li><a href="http://code.google.com/p/mchoice-applications/wiki/DotNETGuide#SMS_Guide">.NET Guide: SMS</a></li>
-<li><a href="http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide">Simulator Guide</a></li></ul>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/SimulatorGuide">Simulator Guide</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/wiki/ApplicationImplementationGuide">Publish Application</a></li></ul>
 </td>
 <td><img src="http://img708.imageshack.us/img708/5931/homedownload.png"/></td>
 <td> <p> <font size="4"> <b> Downloads </b> </font></p>
