@@ -1,5 +1,5 @@
 #summary Implementation guide
-#labels Featured
+#labels Featured,MySQL,Implementation,Deploy
 
 = Quick Steps To publish your applications. =
 ----
@@ -62,14 +62,14 @@ Here you need to configure with the given ports to you.
   * *Step 12*: If you are *not* requested for MySQL database, then you can skip to *Step 14*.
 
   * *Step 13*: In your home directory upload you’re [http://en.wikipedia.org/wiki/Data_Definition_Language Data Definition Language (DDL)] and [http://en.wikipedia.org/wiki/Data_Manipulation_Language Data Manipulation Language (DML)] files to create tables and to insert new records. If you request for MySQL database, we will create an empty database for you and we will provide the following information. 
-
-        database name: *my_database*
- 	User: *my_username* 
- 	password: *my_password* 
-
+        {{{
+            database name: *my_database*
+ 	    User: *my_username* 
+ 	    password: *my_password* 
+           }}}
         Let's assume your DDL and DML file names are respectively * createtable.sql* and *insertdata.sql*. 
 
-        ** Note that you don't have to create the database; it will be already created for you. Give the following 2 commands on the shell 
+        _Note that you don't have to create the database; it will be already created for you._ Give the following 2 commands on the shell 
 
         {{{
             mysql -u *my_username* -p*my_password* my_database < create.sql 
