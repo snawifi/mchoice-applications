@@ -1,4 +1,5 @@
 #summary Implementation guide
+#labels Featured
 
 = Quick Steps To publish your applications. =
 ----
@@ -51,16 +52,33 @@ For this you can use ssh command (in linux) or SSH Secure Client (in Windows you
             Ex: - vi server.xml
            }}} 
 Here you need to configure with the given ports to you. 
- Ex:- If you have assigned *8080*, *8081*, *8082*, and *8084* ports in *server.xml* change the ports for following elements. 
+ Ex:- If you have assigned *9123*, *9124*, *9125*, and *9126* ports in *server.xml* change the ports for following elements. 
         {{{
-            <Server port=“8081” shutdown="SHUTDOWN"> 
-      <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8082" />
+            <Server port=“9123” shutdown="SHUTDOWN"> 
+      <Connector port="9124" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="9125" />
            }}}
-   Here there are two Connectors. As in the example above your HTTP Connector port is *8080*. Therefore your Application URL is * apps.appzone.lk:8080/warfile_name*
+   Here, in this file, you will see that there are two *Connectors*. As in the example above your HTTP Connector port is now *9124*. Therefore your Application URL is * apps.appzone.lk:9124/warfile_name*
   
-  * *Step 12*: Email your application URL to support@appzone.lk (This is referred as MO url)
+  * *Step 12*: If you are *not* requested for MySQL database, then you can skip to *Step 14*.
+
+  * *Step 13*: In your home directory upload you’re [http://en.wikipedia.org/wiki/Data_Definition_Language Data Definition Language (DDL)] and [http://en.wikipedia.org/wiki/Data_Manipulation_Language Data Manipulation Language (DML)] files to create tables and to insert new records. If you request for MySQL database, we will create an empty database for you and we will provide the following information. 
+
+        database name: *my_database*
+ 	User: *my_username* 
+ 	password: *my_password* 
+
+        Let's assume your DDL and DML file names are respectively * createtable.sql* and *insertdata.sql*. 
+
+        ** Note that you don't have to create the database; it will be already created for you. Give the following 2 commands on the shell 
+
+        {{{
+            mysql -u *my_username* -p*my_password* my_database < create.sql 
+            mysql -u *my_username* -p*my_password* my_database < insert.sql 
+           }}}
+
+  * *Step 14*: Email your application URL to support@appzone.lk (This is referred as MO url)
   
-  * *Step 13*: Go to the bin folder in tomcat directory. 
+  * *Step 15*: Go to the bin folder in tomcat directory. 
 	{{{
             Ex: - cd /home/<username>/apache-tomcat-6.0.29/bin
            }}} 
