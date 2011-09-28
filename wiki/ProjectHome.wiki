@@ -45,7 +45,7 @@ members...</p><ul>
 of our APIs, and Simulators
 and much more...</p><ul>
 <li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=mchoice-simulator-LATEST.zip">mchoice-simulator-LATEST.zip</a></li>
-<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-api-client-util-1.0.zip">sms-api-client-util-1.0.zip</a></li>
+<li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=ussd-java-api-client-util-LATEST.zip">ussd-java-api-client-util-LATEST.zip</a></li>
 <li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-java-api-client-util-LATEST.zip">sms-java-api-client-util-LATEST.zip</a></li>
 <li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=ussd-java-api-LATEST.zip">ussd-java-api-LATEST.zip</a></li>
 <li><a href="http://code.google.com/p/mchoice-applications/downloads/detail?name=ussd-php-api-LATEST.zip">ussd-php-api-LATEST.zip</a></li></ul></td></tr></table>
