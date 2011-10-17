@@ -58,6 +58,8 @@ Here you need to configure with the given ports to you.
       <Connector port="9124" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="9125" />
            }}}
    Here, in this file, you will see that there are two *Connectors*. As in the example above your HTTP Connector port is now *9124*. Therefore your Application URL is * apps.appzone.lk:9124/warfile_name*
+
+[http://img525.imageshack.us/img525/8240/implconfigurations.jpg]
   
   * *Step 12*: If you are *not* requested for MySQL database, then you can skip to *Step 14*.
 
