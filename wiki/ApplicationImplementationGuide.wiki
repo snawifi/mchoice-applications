@@ -24,6 +24,13 @@ which are assigned to your application.
   * *Step 5*: Now connect to your reserved space.
 For this you can use ssh command (in linux) or SSH Secure Client (in Windows you can [http://ce.uml.edu/SSH3.2.9.exe download] from this link).
     Check this [http://compudoc.princeton.edu/compudocwiki/index.php/HowTos:Connect_to_login_servers_via_ssh link] and it will help you.
+
+[http://img193.imageshack.us/img193/2677/impl1.png]
+[http://img69.imageshack.us/img69/222/impl2.png]
+[http://img217.imageshack.us/img217/2684/impl3.png]
+[http://img585.imageshack.us/img585/7594/impl4.png]
+[http://img32.imageshack.us/img32/8532/impl5.png]
+
   
   * *Step 6*: Once you are connected you will be in the home directory.
 	{{{
