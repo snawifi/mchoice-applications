@@ -39,7 +39,7 @@ For this you can use ssh command (in linux) or SSH Secure Client (in Windows you
 
   * *Step 7*: The first thing you have to do is copy the Apache tomcat from the /opt/shared location. And extract it.
 	{{{
-            Ex: - cp /opt/shared/apache-tomcat-6.0.29.tar.gz /home/<username>
+            Ex: - cp /opt/shared/apache-tomcat-6.0.29.tar.gz /home/<username> /n
                   tar -xvzf apache-tomcat-6.0.29.tar.gz
            }}}
 
