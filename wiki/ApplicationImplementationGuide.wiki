@@ -37,9 +37,10 @@ For this you can use ssh command (in linux) or SSH Secure Client (in Windows you
             Ex: - cd /home/<username>/
            }}}
 
-  * *Step 7*: The first thing you have to do is copy the Apache tomcat from the /opt/shared location.
+  * *Step 7*: The first thing you have to do is copy the Apache tomcat from the /opt/shared location. And extract it.
 	{{{
             Ex: - cp /opt/shared/apache-tomcat-6.0.29.tar.gz /home/<username>
+                  tar -xvzf apache-tomcat-6.0.29.tar.gz
            }}}
 
   * *Step 8*: Go in to this folder and you will find a sub folder called *webapps*.
