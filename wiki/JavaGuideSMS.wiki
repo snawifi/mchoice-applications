@@ -121,17 +121,13 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 
 {{{
 <servlet>
-
-   <servlet-name>receiver</servlet-name>
-   <servlet-class>demo.MessageReceiver</servlet-class>
-
+        <servlet-name>MessageReciever</servlet-name>
+        <servlet-class>demo.MessageReciever</servlet-class>
 </servlet>
-    
+
 <servlet-mapping>
-
-   <servlet-name>receiver</servlet-name>
-   <url-pattern>/*</url-pattern>
-
+        <servlet-name>MessageReciever</servlet-name>
+        <url-pattern>/*</url-pattern>
 </servlet-mapping>
 }}}
 
@@ -141,14 +137,14 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    
+    <display-name>Sample SMS Sending app - App Zone Developer</display-name>
     <servlet>
-        <servlet-name>receiver</servlet-name>
-        <servlet-class>demo.MessageReceiver</servlet-class>
+        <servlet-name>MessageReciever</servlet-name>
+        <servlet-class>demo.MessageReciever</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
-        <servlet-name>receiver</servlet-name>
+        <servlet-name>MessageReciever</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
     
