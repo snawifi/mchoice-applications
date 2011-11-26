@@ -71,8 +71,8 @@ Once you get the users message using the above mentioned methods, you can procee
 }}}
 
   Using the newly instantiated *_AppZoneSender_* instance’s sms method, you can send the message that you desire, back to the user. This method will take 2 parameters.
-    # String *_message_* (the response you want to send back)
-    # String *_userAddress_* (the user’s mobile phone number)
+    # *_$message_* (the response you want to send back)
+    # *_$addresses_* (the user’s mobile phone number)
 
   Now you have completed the *_SMSReceiver.php_*.
 
