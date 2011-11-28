@@ -18,7 +18,7 @@
 
 == Importing API’s ==
 
-  The next step, is to attach the necessary API’s needed to create this java application. These can be downloaded by following this link.
+  The next step, is to attach the necessary API’s needed to create this PHP application. These can be downloaded by following this link.
   [http://code.google.com/p/mchoice-applications/downloads/detail?name=sms-php-api-client-util-LATEST.zip&can=2&q=  sms-php-api-client-util-LATEST]
   
   After downloading, you can find two files called *_‘AppZoneReciever.php’_* and *_‘AppZoneSender.php’_* extracted folder. Put them under *‘MchoiceSMSSampleApp’* folder. 
