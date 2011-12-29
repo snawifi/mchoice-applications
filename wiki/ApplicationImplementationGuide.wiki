@@ -7,7 +7,7 @@ Once you are done with your application and tested it successfully with the simu
 
   * *Step 1*: Fill up the following form with the correct details.[https://spreadsheets.google.com/a/9696.lk/viewform?hl=en&pli=1&formkey=dExQeWhiQlluQnIta0xVUlBCelpTTmc6MQ#gid=0 Form]
 
-    Drop an email to [support@appzone.lk] if you didn’t get application details within 2 working days.
+    Drop an email to [support@appzone.lk] if you didn’t get application details within 7 working days.
   
   * *Step 2*: You will receive an email, it will contain your user log in  details and database details (if you requested). And also with an 
   # *application name* 
@@ -19,7 +19,7 @@ which are assigned to your application.
   
   * *Step 3*: after that, set the *App URL*, *Application ID*, and *Password* when instantiating the sender class (MchoiceAventuraSmsMoSender or MchoiceUssdSender)
 
-  * *Step 4*: Once it is done, change the name of your build to the given application name. Now build your project.You will get a *application name.WAR*
+  * *Step 4*: Once it is done, change the name of your build to the given application name. Now build your project.You will get a *YOUR_KEYWORD.WAR*
 
   * *Step 5*: Now connect to your reserved space.
 For this you can use ssh command (in linux) or SSH Secure Client (in Windows you can [http://ce.uml.edu/SSH3.2.9.exe download] from this link).
