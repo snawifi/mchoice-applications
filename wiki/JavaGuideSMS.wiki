@@ -96,12 +96,12 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 
     @Override
     protected void onMessage(MchoiceAventuraSmsMessage msg) {
-        System.out.println("Message Recieved: "+ msg.getMessage());
+        System.out.println("Message Received: "+ msg.getMessage());
         System.out.println("Mobile Number: "+ msg.getAddress());
         
         try {
             MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:800/sms/"), "appid", "password");
-            smsSender.sendMessage("Message Recieved. Thank You", masm.getAddress());
+            smsSender.sendMessage("Message Received. Thank You", masm.getAddress());
         } catch (MchoiceAventuraMessagingException ex) {
                 ex.printStackTrace();
         } catch (MalformedURLException ex) {
@@ -121,12 +121,12 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 
 {{{
 <servlet>
-        <servlet-name>MessageReciever</servlet-name>
-        <servlet-class>demo.MessageReciever</servlet-class>
+        <servlet-name>MessageReceiver</servlet-name>
+        <servlet-class>demo.MessageRReceiver</servlet-class>
 </servlet>
 
 <servlet-mapping>
-        <servlet-name>MessageReciever</servlet-name>
+        <servlet-name>MessageReceiver</servlet-name>
         <url-pattern>/*</url-pattern>
 </servlet-mapping>
 }}}
@@ -139,12 +139,12 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>Sample SMS Sending app - App Zone Developer</display-name>
     <servlet>
-        <servlet-name>MessageReciever</servlet-name>
-        <servlet-class>demo.MessageReciever</servlet-class>
+        <servlet-name>MessageReceiver</servlet-name>
+        <servlet-class>demo.MessageReceiver</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MessageReciever</servlet-name>
+        <servlet-name>MessageReceiver</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
     
