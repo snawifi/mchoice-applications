@@ -5,6 +5,9 @@
 ----
 Once you are done with your application and tested it successfully with the simulator, then you are ready to deploy your application.
 
+* Note:* 
+ # For run your application on live, it's should be hosted in a hosting place. You can use your own hosting place or currently we provide you free hosting facilities on our hosting place, but only for the web applications which runs on tomcat (with tomcat server in linux platform) and only MySql as DBMS. Other web applications such as .NET applications should be hosted in your own hosting place which supporting to the .NET
+
   * *Step 1*: Fill up the following form with the correct details.[https://spreadsheets.google.com/a/9696.lk/viewform?hl=en&pli=1&formkey=dExQeWhiQlluQnIta0xVUlBCelpTTmc6MQ#gid=0 Form]
 
     Drop an email to [support@appzone.lk] if you didn’t get application details within 7 working days.
