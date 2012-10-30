@@ -100,8 +100,8 @@ public class MessageReceiver extends MchoiceAventuraSmsMoServlet {
         System.out.println("Mobile Number: "+ msg.getAddress());
         
         try {
-            MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:800/sms/"), "appid", "password");
-            smsSender.sendMessage("Message Received. Thank You", masm.getAddress());
+            MchoiceAventuraSmsSender smsSender = new MchoiceAventuraSmsSender(new URL("http://127.0.0.1:8000/sms/"), "appid", "password");
+            smsSender.sendMessage("Message Received. Thank You", msg.getAddress());
         } catch (MchoiceAventuraMessagingException ex) {
                 ex.printStackTrace();
         } catch (MalformedURLException ex) {
